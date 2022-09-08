@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Color } from "../../ui/colors";
 import { Media } from "../../ui/media";
 import arrow from "../../assets/icons/arrow-down.svg";
+import { S1_3 } from "../../ui/typography";
 
 const StyledUserEmblem = styled.button`
   display: flex;
@@ -12,7 +13,8 @@ const StyledUserEmblem = styled.button`
   /* посмотреть все состояния */
 `;
 
-const UserName = styled.h4`
+const UserName = styled.p`
+  ${S1_3}
   margin-left: 20px;
   color: ${Color.White};
 

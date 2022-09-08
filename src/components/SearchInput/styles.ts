@@ -2,6 +2,10 @@ import styled from "styled-components";
 import { Color } from "../../ui/colors";
 import searchIcon from "../../assets/icons/search-icon.svg";
 
+const Filters = styled.button`
+  background: no-repeat url(${searchIcon}) ${Color.Graphite};
+`;
+
 const StyledSearchInput = styled.input`
   max-height: 56px;
   margin-right: 40px;
@@ -38,4 +42,4 @@ const StyledSearchInput = styled.input`
   }
 `;
 
-export { StyledSearchInput };
+export { StyledSearchInput, Filters };

@@ -1,6 +1,12 @@
 import React from "react";
-import { StyledSearchInput } from "./styles";
+import { Filters, StyledSearchInput } from "./styles";
 
 export const SearchInput = () => {
-  return <StyledSearchInput placeholder="Search..." />;
+  return (
+    // через форму!
+    <div>
+      <StyledSearchInput placeholder="Search..." />
+      <Filters></Filters>
+    </div>
+  );
 };
