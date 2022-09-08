@@ -1,18 +1,23 @@
 import React from "react";
-import { ReactComponent as Logo } from "../../assets/logo-light.svg"; //TODO изменение лого от темы (вынести в сss?)
-import { Avatar } from "../Avatar/Avatar";
+import { Link } from "react-router-dom";
+import { ReactComponent as LogoIconLight } from "../../assets/logo/logo-light.svg";
+import { ReactComponent as LogoIconDark } from "../../assets/logo/logo-dark.svg";
+import { ROUTE } from "../../routes";
 import { SearchInput } from "../SearchInput/SearchInput";
+import { UserEmblem } from "../UserEmblem/UserEmblem";
+import { Wrapper } from "./styles";
+import { useTheme } from "../../hooks/useTheme";
 
 export const Navbar = () => {
+  const { theme } = useTheme();
+
   return (
-    <>
-      <Logo />
+    <Wrapper>
+      <Link to={ROUTE.HOME}>
+        {theme === "dark" ? <LogoIconDark /> : <LogoIconLight />}
+      </Link>
       <SearchInput />
-      <Avatar />
-      {/* что с этим? */}
-      <p>User name</p>
-      <p>arrow</p>
-      <></>
-    </>
+      <UserEmblem />
+    </Wrapper>
   );
 };
