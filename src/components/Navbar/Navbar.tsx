@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { LogoIconLight, LogoIconDark } from "../../assets";
 import { ROUTE } from "../../routes";
 import { SearchInput, UserEmblem } from "../../components";
-// import { UserEmblem } from "../UserEmblem/UserEmblem";
 import { Wrapper } from "./styles";
 import { useTheme } from "../../hooks";
 

@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import { Media } from "./media";
+import { Media } from "./index";
 
 const H1 = css`
   font-weight: 600;

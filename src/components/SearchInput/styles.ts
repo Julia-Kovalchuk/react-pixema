@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Color } from "../../ui/colors";
-import searchIcon from "../../assets/icons/search-icon.svg";
+import { searchIcon } from "../../assets";
+import { Color } from "../../ui";
 
 const Filters = styled.button`
   background: no-repeat url(${searchIcon}) ${Color.Graphite};

@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import { MainTemplate } from "./components/MainTemplate/MainTemplate";
-import { RequareAuth } from "./components/RequareAuth/RequareAuth";
-import { useTheme } from "./hooks/useTheme";
+import { MainTemplate, RequareAuth } from "./components/index";
+import { useTheme } from "./hooks/index";
 import {
   FavoritesPage,
   HomePage,

@@ -1,8 +1,6 @@
 import styled from "styled-components";
-import { Color } from "../../ui/colors";
-import { Media } from "../../ui/media";
-import arrow from "../../assets/icons/arrow-down.svg";
-import { S1_3 } from "../../ui/typography";
+import { arrowDown } from "../../assets";
+import { Color, Media, S1_3 } from "../../ui";
 
 const StyledUserEmblem = styled.button`
   display: flex;
@@ -29,7 +27,7 @@ const UserInfo = styled.div`
 `;
 
 const ArrowDown = styled.div`
-  background: no-repeat url(${arrow});
+  background: no-repeat url(${arrowDown});
   background-position: center;
   height: 20px;
   width: 20px;
