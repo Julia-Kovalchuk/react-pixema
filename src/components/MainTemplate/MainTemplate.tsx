@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { AsideNav } from "../AsideNav/AsideNav";
-import { Navbar } from "../Navbar/Navbar";
+import { AsideNav, Navbar } from "../../components";
+// import { Navbar } from "../Navbar/Navbar";
 import { Container, Wrapper } from "./styles";
 
 export const MainTemplate = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ROUTE } from "../../routes";
-import { Footer } from "../Footer/Footer";
+import { Footer } from "../../components";
 import { NavList, StyledAsideNav } from "./styles";
 
 export const AsideNav = () => {

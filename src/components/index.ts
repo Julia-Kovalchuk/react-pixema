@@ -1,0 +1,9 @@
+export { AsideNav } from "../components/AsideNav/AsideNav";
+export { Avatar } from "../components/Avatar/Avatar";
+export { Footer } from "../components/Footer/Footer";
+export { MainTemplate } from "../components/MainTemplate/MainTemplate";
+export { Navbar } from "../components/Navbar/Navbar";
+export { RequareAuth } from "../components/RequareAuth/RequareAuth";
+export { SearchInput } from "../components/SearchInput/SearchInput";
+export { Switch } from "../components/Switch/Switch";
+export { UserEmblem } from "../components/UserEmblem/UserEmblem";

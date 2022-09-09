@@ -2,12 +2,14 @@ import { Route, Routes } from "react-router-dom";
 import { MainTemplate } from "./components/MainTemplate/MainTemplate";
 import { RequareAuth } from "./components/RequareAuth/RequareAuth";
 import { useTheme } from "./hooks/useTheme";
-import { FavoritesPage } from "./pages/FavoritesPage";
-import { HomePage } from "./pages/HomePage";
-import { SettingsPage } from "./pages/SettingsPage";
-import { SignInPage } from "./pages/SignInPage";
-import { SignUpPage } from "./pages/SignUpPage";
-import { TrendsPage } from "./pages/TrendsPage";
+import {
+  FavoritesPage,
+  HomePage,
+  SettingsPage,
+  SignInPage,
+  SignUpPage,
+  TrendsPage,
+} from "./pages";
 import { ROUTE } from "./routes";
 
 export const App = () => {
@@ -15,7 +17,7 @@ export const App = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<MainTemplate />}>
+      <Route path={ROUTE.HOME} element={<MainTemplate />}>
         <Route path={ROUTE.HOME} element={<HomePage />} />
         <Route path={ROUTE.TRENDS} element={<TrendsPage />} />
         <Route path={ROUTE.SIGN_IN} element={<SignInPage />} />

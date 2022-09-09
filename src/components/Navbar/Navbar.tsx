@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as LogoIconLight } from "../../assets/logo/logo-light.svg";
-import { ReactComponent as LogoIconDark } from "../../assets/logo/logo-dark.svg";
+import { LogoIconLight, LogoIconDark } from "../../assets";
 import { ROUTE } from "../../routes";
-import { SearchInput } from "../SearchInput/SearchInput";
-import { UserEmblem } from "../UserEmblem/UserEmblem";
+import { SearchInput, UserEmblem } from "../../components";
+// import { UserEmblem } from "../UserEmblem/UserEmblem";
 import { Wrapper } from "./styles";
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "../../hooks";
 
 export const Navbar = () => {
   const { theme } = useTheme();
