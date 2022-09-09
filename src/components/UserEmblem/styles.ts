@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { arrowDown } from "../../assets";
 import { Color, Media, S1_3 } from "../../ui";
 
 const StyledUserEmblem = styled.button`
@@ -27,7 +26,6 @@ const UserInfo = styled.div`
 `;
 
 const ArrowDown = styled.div`
-  background: no-repeat url(${arrowDown});
   background-position: center;
   height: 20px;
   width: 20px;
