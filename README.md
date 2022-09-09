@@ -1,3 +1,5 @@
+This site is live at https://julia-kovalchuk.github.io/react-pixema/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
