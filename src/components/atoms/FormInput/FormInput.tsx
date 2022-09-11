@@ -1,15 +1,12 @@
-import React, { ChangeEvent } from "react";
-import { UseFormRegister, ValidationRule } from "react-hook-form";
+import { Control, Controller, ValidationRule } from "react-hook-form";
 import { SignUpValues } from "../../molecules/FormSignUp/FormSignUp";
 import { StyledFormInput } from "./styles";
 
 interface IProps {
   placeholder: string;
   type: string;
-  value?: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   name: "email" | "password" | "userName" | "confirmPassword";
-  register?: UseFormRegister<SignUpValues>;
+  control: Control<SignUpValues>;
   rules?: IRules;
 }
 
@@ -22,19 +19,18 @@ interface IRules {
 export const FormInput = ({
   placeholder,
   type,
-  value,
   name,
-  onChange,
-  register,
+  control,
   rules,
 }: IProps) => {
   return (
-    <StyledFormInput
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      type={type}
-      {...(register && { ...register(name, { ...rules }) })}
+    <Controller
+      name={name}
+      control={control}
+      render={({ field }) => (
+        <StyledFormInput placeholder={placeholder} {...field} type={type} />
+      )}
+      {...rules}
     />
   );
 };

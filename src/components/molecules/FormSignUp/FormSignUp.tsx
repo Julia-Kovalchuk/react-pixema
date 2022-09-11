@@ -32,12 +32,13 @@ export const FormSignUp = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { setAuth } = useAuth();
+  // const { setAuth } = useAuth();
 
   const {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors },
     watch,
   } = useForm<SignUpValues>();
@@ -56,18 +57,19 @@ export const FormSignUp = () => {
     setIsLoading(true);
     setErrorMessage(null);
     const auth = getAuth();
+    // после передела на контроллер данные из формы попадают в базу, но then не работает!!!!!!!!!!
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         navigate(ROUTE.HOME); //TODO: перенос не тольк на home
+        reset();
       })
       .catch((err) => {
         setErrorMessage(getFirebaseMessage(err.code));
       })
       .finally(() => {
         setIsLoading(false);
-        setAuth(true);
+        // setAuth(true);
       });
-    reset();
   };
 
   return (
@@ -78,6 +80,7 @@ export const FormSignUp = () => {
       <FormInput
         type="text"
         placeholder="Your name"
+        control={control}
         {...register("userName", {
           required: "Name is requared",
           maxLength: {
@@ -98,6 +101,7 @@ export const FormSignUp = () => {
       <FormInput
         type="text"
         placeholder="Your email"
+        control={control}
         {...register("email", {
           required: "Email is requared",
           pattern: {
@@ -114,6 +118,7 @@ export const FormSignUp = () => {
       <FormInput
         type="password"
         placeholder="Your password"
+        control={control}
         {...register("password", {
           required: "Password is requared",
           minLength: {
@@ -135,6 +140,7 @@ export const FormSignUp = () => {
       <FormInput
         type="password"
         placeholder="Confirm password"
+        control={control}
         {...register("confirmPassword", {
           required: "Confirm  your password",
           validate: (value) =>
