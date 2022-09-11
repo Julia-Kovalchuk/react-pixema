@@ -21,7 +21,7 @@ export const App = () => {
         <Route path={ROUTE.HOME} element={<HomePage />} />
         <Route path={ROUTE.TRENDS} element={<TrendsPage />} />
         <Route path={ROUTE.SIGN_IN} element={<SignInPage />} />
-        <Route path={ROUTE.SIGN_IN} element={<SignUpPage />} />
+        <Route path={ROUTE.SIGN_UP} element={<SignUpPage />} />
         {/* <Route /> for movie*/}
         <Route path={ROUTE.NOT_FOUND} />
 

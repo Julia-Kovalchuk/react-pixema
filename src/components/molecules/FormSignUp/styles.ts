@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { Color, H2, inputStyles, S1_3 } from "../../ui";
-import { Button } from "../../components";
+import { Color, H2, S1_3 } from "../../../ui";
+import { Button } from "../../../components";
 
 const StyledForm = styled.form`
   max-width: 574px;
   padding: 40px;
-
+  border-radius: 40px;
   background-color: ${Color.Dark};
 `;
 
@@ -15,16 +15,14 @@ const FormName = styled.h2`
   ${H2}
 `;
 
-const FormInput = styled.input`
-  ${inputStyles}
-
-  width: 100%;
-  margin-bottom: 24px;
-`;
-
 const StyledButton = styled(Button)`
   margin-top: 16px;
   margin-bottom: 32px;
+`;
+
+const StyledErrorMessage = styled.div`
+  margin-top: 22px;
+  text-align: center;
 `;
 
 const Note = styled.p`
@@ -41,4 +39,11 @@ const LinkNote = styled.span`
   color: ${Color.Primary};
 `;
 
-export { FormName, Note, StyledForm, FormInput, StyledButton, LinkNote };
+export {
+  FormName,
+  Note,
+  StyledForm,
+  StyledButton,
+  LinkNote,
+  StyledErrorMessage,
+};

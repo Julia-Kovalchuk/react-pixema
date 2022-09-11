@@ -2,11 +2,11 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import {
-  FormInput,
   FormName,
   LinkNote,
   Note,
   StyledButton,
+  StyledErrorMessage,
   StyledForm,
 } from "./styles";
 import {
@@ -14,12 +14,14 @@ import {
   ErrorMessage,
   FormFieldName,
   Loading,
-} from "../../components";
-import { ROUTE } from "../../routes";
+  FormInput,
+} from "../..";
+import { ROUTE } from "../../../routes";
 import { useNavigate } from "react-router-dom";
-import { getFirebaseMessage } from "../../utils/firebaseErrors";
+import { getFirebaseMessage } from "../../../utils/firebaseErrors";
+import { useAuth } from "../../../hooks";
 
-type SignUpValues = {
+export type SignUpValues = {
   userName: string;
   email: string;
   password: string;
@@ -30,6 +32,7 @@ export const FormSignUp = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { setAuth } = useAuth();
 
   const {
     register,
@@ -55,14 +58,14 @@ export const FormSignUp = () => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential);
-        navigate(ROUTE.HOME);
+        navigate(ROUTE.HOME); //TODO: перенос не тольк на home
       })
       .catch((err) => {
         setErrorMessage(getFirebaseMessage(err.code));
       })
       .finally(() => {
         setIsLoading(false);
+        setAuth(true);
       });
     reset();
   };
@@ -146,8 +149,11 @@ export const FormSignUp = () => {
           <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>
         )}
 
-      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-      {/* сделать больше загрузку */}
+      {errorMessage && (
+        <StyledErrorMessage>
+          <ErrorMessage>{errorMessage}</ErrorMessage>
+        </StyledErrorMessage>
+      )}
       {isLoading ? <Loading /> : <StyledButton type="submit" text="Sign up" />}
 
       <Note>
