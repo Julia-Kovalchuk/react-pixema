@@ -4,14 +4,13 @@ import { Color } from "../../../ui";
 
 const StyledLoading = styled(Button)`
   width: 100%;
-  min-height: 33px;
-  padding-top: 17px;
-  padding-bottom: 15px;
+  min-height: 53px;
 
-  background-color: ${Color.Primary};
+  background: ${Color.Primary};
   border-radius: 10px;
-
   text-align: center;
+
+  color: ${Color.White};
 `;
 
 export { StyledLoading };

@@ -147,16 +147,11 @@ export const FormSignUp = () => {
         )}
 
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-      {isLoading ? (
-        <StyledButton type="submit" text="">
-          <Loading />
-        </StyledButton>
-      ) : (
-        <StyledButton type="submit" text="Sign up" />
-      )}
+      {/* сделать больше загрузку */}
+      {isLoading ? <Loading /> : <StyledButton type="submit" text="Sign up" />}
 
       <Note>
-        Already have an account?{" "}
+        Already have an account?
         <Customlink to={ROUTE.SIGN_IN}>
           <LinkNote>Sign In</LinkNote>
         </Customlink>
