@@ -5,11 +5,14 @@ export const inputStyles = css`
   max-height: 56px;
   border: none;
   border-radius: 10px;
-  transition: all 0.3s;
+  padding: 16px 20px;
 
   font-weight: 500;
   font-size: 16px;
   color: ${Color.Theme_White};
+
+  background: ${Color.Graphite};
+  transition: all 0.3s;
 
   &::placeholder {
     font-weight: 500;
@@ -28,7 +31,7 @@ export const inputStyles = css`
     color: ${Color.Light};
   }
 
-  &:invalid {
+  &:-moz-ui-invalid {
     outline: 2px ${Color.Error};
   }
 `;

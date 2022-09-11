@@ -10,6 +10,7 @@ import {
   TrendsPage,
 } from "./pages";
 import { ROUTE } from "./routes";
+import "./firebase";
 
 export const App = () => {
   const { theme, setTheme } = useTheme();
