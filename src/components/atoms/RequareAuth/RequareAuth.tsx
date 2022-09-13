@@ -6,5 +6,5 @@ import { ROUTE } from "../../../routes";
 export const RequareAuth = () => {
   const { isAuth } = useAuth(); // приходят извне, не из хука, а из данных
 
-  return isAuth ? <Outlet /> : <Navigate to={ROUTE.SIGN_IN} />;
+  return isAuth ? <Outlet /> : <Navigate to={ROUTE.SIGN_UP} />;
 };

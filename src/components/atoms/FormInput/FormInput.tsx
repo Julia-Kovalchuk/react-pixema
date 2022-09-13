@@ -27,8 +27,14 @@ export const FormInput = ({
     <Controller
       name={name}
       control={control}
-      render={({ field }) => (
-        <StyledFormInput placeholder={placeholder} {...field} type={type} />
+      render={({ field: { value, onChange, ref } }) => (
+        <StyledFormInput
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          // ref={ref}
+          type={type}
+        />
       )}
       {...rules}
     />

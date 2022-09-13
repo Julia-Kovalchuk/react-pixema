@@ -57,11 +57,10 @@ export const FormSignUp = () => {
     setIsLoading(true);
     setErrorMessage(null);
     const auth = getAuth();
-    // после передела на контроллер данные из формы попадают в базу, но then не работает!!!!!!!!!!
+
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(() => {
         navigate(ROUTE.HOME); //TODO: перенос не тольк на home
-        reset();
       })
       .catch((err) => {
         setErrorMessage(getFirebaseMessage(err.code));
@@ -70,6 +69,8 @@ export const FormSignUp = () => {
         setIsLoading(false);
         // setAuth(true);
       });
+
+    reset();
   };
 
   return (

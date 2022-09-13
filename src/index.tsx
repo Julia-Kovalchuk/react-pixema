@@ -1,6 +1,8 @@
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
+import { store } from "./store/store";
 import { GlobalStyle } from "./ui";
 
 const root = ReactDOM.createRoot(
@@ -8,8 +10,10 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <BrowserRouter>
-    <GlobalStyle />
-    <App />
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <GlobalStyle />
+      <App />
+    </BrowserRouter>
+  </Provider>
 );

@@ -1,6 +1,6 @@
 import React from "react";
-import { FormSignUp } from "../../components";
+import { MoviesList } from "../../components";
 
 export const HomePage = () => {
-  return <FormSignUp />;
+  return <MoviesList />;
 };
