@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../../store/hooks/hooks";
 import { IMovie } from "../../../types/types";
 import { ErrorMessage, Loading, MovieListItem } from "../../../components";
 import { getMovies } from "../../../store/selectors/movieSelectors";
-import { StyledMovieList } from "./styles";
+import { StyledLoading, StyledMovieList } from "./styles";
 
 export const MoviesList = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +17,7 @@ export const MoviesList = () => {
   console.log(movies);
 
   if (isLoading) {
-    return <Loading />;
+    return <StyledLoading />;
   }
 
   if (error) {

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Loading } from "../../atoms/Loading/Loading";
 
 const StyledMovieList = styled.div`
   display: grid;
@@ -6,4 +7,9 @@ const StyledMovieList = styled.div`
   grid-gap: 40px;
 `;
 
-export { StyledMovieList };
+const StyledLoading = styled(Loading)`
+  background: none;
+  font-size: 50px;
+`;
+
+export { StyledMovieList, StyledLoading };
