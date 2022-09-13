@@ -15,6 +15,7 @@ import { ErrorMessage } from "./atoms/ErrorMessage/ErrorMessage";
 import { Loading } from "./atoms/Loading/Loading";
 import { FormInput } from "./atoms/FormInput/FormInput";
 import { MoviesList } from "./molecules/MoviesList/MoviesList";
+import { MovieListItem } from "./atoms/MovieListItem/MovieListItem";
 
 export {
   AsideNav,
@@ -34,4 +35,5 @@ export {
   Loading,
   FormInput,
   MoviesList,
+  MovieListItem,
 };
