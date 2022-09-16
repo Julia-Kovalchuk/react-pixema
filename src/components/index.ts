@@ -16,6 +16,7 @@ import { Loading } from "./atoms/Loading/Loading";
 import { FormInput } from "./atoms/FormInput/FormInput";
 import { MoviesList } from "./molecules/MoviesList/MoviesList";
 import { MovieListItem } from "./atoms/MovieListItem/MovieListItem";
+import { AuthTemplate } from "./organisms/AuthTemplate/AuthTemplate";
 
 export {
   AsideNav,
@@ -36,4 +37,5 @@ export {
   FormInput,
   MoviesList,
   MovieListItem,
+  AuthTemplate,
 };

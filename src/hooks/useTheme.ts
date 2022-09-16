@@ -1,5 +1,5 @@
 import { useLayoutEffect, useState } from "react";
-import { Theme } from "../config";
+import { Theme } from "ui/theme";
 
 export const useTheme = () => {
   const [theme, setTheme] = useState<Theme>("dark");

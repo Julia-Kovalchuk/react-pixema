@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { Color, S1_3 } from "../../../ui";
+import { Color, H6 } from "../../../ui";
 
 const StyledErrorMessage = styled.p`
   margin-top: -22px;
 
-  ${S1_3};
+  ${H6};
   font-weight: 400;
   color: ${Color.Error};
 `;

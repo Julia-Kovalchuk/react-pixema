@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color, Media, S1_3 } from "../../../ui";
+import { Color, Media, H6 } from "../../../ui";
 import { arrowDown } from "../../../assets";
 
 const StyledUserEmblem = styled.button`
@@ -13,7 +13,7 @@ const StyledUserEmblem = styled.button`
 
 const UserName = styled.p`
   margin-left: 20px;
-  ${S1_3}
+  ${H6}
   color: ${Color.White};
 
   ${Media.MD} {

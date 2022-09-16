@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import { movieAPI } from "../../services/movieAPI";
-import { IMovie, IMovies } from "../../types/types";
+import { IMovieAPI } from "../../types/types";
 
 interface IMoviesState {
-  movies: any; //WritableDraft<IMovies> предлагает vscode
+  movies: any; //WritableDraft<IMovies> предлагает vscode запуталась что  где происходит
   isLoading: boolean;
   error: null | string;
 }
@@ -16,7 +16,7 @@ const initialState: IMoviesState = {
 };
 
 const fetchMovies = createAsyncThunk<
-  IMovie[],
+  IMovieAPI[],
   undefined,
   { rejectValue: string }
 >("movies/fetchMovies", async (_, { rejectWithValue }) => {

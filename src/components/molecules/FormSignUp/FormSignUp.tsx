@@ -1,6 +1,6 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useRef, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import {
   FormName,
   LinkNote,
@@ -19,7 +19,6 @@ import {
 import { ROUTE } from "../../../routes";
 import { useNavigate } from "react-router-dom";
 import { getFirebaseMessage } from "../../../utils/firebaseErrors";
-import { useAuth } from "../../../hooks";
 
 export type SignUpValues = {
   userName: string;
@@ -78,11 +77,11 @@ export const FormSignUp = () => {
       <FormName>Sign Up</FormName>
 
       <FormFieldName text="Name" />
-      <FormInput
-        type="text"
-        placeholder="Your name"
+
+      <Controller
         control={control}
-        {...register("userName", {
+        name="userName"
+        rules={{
           required: "Name is requared",
           maxLength: {
             value: 50,
@@ -92,35 +91,53 @@ export const FormSignUp = () => {
             value: /[A-Za-z]/,
             message: "Name must contain only letters",
           },
-        })}
+        }}
+        render={({ field: { value, onChange } }) => (
+          <FormInput
+            onChange={onChange}
+            value={value}
+            placeholder="Your name"
+            type="text"
+          />
+        )}
       />
+
       {errors.userName && (
         <ErrorMessage>{errors.userName.message}</ErrorMessage>
       )}
 
       <FormFieldName text="Email" />
-      <FormInput
-        type="text"
-        placeholder="Your email"
+
+      <Controller
         control={control}
-        {...register("email", {
+        name="email"
+        rules={{
           required: "Email is requared",
           pattern: {
             value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/,
             message: "Please insert a valid email address",
           },
-        })}
+        }}
+        render={({ field: { value, onChange } }) => (
+          <FormInput
+            onChange={onChange}
+            value={value}
+            placeholder="Your email"
+            type="text"
+          />
+        )}
       />
+
       {!errors.userName && errors.email && (
         <ErrorMessage>{errors.email.message}</ErrorMessage>
       )}
 
       <FormFieldName text="Password" />
-      <FormInput
-        type="password"
-        placeholder="Your password"
+
+      <Controller
         control={control}
-        {...register("password", {
+        name="password"
+        rules={{
           required: "Password is requared",
           minLength: {
             value: 6,
@@ -128,25 +145,42 @@ export const FormSignUp = () => {
           },
           pattern: {
             value: /(?=.*\d)(?=.*[a-z]).{6,}/,
-            message:
-              "Password must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters",
+            message: `Password must contain at least one number and one uppercase +
+              and lowercase letter, and at least 6 or more characters`,
           },
-        })}
+        }}
+        render={({ field: { value, onChange } }) => (
+          <FormInput
+            onChange={onChange}
+            value={value}
+            placeholder="Your password"
+            type="password"
+          />
+        )}
       />
+
       {!errors.userName && !errors.email && errors.password && (
         <ErrorMessage>{errors.password.message}</ErrorMessage>
       )}
 
       <FormFieldName text="Confirm password" />
-      <FormInput
-        type="password"
-        placeholder="Confirm password"
+
+      <Controller
         control={control}
-        {...register("confirmPassword", {
+        name="confirmPassword"
+        rules={{
           required: "Confirm  your password",
           validate: (value) =>
             value === password.current || "The passwords don't match",
-        })}
+        }}
+        render={({ field: { value, onChange } }) => (
+          <FormInput
+            onChange={onChange}
+            value={value}
+            placeholder="Confirm password"
+            type="password"
+          />
+        )}
       />
 
       {!errors.userName &&
@@ -164,9 +198,9 @@ export const FormSignUp = () => {
       {isLoading ? <Loading /> : <StyledButton type="submit" text="Sign up" />}
 
       <Note>
-        Already have an account?
-        <Customlink to={ROUTE.SIGN_IN}>
-          <LinkNote>Sign In</LinkNote>
+        Already have an account?{" "}
+        <Customlink to={ROUTE.SIGN_IN_OTHER_WAY}>
+          <LinkNote> Sign In</LinkNote>
         </Customlink>
       </Note>
     </StyledForm>

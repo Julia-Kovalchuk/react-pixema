@@ -10,6 +10,9 @@ interface IProps {
 
 export const Customlink = ({ to, children }: IProps) => {
   const isActive = useMatch(to);
+  //TODO: переделать на другой вариант
+  // let isActive;
+  // useMatch(to) ? (isActive = true) : (isActive = false);
 
   return (
     <StyledCustomLink $isActive={!!isActive} to={to}>

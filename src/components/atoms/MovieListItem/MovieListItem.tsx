@@ -1,9 +1,9 @@
 import React from "react";
-import { IMovie } from "../../../types/types";
+import { IMovieAPI } from "../../../types/types";
 import { Poster, StyledMovieListItem, Title } from "./styles";
 
 interface IProps {
-  movie: IMovie;
+  movie: IMovieAPI;
 }
 
 export const MovieListItem = ({ movie }: IProps) => {

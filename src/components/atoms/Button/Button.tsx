@@ -2,7 +2,7 @@ import React from "react";
 import { StyledButton } from "./styles";
 
 interface IProps {
-  type: "button" | "submit" | "reset" | undefined;
+  type: "button" | "submit" | "reset";
   text: string;
 }
 

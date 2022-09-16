@@ -13,4 +13,8 @@ const NavList = styled.ul`
   grid-gap: 40px;
 `;
 
-export { StyledAsideNav, NavList };
+const StyledIcon = styled.div`
+  margin-right: 20px;
+`;
+
+export { StyledAsideNav, NavList, StyledIcon };

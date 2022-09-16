@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { S1_1 } from "../../../ui";
+import { H4 } from "../../../ui";
 
 const StyledMovieListItem = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const Poster = styled.img`
 `;
 
 const Title = styled.h2`
-  ${S1_1}
+  ${H4}
 `;
 
 // add hover

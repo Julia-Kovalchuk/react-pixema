@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { fetchMovies } from "../../../store/feautures/moviesSlice";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks/hooks";
-import { IMovie } from "../../../types/types";
-import { ErrorMessage, Loading, MovieListItem } from "../../../components";
+import { ErrorMessage, MovieListItem } from "../../../components";
 import { getMovies } from "../../../store/selectors/movieSelectors";
 import { StyledLoading, StyledMovieList } from "./styles";
+import { IMovieAPI } from "types/types";
 
 export const MoviesList = () => {
   const dispatch = useAppDispatch();
@@ -14,8 +14,7 @@ export const MoviesList = () => {
     dispatch(fetchMovies());
   }, [dispatch]);
 
-  console.log(movies);
-
+  // поменять загрузку
   if (isLoading) {
     return <StyledLoading />;
   }
@@ -23,11 +22,10 @@ export const MoviesList = () => {
   if (error) {
     return <ErrorMessage>{error}</ErrorMessage>;
   }
-  console.log(movies.Search);
 
   return (
     <StyledMovieList>
-      {movies.Search.map((movie: IMovie) => {
+      {movies.Search.map((movie: IMovieAPI) => {
         return <MovieListItem movie={movie} key={movie.imdbID} />;
       })}
     </StyledMovieList>

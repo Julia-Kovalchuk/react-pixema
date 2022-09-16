@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color, Media, S1_3 } from "../../../ui";
+import { Color, Media, H6 } from "../../../ui";
 
 const StyledButton = styled.button`
   width: 100%;
@@ -11,7 +11,7 @@ const StyledButton = styled.button`
   background-color: ${Color.Primary};
   border-radius: 10px;
 
-  ${S1_3};
+  ${H6};
   color: ${Color.White};
 
   transition: all 0.3s;

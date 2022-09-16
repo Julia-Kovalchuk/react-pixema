@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IMovie } from "../types/types";
+import { IMovieAPI } from "types/types";
 import { getRandomNumber } from "../utils/getRandomNumber";
 
 class MovieAPI {
@@ -31,7 +31,7 @@ class MovieAPI {
       s: this.getRandomWord(this.wordForMovie),
     };
 
-    const { data } = await this.API.get<IMovie[]>("", { params });
+    const { data } = await this.API.get<IMovieAPI[]>("", { params });
 
     return data;
   }

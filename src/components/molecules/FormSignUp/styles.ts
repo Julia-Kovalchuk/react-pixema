@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { Color, H2, S1_3 } from "../../../ui";
+import { Color, H2, H6 } from "../../../ui";
 import { Button } from "../../../components";
 
 const StyledForm = styled.form`
-  max-width: 574px;
+  width: 574px;
   padding: 40px;
   border-radius: 40px;
   background-color: ${Color.Dark};
@@ -26,10 +26,12 @@ const StyledErrorMessage = styled.div`
 `;
 
 const Note = styled.p`
+  display: flex;
+  justify-content: center;
   text-align: center;
   margin-top: 32px;
 
-  ${S1_3};
+  ${H6};
   font-weight: 500;
   color: ${Color.Secondary};
 `;
