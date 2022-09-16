@@ -1,14 +1,19 @@
 {
   "files": {
-    "main.js": "/react-pixema/static/js/main.6f4c1ffc.js",
+    "main.js": "/react-pixema/static/js/main.29334083.js",
+    "static/media/form-background.png": "/react-pixema/static/media/form-background.458eb75d1d1173529947.png",
     "static/media/logo-light.svg": "/react-pixema/static/media/logo-light.22981b9ec8b862428f9a0d7bad09443a.svg",
     "static/media/logo-dark.svg": "/react-pixema/static/media/logo-dark.ef69f378f7796fa43e7162952fc3af4f.svg",
-    "index.html": "/react-pixema/index.html",
+    "static/media/settings-icon.svg": "/react-pixema/static/media/settings-icon.81a91794ca7e4d4f1d0d792b2d4d38aa.svg",
+    "static/media/trends-icon.svg": "/react-pixema/static/media/trends-icon.dcbc6e281c93b2e56a7adbf4b08149bd.svg",
+    "static/media/home-icon.svg": "/react-pixema/static/media/home-icon.f26a9bd3fe398b7bdbdf8f69983a7229.svg",
+    "static/media/favirites-icon.svg": "/react-pixema/static/media/favirites-icon.d40145d7bb12d981caad1d2191d3f0a4.svg",
     "static/media/arrow-down.svg": "/react-pixema/static/media/arrow-down.6ce2d592891d3947525b7939b93f11ee.svg",
+    "index.html": "/react-pixema/index.html",
     "static/media/search-icon.svg": "/react-pixema/static/media/search-icon.bf5cb80deddb4125c2cf016a5a46143f.svg",
-    "main.6f4c1ffc.js.map": "/react-pixema/static/js/main.6f4c1ffc.js.map"
+    "main.29334083.js.map": "/react-pixema/static/js/main.29334083.js.map"
   },
   "entrypoints": [
-    "static/js/main.6f4c1ffc.js"
+    "static/js/main.29334083.js"
   ]
 }
