@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color } from "../../../ui";
+import { Color, Media } from "../../../ui";
 
 const StyledFormInput = styled.input`
   width: 100%;
@@ -35,6 +35,10 @@ const StyledFormInput = styled.input`
 
   &:-moz-ui-invalid {
     outline: 2px ${Color.Error};
+  }
+
+  ${Media.SM} {
+    margin-bottom: 20px;
   }
 `;
 

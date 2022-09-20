@@ -1,7 +1,7 @@
 import React from "react";
 import { ROUTE } from "../../../routes";
-import { Customlink, Footer } from "../..";
-import { NavList, StyledAsideNav, StyledIcon } from "./styles";
+import { Customlink } from "../..";
+import { Copyright, NavList, StyledAsideNav, StyledIcon } from "./styles";
 import {
   FavoritesIcon,
   HomeIcon,
@@ -47,7 +47,7 @@ export const AsideNav = () => {
           </Customlink>
         </li>
       </NavList>
-      <Footer />
+      <Copyright>@All Rights Reserved</Copyright>
     </StyledAsideNav>
   );
 };

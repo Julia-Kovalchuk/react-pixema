@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Body } from "ui";
 
 const StyledAsideNav = styled.div`
   position: fixed;
@@ -17,4 +18,10 @@ const StyledIcon = styled.div`
   margin-right: 20px;
 `;
 
-export { StyledAsideNav, NavList, StyledIcon };
+const Copyright = styled.p`
+  position: fixed;
+  bottom: 64px;
+  ${Body}
+`;
+
+export { StyledAsideNav, NavList, StyledIcon, Copyright };

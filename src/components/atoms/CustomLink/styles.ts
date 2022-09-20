@@ -9,6 +9,21 @@ const StyledCustomLink = styled(Link)<isActive>`
   ${H4};
   color: ${({ $isActive }) => ($isActive ? Color.Primary : Color.Secondary)};
   fill: ${({ $isActive }) => ($isActive ? Color.Primary : Color.Secondary)};
+
+  &:hover {
+    color: ${Color.Primary_Light};
+    fill: ${Color.Primary_Light};
+  }
+
+  &:active {
+    color: ${Color.Primary};
+    fill: ${Color.Primary};
+  }
+
+  &:disabled {
+    color: ${Color.Light};
+    fill: ${Color.Light};
+  }
 `;
 
 export { StyledCustomLink };

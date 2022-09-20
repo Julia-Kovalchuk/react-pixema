@@ -1,5 +1,12 @@
+import { FormSignIn, ReturnHomePageLink } from "components";
 import React from "react";
+import { StyledSignInPage } from "./styles";
 
 export const SignInPage = () => {
-  return <div>SignInPage</div>;
+  return (
+    <StyledSignInPage>
+      <FormSignIn />
+      <ReturnHomePageLink />
+    </StyledSignInPage>
+  );
 };

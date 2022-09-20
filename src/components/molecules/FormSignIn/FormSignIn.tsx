@@ -1,6 +1,16 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  Customlink,
+  ErrorMessage,
+  FormFieldName,
+  FormInput,
+  Loading,
+} from "components";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useRef, useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { ROUTE } from "routes";
+import { getFirebaseMessage } from "utils/firebaseErrors";
 import {
   FormName,
   LinkNote,
@@ -9,26 +19,14 @@ import {
   StyledErrorMessage,
   StyledForm,
   Text,
-} from "./styles";
-import {
-  Customlink,
-  ErrorMessage,
-  FormFieldName,
-  Loading,
-  FormInput,
-} from "../..";
-import { ROUTE } from "../../../routes";
-import { useNavigate } from "react-router-dom";
-import { getFirebaseMessage } from "../../../utils/firebaseErrors";
+} from "../FormSignUp/styles";
 
-export type SignUpValues = {
-  userName: string;
+export type SignInValues = {
   email: string;
   password: string;
-  confirmPassword: string;
 };
 
-export const FormSignUp = () => {
+export const FormSignIn = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -40,24 +38,19 @@ export const FormSignUp = () => {
     control,
     formState: { errors },
     watch,
-  } = useForm<SignUpValues>();
+  } = useForm<SignInValues>();
 
   const password = useRef({});
 
   password.current = watch("password", "");
 
   // асинхронный код перенести в РТК (в слайс в сторе. который обрабатывает авторизацию)
-  const onSubmit: SubmitHandler<SignUpValues> = ({
-    userName,
-    email,
-    password,
-    confirmPassword,
-  }) => {
+  const onSubmit: SubmitHandler<SignInValues> = ({ email, password }) => {
     setIsLoading(true);
     setErrorMessage(null);
-    const auth = getAuth();
+    const auth = getAuth(); // ну вот это точно не отсюда
 
-    createUserWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         navigate(ROUTE.HOME); //TODO: перенос не тольк на home
       })
@@ -74,40 +67,9 @@ export const FormSignUp = () => {
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
-      <FormName>Sign Up</FormName>
-
-      <FormFieldName text="Name" />
-
-      <Controller
-        control={control}
-        name="userName"
-        rules={{
-          required: "Name is requared",
-          maxLength: {
-            value: 50,
-            message: "Name must be less than 50 characters long",
-          },
-          pattern: {
-            value: /[A-Za-z]/,
-            message: "Name must contain only letters",
-          },
-        }}
-        render={({ field: { value, onChange } }) => (
-          <FormInput
-            onChange={onChange}
-            value={value}
-            placeholder="Your name"
-            type="text"
-          />
-        )}
-      />
-
-      {errors.userName && (
-        <ErrorMessage>{errors.userName.message}</ErrorMessage>
-      )}
+      <FormName>Sign In</FormName>
 
       <FormFieldName text="Email" />
-
       <Controller
         control={control}
         name="email"
@@ -127,13 +89,8 @@ export const FormSignUp = () => {
           />
         )}
       />
-
-      {!errors.userName && errors.email && (
-        <ErrorMessage>{errors.email.message}</ErrorMessage>
-      )}
-
+      {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
       <FormFieldName text="Password" />
-
       <Controller
         control={control}
         name="password"
@@ -158,38 +115,9 @@ export const FormSignUp = () => {
           />
         )}
       />
-
-      {!errors.userName && !errors.email && errors.password && (
+      {!errors.email && errors.password && (
         <ErrorMessage>{errors.password.message}</ErrorMessage>
       )}
-
-      <FormFieldName text="Confirm password" />
-
-      <Controller
-        control={control}
-        name="confirmPassword"
-        rules={{
-          required: "Confirm  your password",
-          validate: (value) =>
-            value === password.current || "The passwords don't match",
-        }}
-        render={({ field: { value, onChange } }) => (
-          <FormInput
-            onChange={onChange}
-            value={value}
-            placeholder="Confirm password"
-            type="password"
-          />
-        )}
-      />
-
-      {!errors.userName &&
-        !errors.email &&
-        !errors.password &&
-        errors.confirmPassword && (
-          <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>
-        )}
-
       {errorMessage && (
         <StyledErrorMessage>
           <ErrorMessage>{errorMessage}</ErrorMessage>
@@ -197,9 +125,11 @@ export const FormSignUp = () => {
       )}
       {isLoading ? <Loading /> : <StyledButton type="submit" text="Sign up" />}
 
+      {/* <p>Forgot password?</p> //TODO: ????? */}
+
       <Note>
-        <Text>Already have an account? </Text>{" "}
-        <LinkNote to={ROUTE.SIGN_IN_OTHER_WAY}> Sign In</LinkNote>
+        <Text>Don’t have an account? </Text>{" "}
+        <LinkNote to={ROUTE.SIGN_UP_OTHER_WAY}> Sign Up</LinkNote>
       </Note>
     </StyledForm>
   );

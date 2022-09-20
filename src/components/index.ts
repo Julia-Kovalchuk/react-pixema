@@ -1,6 +1,5 @@
 import { AsideNav } from "./molecules/AsideNav/AsideNav";
 import { Avatar } from "./atoms/Avatar/Avatar";
-import { Footer } from "./atoms/Footer/Footer";
 import { MainTemplate } from "./organisms/MainTemplate/MainTemplate";
 import { Navbar } from "./molecules/Navbar/Navbar";
 import { RequareAuth } from "./atoms/RequareAuth/RequareAuth";
@@ -17,11 +16,12 @@ import { FormInput } from "./atoms/FormInput/FormInput";
 import { MoviesList } from "./molecules/MoviesList/MoviesList";
 import { MovieListItem } from "./atoms/MovieListItem/MovieListItem";
 import { AuthTemplate } from "./organisms/AuthTemplate/AuthTemplate";
+import { FormSignIn } from "./molecules/FormSignIn/FormSignIn";
+import { ReturnHomePageLink } from "./atoms/ReturnHomePageLink/ReturnHomePageLink";
 
 export {
   AsideNav,
   Avatar,
-  Footer,
   MainTemplate,
   Navbar,
   RequareAuth,
@@ -38,4 +38,6 @@ export {
   MoviesList,
   MovieListItem,
   AuthTemplate,
+  FormSignIn,
+  ReturnHomePageLink,
 };

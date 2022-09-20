@@ -3,8 +3,9 @@ import { fetchMovies } from "../../../store/feautures/moviesSlice";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks/hooks";
 import { ErrorMessage, MovieListItem } from "../../../components";
 import { getMovies } from "../../../store/selectors/movieSelectors";
-import { StyledLoading, StyledMovieList } from "./styles";
+import { StyledMovieList } from "./styles";
 import { IMovieAPI } from "types/types";
+import { LoadingMovies } from "components/atoms/LoadingMovies/LoadingMovies";
 
 export const MoviesList = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +17,7 @@ export const MoviesList = () => {
 
   // поменять загрузку
   if (isLoading) {
-    return <StyledLoading />;
+    return <LoadingMovies />;
   }
 
   if (error) {

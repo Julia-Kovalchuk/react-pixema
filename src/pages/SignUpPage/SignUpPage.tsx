@@ -1,6 +1,11 @@
-import React from "react";
-import { FormSignUp } from "../../components";
+import { FormSignUp, ReturnHomePageLink } from "../../components";
+import { StyledSignUpPage } from "./styles";
 
 export const SignUpPage = () => {
-  return <FormSignUp />;
+  return (
+    <StyledSignUpPage>
+      <FormSignUp />
+      <ReturnHomePageLink />
+    </StyledSignUpPage>
+  );
 };
