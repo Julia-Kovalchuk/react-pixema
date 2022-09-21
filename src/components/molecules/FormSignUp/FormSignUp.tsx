@@ -1,5 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import {
   FormName,
@@ -10,16 +9,12 @@ import {
   StyledForm,
   Text,
 } from "./styles";
-import {
-  Customlink,
-  ErrorMessage,
-  FormFieldName,
-  Loading,
-  FormInput,
-} from "../..";
+import { ErrorMessage, FormFieldName, Loading, FormInput } from "../..";
 import { ROUTE } from "../../../routes";
+import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
+import { getUserInfo } from "store/selectors/userSelectors";
+import { fetchSignUpUser } from "store/feautures/userSlice";
 import { useNavigate } from "react-router-dom";
-import { getFirebaseMessage } from "../../../utils/firebaseErrors";
 
 export type SignUpValues = {
   userName: string;
@@ -29,10 +24,9 @@ export type SignUpValues = {
 };
 
 export const FormSignUp = () => {
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const { isPendingAuth, error } = useAppSelector(getUserInfo);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  // const { setAuth } = useAuth();
 
   const {
     handleSubmit,
@@ -46,30 +40,15 @@ export const FormSignUp = () => {
 
   password.current = watch("password", "");
 
-  // асинхронный код перенести в РТК (в слайс в сторе. который обрабатывает авторизацию)
-  const onSubmit: SubmitHandler<SignUpValues> = ({
-    userName,
-    email,
-    password,
-    confirmPassword,
-  }) => {
-    setIsLoading(true);
-    setErrorMessage(null);
-    const auth = getAuth();
-
-    createUserWithEmailAndPassword(auth, email, password)
+  const onSubmit: SubmitHandler<SignUpValues> = (userData) => {
+    dispatch(fetchSignUpUser(userData))
       .then(() => {
         navigate(ROUTE.HOME); //TODO: перенос не тольк на home
-      })
-      .catch((err) => {
-        setErrorMessage(getFirebaseMessage(err.code));
+        //TODO: modal window
       })
       .finally(() => {
-        setIsLoading(false);
-        // setAuth(true);
+        reset();
       });
-
-    reset();
   };
 
   return (
@@ -190,12 +169,16 @@ export const FormSignUp = () => {
           <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>
         )}
 
-      {errorMessage && (
+      {error && (
         <StyledErrorMessage>
-          <ErrorMessage>{errorMessage}</ErrorMessage>
+          <ErrorMessage>{error}</ErrorMessage>
         </StyledErrorMessage>
       )}
-      {isLoading ? <Loading /> : <StyledButton type="submit" text="Sign up" />}
+      {isPendingAuth ? (
+        <Loading />
+      ) : (
+        <StyledButton type="submit" text="Sign up" />
+      )}
 
       <Note>
         <Text>Already have an account? </Text>{" "}

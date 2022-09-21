@@ -10,6 +10,9 @@ import { useRef, useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "routes";
+import { fetchSignInUser } from "store/feautures/userSlice";
+import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
+import { getUserInfo } from "store/selectors/userSelectors";
 import { getFirebaseMessage } from "utils/firebaseErrors";
 import {
   FormName,
@@ -27,10 +30,9 @@ export type SignInValues = {
 };
 
 export const FormSignIn = () => {
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const { isPendingAuth, error } = useAppSelector(getUserInfo);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  // const { setAuth } = useAuth();
 
   const {
     handleSubmit,
@@ -44,25 +46,15 @@ export const FormSignIn = () => {
 
   password.current = watch("password", "");
 
-  // асинхронный код перенести в РТК (в слайс в сторе. который обрабатывает авторизацию)
-  const onSubmit: SubmitHandler<SignInValues> = ({ email, password }) => {
-    setIsLoading(true);
-    setErrorMessage(null);
-    const auth = getAuth(); // ну вот это точно не отсюда
-
-    signInWithEmailAndPassword(auth, email, password)
+  const onSubmit: SubmitHandler<SignInValues> = (userData) => {
+    dispatch(fetchSignInUser(userData))
       .then(() => {
         navigate(ROUTE.HOME); //TODO: перенос не тольк на home
-      })
-      .catch((err) => {
-        setErrorMessage(getFirebaseMessage(err.code));
+        //TODO: modal window
       })
       .finally(() => {
-        setIsLoading(false);
-        // setAuth(true);
+        reset();
       });
-
-    reset();
   };
 
   return (
@@ -118,12 +110,16 @@ export const FormSignIn = () => {
       {!errors.email && errors.password && (
         <ErrorMessage>{errors.password.message}</ErrorMessage>
       )}
-      {errorMessage && (
+      {error && (
         <StyledErrorMessage>
-          <ErrorMessage>{errorMessage}</ErrorMessage>
+          <ErrorMessage>{error}</ErrorMessage>
         </StyledErrorMessage>
       )}
-      {isLoading ? <Loading /> : <StyledButton type="submit" text="Sign up" />}
+      {isPendingAuth ? (
+        <Loading />
+      ) : (
+        <StyledButton type="submit" text="Sign up" />
+      )}
 
       {/* <p>Forgot password?</p> //TODO: ????? */}
 

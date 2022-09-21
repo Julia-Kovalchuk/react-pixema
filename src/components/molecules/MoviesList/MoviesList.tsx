@@ -15,7 +15,6 @@ export const MoviesList = () => {
     dispatch(fetchMovies());
   }, [dispatch]);
 
-  // поменять загрузку
   if (isLoading) {
     return <LoadingMovies />;
   }
