@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { AuthTemplate, MainTemplate, RequareAuth } from "./components/index";
 import {
+  DetailsMoviePage,
   FavoritesPage,
   HomePage,
   SettingsPage,
@@ -18,7 +19,7 @@ export const App = () => {
         <Route path={ROUTE.HOME} element={<HomePage />} />
         <Route path={ROUTE.TRENDS} element={<TrendsPage />} />
 
-        {/* <Route /> for movie*/}
+        <Route path={ROUTE.DETAILS} element={<DetailsMoviePage />} />
         <Route path={ROUTE.NOT_FOUND} />
       </Route>
       <Route path={ROUTE.HOME} element={<AuthTemplate />}>

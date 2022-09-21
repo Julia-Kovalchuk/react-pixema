@@ -35,6 +35,16 @@ class MovieAPI {
 
     return data;
   }
+
+  public async getDetailsById(id: string) {
+    const params = {
+      i: id,
+    };
+
+    const { data } = await this.API.get<any>("", { params });
+
+    return data;
+  }
 }
 
 export const movieAPI = new MovieAPI();

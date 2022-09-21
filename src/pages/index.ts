@@ -4,6 +4,7 @@ import { SettingsPage } from "./SettingsPage/SettingsPage";
 import { SignInPage } from "./SignInPage/SignInPage";
 import { SignUpPage } from "./SignUpPage/SignUpPage";
 import { TrendsPage } from "./TrendsPage/TrendsPage";
+import { DetailsMoviePage } from "./DetailsMoviePage/DetailsMoviePage";
 
 export {
   FavoritesPage,
@@ -12,4 +13,5 @@ export {
   SignInPage,
   SignUpPage,
   TrendsPage,
+  DetailsMoviePage,
 };

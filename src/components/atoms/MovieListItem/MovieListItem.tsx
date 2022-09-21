@@ -1,4 +1,5 @@
 import React from "react";
+import { ROUTE } from "routes";
 import { IMovieAPI } from "../../../types/types";
 import { Poster, StyledMovieListItem, Title } from "./styles";
 
@@ -7,10 +8,8 @@ interface IProps {
 }
 
 export const MovieListItem = ({ movie }: IProps) => {
-  // обернуть в ссылку на movie
-
   return (
-    <StyledMovieListItem>
+    <StyledMovieListItem to={`${ROUTE.MOVIE}${movie.imdbID}`}>
       <Poster src={movie.Poster} />
       <Title>{movie.Title}</Title>
     </StyledMovieListItem>
