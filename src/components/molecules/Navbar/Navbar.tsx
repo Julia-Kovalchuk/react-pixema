@@ -1,9 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import { LogoIconLight, LogoIconDark } from "../../../assets";
 import { ROUTE } from "../../../routes";
 import { SearchInput, UserEmblem } from "../..";
-import { Wrapper } from "./styles";
+import { StyledLink, Wrapper } from "./styles";
 import { useTheme } from "../../../hooks";
 
 export const Navbar = () => {
@@ -11,9 +9,9 @@ export const Navbar = () => {
 
   return (
     <Wrapper>
-      <Link to={ROUTE.HOME}>
+      <StyledLink to={ROUTE.HOME}>
         {theme === "dark" ? <LogoIconDark /> : <LogoIconLight />}
-      </Link>
+      </StyledLink>
       <SearchInput />
       <UserEmblem />
     </Wrapper>

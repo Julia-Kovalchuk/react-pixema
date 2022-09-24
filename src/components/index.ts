@@ -13,11 +13,15 @@ import { FormFieldName } from "./atoms/FormFieldName/FormFieldName";
 import { ErrorMessage } from "./atoms/ErrorMessage/ErrorMessage";
 import { Loading } from "./atoms/Loading/Loading";
 import { FormInput } from "./atoms/FormInput/FormInput";
-import { MoviesList } from "./molecules/MoviesList/MoviesList";
+import { MoviesList } from "./atoms/MoviesList/MoviesList";
 import { MovieListItem } from "./atoms/MovieListItem/MovieListItem";
 import { AuthTemplate } from "./organisms/AuthTemplate/AuthTemplate";
 import { FormSignIn } from "./molecules/FormSignIn/FormSignIn";
 import { ReturnHomePageLink } from "./atoms/ReturnHomePageLink/ReturnHomePageLink";
+import { DescriptionElement } from "./atoms/DescriptionElement/DescriptionElement";
+import { LoadingMovies } from "./atoms/LoadingMovies/LoadingMovies";
+import { MovieListItemFavorites } from "./atoms/MovieListItemFavorites/MovieListItemFavorites";
+import { MoviesListFavorites } from "./atoms/MoviesListFavorites/MoviesListFavorites";
 
 export {
   AsideNav,
@@ -40,4 +44,8 @@ export {
   AuthTemplate,
   FormSignIn,
   ReturnHomePageLink,
+  DescriptionElement,
+  LoadingMovies,
+  MovieListItemFavorites,
+  MoviesListFavorites,
 };

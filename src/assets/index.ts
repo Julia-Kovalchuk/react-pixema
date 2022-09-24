@@ -5,6 +5,8 @@ import { ReactComponent as HomeIcon } from "../assets/icons/home-icon.svg";
 import { ReactComponent as SettingsIcon } from "../assets/icons/settings-icon.svg";
 import { ReactComponent as TrendsIcon } from "../assets/icons/trends-icon.svg";
 import { ReactComponent as ReturnIcon } from "../assets/icons/return-icon.svg";
+import { ReactComponent as FavoritesButtonIcon } from "../assets/icons/favorites-icon.svg";
+import { ReactComponent as ShareIcon } from "../assets/icons/share-icon.svg";
 
 import arrowDown from "../assets/icons/arrow-down.svg";
 import searchIcon from "../assets/icons/search-icon.svg";
@@ -18,5 +20,7 @@ export {
   SettingsIcon,
   TrendsIcon,
   ReturnIcon,
+  FavoritesButtonIcon,
+  ShareIcon,
 };
 export { arrowDown, searchIcon, formBackground };

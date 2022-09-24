@@ -6,20 +6,17 @@ const StyledButton = styled.button`
   padding-top: 17px;
   padding-bottom: 15px;
   margin-top: 16px;
-  /* margin этот проследить */
-
   background-color: ${Color.Primary};
   border-radius: 10px;
-
   ${H6};
   color: ${Color.White};
 
-  transition: all 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s;
 
   cursor: pointer;
 
   &:hover {
-    background-color: ${Color.Primary_Light};
+    background-color: ${Color.PrimaryLight};
   }
 
   &:disabled {

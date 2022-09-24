@@ -1,4 +1,3 @@
-import React from "react";
 import { StyledAvatar } from "./styles";
 
 export const Avatar = () => {

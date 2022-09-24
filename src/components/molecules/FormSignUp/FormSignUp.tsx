@@ -42,6 +42,7 @@ export const FormSignUp = () => {
 
   const onSubmit: SubmitHandler<SignUpValues> = (userData) => {
     dispatch(fetchSignUpUser(userData))
+      .unwrap()
       .then(() => {
         navigate(ROUTE.HOME); //TODO: перенос не тольк на home
         //TODO: modal window
@@ -49,6 +50,44 @@ export const FormSignUp = () => {
       .finally(() => {
         reset();
       });
+  };
+
+  const validationRules = {
+    name: {
+      required: "Name is requared",
+      maxLength: {
+        value: 50,
+        message: "Name must be less than 50 characters long",
+      },
+      pattern: {
+        value: /[A-Za-z]/,
+        message: "Name must contain only letters",
+      },
+    },
+    email: {
+      required: "Email is requared",
+      pattern: {
+        value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/,
+        message: "Please insert a valid email address",
+      },
+    },
+    password: {
+      required: "Password is requared",
+      minLength: {
+        value: 6,
+        message: "Password must contain at least 6 characters",
+      },
+      pattern: {
+        value: /(?=.*\d)(?=.*[a-z]).{6,}/,
+        message: `Password must contain at least one number and one uppercase +
+          and lowercase letter, and at least 6 or more characters`,
+      },
+    },
+    confirnPassword: {
+      required: "Confirm  your password",
+      validate: (value: {}) =>
+        value === password.current || "The passwords don't match",
+    },
   };
 
   return (
@@ -60,17 +99,7 @@ export const FormSignUp = () => {
       <Controller
         control={control}
         name="userName"
-        rules={{
-          required: "Name is requared",
-          maxLength: {
-            value: 50,
-            message: "Name must be less than 50 characters long",
-          },
-          pattern: {
-            value: /[A-Za-z]/,
-            message: "Name must contain only letters",
-          },
-        }}
+        rules={validationRules.name}
         render={({ field: { value, onChange } }) => (
           <FormInput
             onChange={onChange}
@@ -90,13 +119,7 @@ export const FormSignUp = () => {
       <Controller
         control={control}
         name="email"
-        rules={{
-          required: "Email is requared",
-          pattern: {
-            value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/,
-            message: "Please insert a valid email address",
-          },
-        }}
+        rules={validationRules.email}
         render={({ field: { value, onChange } }) => (
           <FormInput
             onChange={onChange}
@@ -116,18 +139,7 @@ export const FormSignUp = () => {
       <Controller
         control={control}
         name="password"
-        rules={{
-          required: "Password is requared",
-          minLength: {
-            value: 6,
-            message: "Password must contain at least 6 characters",
-          },
-          pattern: {
-            value: /(?=.*\d)(?=.*[a-z]).{6,}/,
-            message: `Password must contain at least one number and one uppercase +
-              and lowercase letter, and at least 6 or more characters`,
-          },
-        }}
+        rules={validationRules.password}
         render={({ field: { value, onChange } }) => (
           <FormInput
             onChange={onChange}
@@ -147,11 +159,7 @@ export const FormSignUp = () => {
       <Controller
         control={control}
         name="confirmPassword"
-        rules={{
-          required: "Confirm  your password",
-          validate: (value) =>
-            value === password.current || "The passwords don't match",
-        }}
+        rules={validationRules.confirnPassword}
         render={({ field: { value, onChange } }) => (
           <FormInput
             onChange={onChange}

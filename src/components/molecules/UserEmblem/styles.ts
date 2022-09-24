@@ -8,7 +8,11 @@ const StyledUserEmblem = styled.button`
   align-items: center;
   background: none;
 
-  /* посмотреть все состояния */
+  ${Media.SM} {
+    position: absolute;
+    right: 0px;
+    top: 32px;
+  }
 `;
 
 const UserName = styled.p`

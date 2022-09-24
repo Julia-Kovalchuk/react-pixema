@@ -1,4 +1,3 @@
-import React from "react";
 import { ROUTE } from "../../../routes";
 import { Customlink } from "../..";
 import { Copyright, NavList, StyledAsideNav, StyledIcon } from "./styles";
@@ -10,6 +9,7 @@ import {
 } from "../../../assets";
 
 export const AsideNav = () => {
+  // TODO: разобратьс с li
   return (
     <StyledAsideNav>
       <NavList>
@@ -22,11 +22,11 @@ export const AsideNav = () => {
           </Customlink>
         </li>
         <li>
-          <Customlink to={ROUTE.TRENDS}>
+          <Customlink to={ROUTE.NEW}>
             <StyledIcon>
               <TrendsIcon />
             </StyledIcon>{" "}
-            Trends
+            New
           </Customlink>
         </li>
         <li>

@@ -4,20 +4,20 @@ import { Button } from "../../../components";
 import { Link } from "react-router-dom";
 
 const StyledForm = styled.form`
-  width: 574px;
+  width: 100%;
+  min-width: 574px;
   padding: 40px;
   border-radius: 40px;
   background-color: ${Color.Dark};
 
   ${Media.SM} {
-    width: 272px;
+    min-width: 272px;
     padding: 20px;
   }
 `;
 
 const FormName = styled.h2`
   margin-bottom: 40px;
-
   ${H2}
 
   ${Media.SM} {
@@ -68,7 +68,7 @@ const LinkNote = styled(Link)`
   color: ${Color.Primary};
 
   &:hover {
-    color: ${Color.Primary_Light};
+    color: ${Color.PrimaryLight};
   }
 
   &:active {

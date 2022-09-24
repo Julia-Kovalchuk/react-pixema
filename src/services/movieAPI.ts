@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IMovieAPI } from "types/types";
+import { IMovieAPI, IMovieDetailsAPI, IMoviesAPIResponse } from "types/types";
 import { getRandomNumber } from "../utils/getRandomNumber";
 
 class MovieAPI {
@@ -31,9 +31,10 @@ class MovieAPI {
       s: this.getRandomWord(this.wordForMovie),
     };
 
-    const { data } = await this.API.get<IMovieAPI[]>("", { params });
+    const { data } = await this.API.get<IMoviesAPIResponse>("", { params });
+    const result: IMovieAPI[] = data.Search;
 
-    return data;
+    return result;
   }
 
   public async getDetailsById(id: string) {
@@ -41,9 +42,23 @@ class MovieAPI {
       i: id,
     };
 
-    const { data } = await this.API.get<any>("", { params });
+    const { data } = await this.API.get<IMovieDetailsAPI>("", { params });
 
     return data;
+  }
+
+  public async getNewMovies() {
+    const currentYear = new Date().getFullYear();
+
+    const params = {
+      s: this.getRandomWord(this.wordForMovie),
+      y: currentYear,
+    };
+
+    const { data } = await this.API.get<IMoviesAPIResponse>("", { params });
+    const result: IMovieAPI[] = data.Search;
+
+    return result;
   }
 }
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Body } from "ui";
+import { Body, Media } from "ui";
 
 const StyledAsideNav = styled.div`
   position: fixed;
@@ -7,6 +7,12 @@ const StyledAsideNav = styled.div`
   top: 152px;
   left: 62px;
   height: 100%;
+
+  ${Media.MD} {
+    display: none;
+    top: 0px;
+    left: 0px;
+  }
 `;
 
 const NavList = styled.ul`

@@ -4,13 +4,13 @@ import { movieAPI } from "../../services/movieAPI";
 import { IMovieAPI } from "../../types/types";
 
 interface IMoviesState {
-  movies: any; //WritableDraft<IMovies> предлагает vscode запуталась что  где происходит
+  movies: IMovieAPI[];
   isLoading: boolean;
   error: null | string;
 }
 
 const initialState: IMoviesState = {
-  movies: { Search: [], totalResults: null, Response: null },
+  movies: [],
   isLoading: false,
   error: null,
 };

@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, PathMatch } from "react-router-dom";
 import styled from "styled-components";
-import { Color, H4 } from "../../../ui";
+import { Color, H4 } from "ui";
 
-type isActive = { $isActive: boolean };
+type isActive = { $isActive: PathMatch<string> | null };
 
 const StyledCustomLink = styled(Link)<isActive>`
   display: flex;
@@ -11,8 +11,8 @@ const StyledCustomLink = styled(Link)<isActive>`
   fill: ${({ $isActive }) => ($isActive ? Color.Primary : Color.Secondary)};
 
   &:hover {
-    color: ${Color.Primary_Light};
-    fill: ${Color.Primary_Light};
+    color: ${Color.PrimaryLight};
+    fill: ${Color.PrimaryLight};
   }
 
   &:active {

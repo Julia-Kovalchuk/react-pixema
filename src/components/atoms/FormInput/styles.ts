@@ -11,7 +11,7 @@ const StyledFormInput = styled.input`
 
   font-weight: 500;
   font-size: 16px;
-  color: ${Color.Theme_White};
+  color: ${Color.ThemeWhite};
 
   background: ${Color.Graphite};
   transition: all 0.3s;

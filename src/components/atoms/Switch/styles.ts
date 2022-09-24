@@ -13,9 +13,10 @@ export const Button = styled.button<isDarkTheme>`
     $isDarkTheme ? Color.Primary : Color.Secondary};
   transition: all 0.3s;
 
+  //с return отформатировать не получилось
   &:hover {
     background-color: ${({ $isDarkTheme }) =>
-      $isDarkTheme ? Color.Primary_Light : Color.Light};
+      $isDarkTheme ? Color.PrimaryLight : Color.Light};
   }
 `;
 
@@ -29,8 +30,9 @@ export const Circle = styled.div<isDarkTheme>`
   border-radius: 50%;
   transition: all 0.5s;
 
+  //с return отформатировать не получилось
   &:disabled {
-    background-color: ${({ $isDarkTheme }) =>
-      $isDarkTheme ? Color.Primary_Light : Color.Light};
+    background: ${({ $isDarkTheme }) =>
+      $isDarkTheme ? Color.PrimaryLight : Color.Light};
   }
 `;

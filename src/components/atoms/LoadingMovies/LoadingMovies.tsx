@@ -1,4 +1,3 @@
-import React from "react";
 import { Ring, Element } from "./styles";
 
 export const LoadingMovies = () => {

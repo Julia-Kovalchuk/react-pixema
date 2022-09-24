@@ -1,4 +1,3 @@
-import React from "react";
 import { StyledFormFieldName } from "./styles";
 
 interface IProps {

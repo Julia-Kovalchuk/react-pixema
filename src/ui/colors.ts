@@ -1,9 +1,9 @@
 export enum Color {
   Primary = "var(--primary)",
-  Primary_Light = "var(--primary-light)",
+  PrimaryLight = "var(--primary-light)",
   Secondary = "var(--secondary)",
-  Theme_Black = "var(--theme-black)",
-  Theme_White = "var(--theme-white)",
+  ThemeBlack = "var(--theme-black)",
+  ThemeWhite = "var(--theme-white)",
   Black = "var(--black)",
   White = "var(--white)",
   Dark = "var(--dark)",

@@ -1,19 +1,11 @@
-import {
-  Customlink,
-  ErrorMessage,
-  FormFieldName,
-  FormInput,
-  Loading,
-} from "components";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useRef, useState } from "react";
+import { ErrorMessage, FormFieldName, FormInput, Loading } from "components";
+import { useRef } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "routes";
 import { fetchSignInUser } from "store/feautures/userSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors/userSelectors";
-import { getFirebaseMessage } from "utils/firebaseErrors";
 import {
   FormName,
   LinkNote,
@@ -22,17 +14,29 @@ import {
   StyledErrorMessage,
   StyledForm,
   Text,
-} from "../FormSignUp/styles";
+} from "./styles";
 
 export type SignInValues = {
   email: string;
   password: string;
 };
 
+interface NavigateFunction {
+  (
+    to: string,
+    options?: {
+      replace?: boolean;
+      state?: any;
+      relative?: any;
+    },
+  ): void;
+  (delta: number): void;
+}
+
 export const FormSignIn = () => {
   const { isPendingAuth, error } = useAppSelector(getUserInfo);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
 
   const {
     handleSubmit,
@@ -48,13 +52,36 @@ export const FormSignIn = () => {
 
   const onSubmit: SubmitHandler<SignInValues> = (userData) => {
     dispatch(fetchSignInUser(userData))
+      .unwrap()
       .then(() => {
-        navigate(ROUTE.HOME); //TODO: перенос не тольк на home
+        navigate(ROUTE.HOME, { state: {}, replace: true }); //TODO: перенос не тольк на home
         //TODO: modal window
       })
       .finally(() => {
         reset();
       });
+  };
+
+  const validationRules = {
+    email: {
+      required: "Email is requared",
+      pattern: {
+        value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/,
+        message: "Please insert a valid email address",
+      },
+    },
+    password: {
+      required: "Password is requared",
+      minLength: {
+        value: 6,
+        message: "Password must contain at least 6 characters",
+      },
+      pattern: {
+        value: /(?=.*\d)(?=.*[a-z]).{6,}/,
+        message: `Password must contain at least one number and one uppercase +
+          and lowercase letter, and at least 6 or more characters`,
+      },
+    },
   };
 
   return (
@@ -65,13 +92,7 @@ export const FormSignIn = () => {
       <Controller
         control={control}
         name="email"
-        rules={{
-          required: "Email is requared",
-          pattern: {
-            value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/,
-            message: "Please insert a valid email address",
-          },
-        }}
+        rules={validationRules.email}
         render={({ field: { value, onChange } }) => (
           <FormInput
             onChange={onChange}
@@ -86,18 +107,7 @@ export const FormSignIn = () => {
       <Controller
         control={control}
         name="password"
-        rules={{
-          required: "Password is requared",
-          minLength: {
-            value: 6,
-            message: "Password must contain at least 6 characters",
-          },
-          pattern: {
-            value: /(?=.*\d)(?=.*[a-z]).{6,}/,
-            message: `Password must contain at least one number and one uppercase +
-              and lowercase letter, and at least 6 or more characters`,
-          },
-        }}
+        rules={validationRules.password}
         render={({ field: { value, onChange } }) => (
           <FormInput
             onChange={onChange}

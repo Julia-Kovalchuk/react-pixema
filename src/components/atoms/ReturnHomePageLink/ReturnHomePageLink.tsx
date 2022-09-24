@@ -1,5 +1,4 @@
 import { ReturnIcon } from "assets";
-import React from "react";
 import { ROUTE } from "routes";
 import { StyledNote, Text } from "./styles";
 

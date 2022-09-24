@@ -3,8 +3,8 @@ import { HomePage } from "./HomePage/HomePage";
 import { SettingsPage } from "./SettingsPage/SettingsPage";
 import { SignInPage } from "./SignInPage/SignInPage";
 import { SignUpPage } from "./SignUpPage/SignUpPage";
-import { TrendsPage } from "./TrendsPage/TrendsPage";
 import { DetailsMoviePage } from "./DetailsMoviePage/DetailsMoviePage";
+import { NewPage } from "./NewPage/NewPage";
 
 export {
   FavoritesPage,
@@ -12,6 +12,6 @@ export {
   SettingsPage,
   SignInPage,
   SignUpPage,
-  TrendsPage,
+  NewPage,
   DetailsMoviePage,
 };

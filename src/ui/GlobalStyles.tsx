@@ -10,10 +10,10 @@ ${Reset}
 ${ThemeColors}
 
 body {
-    background: ${Color.Theme_Black};
-    color: ${Color.Theme_White};
+    background-color: ${Color.ThemeBlack};
+    color: ${Color.ThemeWhite};
     font-family: "Exo 2", Arial, Helvetica, sans-serif;
-    transition: all 0.7s;
+    transition: background-color 0.5s;
 }
 
 `;

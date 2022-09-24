@@ -14,8 +14,8 @@ const StyledNote = styled(Link)`
   transition: all 0.3s;
 
   &:hover {
-    color: ${Color.Primary_Light};
-    fill: ${Color.Primary_Light};
+    color: ${Color.PrimaryLight};
+    fill: ${Color.PrimaryLight};
   }
 
   &:active {

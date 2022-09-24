@@ -1,17 +1,18 @@
-import React from "react";
 import { ROUTE } from "routes";
-import { IMovieAPI } from "../../../types/types";
+import { IMovie } from "types/types";
 import { Poster, StyledMovieListItem, Title } from "./styles";
 
 interface IProps {
-  movie: IMovieAPI;
+  movie: IMovie;
 }
 
 export const MovieListItem = ({ movie }: IProps) => {
+  const { title, poster, imdbID } = movie;
+
   return (
-    <StyledMovieListItem to={`${ROUTE.MOVIE}${movie.imdbID}`}>
-      <Poster src={movie.Poster} />
-      <Title>{movie.Title}</Title>
+    <StyledMovieListItem to={`${ROUTE.MOVIE}${imdbID}`}>
+      <Poster src={poster} alt="poster is still in development" />
+      <Title>{title}</Title>
     </StyledMovieListItem>
   );
 };

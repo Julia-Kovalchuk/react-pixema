@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { useMatch } from "react-router-dom";
 import { ROUTE } from "../../../routes";
 import { StyledCustomLink } from "./styles";
@@ -10,12 +10,9 @@ interface IProps {
 
 export const Customlink = ({ to, children }: IProps) => {
   const isActive = useMatch(to);
-  //TODO: переделать на другой вариант
-  // let isActive;
-  // useMatch(to) ? (isActive = true) : (isActive = false);
 
   return (
-    <StyledCustomLink $isActive={!!isActive} to={to}>
+    <StyledCustomLink $isActive={isActive} to={to}>
       {children}
     </StyledCustomLink>
   );

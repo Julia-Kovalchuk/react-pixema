@@ -1,18 +1,16 @@
 import styled from "styled-components";
-import { Color } from "../../../ui";
+import { Color, Media } from "ui";
 
 const StyledSearchInput = styled.input`
-  background-position: top 16px right 24px;
   max-height: 56px;
   margin-right: 40px;
-  max-height: 56px;
   border: none;
   border-radius: 10px;
   padding: 16px 20px;
 
   font-weight: 500;
   font-size: 16px;
-  color: ${Color.Theme_White};
+  color: ${Color.ThemeWhite};
 
   background: ${Color.Graphite};
   transition: all 0.3s;
@@ -36,6 +34,17 @@ const StyledSearchInput = styled.input`
 
   &:-moz-ui-invalid {
     outline: 2px ${Color.Error};
+  }
+
+  ${Media.MD} {
+    width: 60%;
+    margin-right: 32px;
+  }
+
+  ${Media.SM} {
+    width: 100%;
+    margin-top: 80px;
+    margin-right: 0px;
   }
 `;
 
