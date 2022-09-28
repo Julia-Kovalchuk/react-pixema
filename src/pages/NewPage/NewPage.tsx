@@ -1,15 +1,13 @@
 import { MoviesList } from "components";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { fetchNewMovies } from "store/feautures/newMoviesSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getNewMovies } from "store/selectors/newMovieSelectors";
-import { transformMoviesAPI } from "utils/transformMoviesAPI";
 
 export const NewPage = () => {
   const dispatch = useAppDispatch();
   const { isLoading, error, newMovies } = useAppSelector(getNewMovies);
-
-  const transformedMovies = transformMoviesAPI(newMovies);
+  const isNew = true;
 
   useEffect(() => {
     dispatch(fetchNewMovies());
@@ -17,9 +15,10 @@ export const NewPage = () => {
 
   return (
     <MoviesList
-      movies={transformedMovies}
+      movies={newMovies}
       error={error}
       isLoading={isLoading}
+      isNew={isNew}
     />
   );
   // button

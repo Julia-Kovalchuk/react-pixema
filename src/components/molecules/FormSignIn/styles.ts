@@ -80,6 +80,20 @@ const LinkNote = styled(Link)`
   }
 `;
 
+const ResetPasswordLink = styled(Link)`
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: ${Color.Secondary};
+
+  &:hover {
+    color: ${Color.PrimaryLight};
+  }
+
+  &:active {
+    color: ${Color.Primary};
+  }
+`;
+
 export {
   FormName,
   Note,
@@ -88,4 +102,5 @@ export {
   LinkNote,
   StyledErrorMessage,
   Text,
+  ResetPasswordLink,
 };

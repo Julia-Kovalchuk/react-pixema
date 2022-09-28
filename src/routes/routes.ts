@@ -9,5 +9,7 @@ export enum ROUTE {
   SIGN_IN_OTHER_WAY = "/sign-in",
   SIGN_UP = "sign-up",
   SIGN_UP_OTHER_WAY = "/sign-up",
+  LOG_OUT = "log-out",
+  RESSET_PASSWORD = "/reset-password",
   NOT_FOUND = "*",
 }

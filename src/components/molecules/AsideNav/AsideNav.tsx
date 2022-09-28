@@ -1,4 +1,4 @@
-import { ROUTE } from "../../../routes";
+import { ROUTE } from "../../../routes/routes";
 import { Customlink } from "../..";
 import { Copyright, NavList, StyledAsideNav, StyledIcon } from "./styles";
 import {

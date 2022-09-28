@@ -5,11 +5,13 @@ import {
   FavoritesPage,
   HomePage,
   NewPage,
+  NotFoundPage,
+  ResetPasswordPage,
   SettingsPage,
   SignInPage,
   SignUpPage,
 } from "./pages";
-import { ROUTE } from "./routes";
+import { ROUTE } from "./routes/routes";
 import "./firebase";
 
 export const App = () => {
@@ -19,12 +21,13 @@ export const App = () => {
         <Route path={ROUTE.HOME} element={<HomePage />} />
         <Route path={ROUTE.NEW} element={<NewPage />} />
         <Route path={ROUTE.DETAILS} element={<DetailsMoviePage />} />
-        <Route path={ROUTE.NOT_FOUND} />
+        <Route path={ROUTE.NOT_FOUND} element={<NotFoundPage />} />
       </Route>
 
       <Route path={ROUTE.HOME} element={<AuthTemplate />}>
         <Route path={ROUTE.SIGN_IN} element={<SignInPage />} />
         <Route path={ROUTE.SIGN_UP} element={<SignUpPage />} />
+        <Route path={ROUTE.RESSET_PASSWORD} element={<ResetPasswordPage />} />
       </Route>
 
       <Route element={<RequareAuth />}>

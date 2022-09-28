@@ -10,7 +10,7 @@ import {
   Text,
 } from "./styles";
 import { ErrorMessage, FormFieldName, Loading, FormInput } from "../..";
-import { ROUTE } from "../../../routes";
+import { ROUTE } from "../../../routes/routes";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors/userSelectors";
 import { fetchSignUpUser } from "store/feautures/userSlice";
@@ -169,7 +169,6 @@ export const FormSignUp = () => {
           />
         )}
       />
-
       {!errors.userName &&
         !errors.email &&
         !errors.password &&

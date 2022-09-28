@@ -2,7 +2,7 @@ import { ErrorMessage, FormFieldName, FormInput, Loading } from "components";
 import { useRef } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { ROUTE } from "routes";
+import { ROUTE } from "routes/routes";
 import { fetchSignInUser } from "store/feautures/userSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors/userSelectors";
@@ -10,6 +10,7 @@ import {
   FormName,
   LinkNote,
   Note,
+  ResetPasswordLink,
   StyledButton,
   StyledErrorMessage,
   StyledForm,
@@ -34,7 +35,7 @@ interface NavigateFunction {
 }
 
 export const FormSignIn = () => {
-  const { isPendingAuth, error } = useAppSelector(getUserInfo);
+  const { isPendingAuth, error, isResetPassword } = useAppSelector(getUserInfo);
   const dispatch = useAppDispatch();
   const navigate: NavigateFunction = useNavigate();
 
@@ -87,6 +88,7 @@ export const FormSignIn = () => {
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <FormName>Sign In</FormName>
+      {isResetPassword && <Note>Your password has been changed!</Note>}
 
       <FormFieldName text="Email" />
       <Controller
@@ -117,21 +119,24 @@ export const FormSignIn = () => {
           />
         )}
       />
+
+      <ResetPasswordLink to={ROUTE.RESSET_PASSWORD}>
+        Forgot password?
+      </ResetPasswordLink>
+
       {!errors.email && errors.password && (
         <ErrorMessage>{errors.password.message}</ErrorMessage>
       )}
       {error && (
         <StyledErrorMessage>
           <ErrorMessage>{error}</ErrorMessage>
-        </StyledErrorMessage>
+        </StyledErrorMessage> //TODO Modal?
       )}
       {isPendingAuth ? (
         <Loading />
       ) : (
         <StyledButton type="submit" text="Sign up" />
       )}
-
-      {/* <p>Forgot password?</p> //TODO: ????? */}
 
       <Note>
         <Text>Don’t have an account? </Text>{" "}

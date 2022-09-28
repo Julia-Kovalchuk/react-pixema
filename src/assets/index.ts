@@ -7,8 +7,15 @@ import { ReactComponent as TrendsIcon } from "../assets/icons/trends-icon.svg";
 import { ReactComponent as ReturnIcon } from "../assets/icons/return-icon.svg";
 import { ReactComponent as FavoritesButtonIcon } from "../assets/icons/favorites-icon.svg";
 import { ReactComponent as ShareIcon } from "../assets/icons/share-icon.svg";
+import { ReactComponent as NotFoundIcon } from "../assets/icons/not-found-icon.svg";
+import { ReactComponent as ArrowLeftIcon } from "../assets/icons/arrow-left.svg";
+import { ReactComponent as ArrowRightIcon } from "../assets/icons/arrow-right.svg";
+import { ReactComponent as Error404 } from "../assets/icons/error404.svg";
+import { ReactComponent as EmptyIcon } from "../assets/icons/empty-icon.svg";
+import { ReactComponent as UserIcon } from "../assets/icons/user.svg";
 
 import arrowDown from "../assets/icons/arrow-down.svg";
+import arrowRight from "../assets/icons/arrow-right-user.svg";
 import searchIcon from "../assets/icons/search-icon.svg";
 import formBackground from "../assets/backgrounds/form-background.png";
 
@@ -22,5 +29,11 @@ export {
   ReturnIcon,
   FavoritesButtonIcon,
   ShareIcon,
+  NotFoundIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  Error404,
+  EmptyIcon,
+  UserIcon,
 };
-export { arrowDown, searchIcon, formBackground };
+export { arrowDown, searchIcon, formBackground, arrowRight };

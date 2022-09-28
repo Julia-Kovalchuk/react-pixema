@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Color, H4, Media } from "ui";
 
 const StyledMovieListItem = styled(Link)`
+  position: relative;
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -15,24 +16,32 @@ const StyledMovieListItem = styled(Link)`
 
 const Poster = styled.img`
   width: 100%;
-  height: 100%;
-  max-height: 357px;
+  height: 357px;
+  object-fit: cover;
   border-radius: 20px;
   margin-bottom: 14px;
-  overflow: hidden;
-  transition: all 0.3s;
-
-  &:hover {
-    scale: 1.05;
-  }
 
   ${Media.MD} {
-    max-height: 279px;
+    height: 279px;
   }
 
   ${Media.SM} {
-    max-height: 100%;
+    height: 100%;
   }
+`;
+
+const Badge = styled.div`
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 28px;
+  border-radius: 6px;
+  background: ${Color.Primary};
+  fill: ${Color.White};
 `;
 
 const Title = styled.h2`
@@ -40,4 +49,4 @@ const Title = styled.h2`
   color: inherit;
 `;
 
-export { StyledMovieListItem, Poster, Title };
+export { StyledMovieListItem, Poster, Title, Badge };

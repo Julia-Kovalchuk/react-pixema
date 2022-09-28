@@ -22,6 +22,11 @@ import { DescriptionElement } from "./atoms/DescriptionElement/DescriptionElemen
 import { LoadingMovies } from "./atoms/LoadingMovies/LoadingMovies";
 import { MovieListItemFavorites } from "./atoms/MovieListItemFavorites/MovieListItemFavorites";
 import { MoviesListFavorites } from "./atoms/MoviesListFavorites/MoviesListFavorites";
+import { NotFoundBox } from "./atoms/NotFoundBox/NotFoundBox";
+import { Slide } from "./atoms/Slide/Slide";
+import { BurgerMenu } from "./atoms/BurgerMenu/BurgerMenu";
+import { Resetpassword } from "./molecules/ResetPassword/ResetPassword";
+import { FormSetting } from "./molecules/FormSetting/FormSetting";
 
 export {
   AsideNav,
@@ -48,4 +53,9 @@ export {
   LoadingMovies,
   MovieListItemFavorites,
   MoviesListFavorites,
+  NotFoundBox,
+  Slide,
+  BurgerMenu,
+  Resetpassword,
+  FormSetting,
 };

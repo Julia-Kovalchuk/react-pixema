@@ -11,7 +11,7 @@ export const Button = styled.button<isDarkTheme>`
   border: none;
   background-color: ${({ $isDarkTheme }) =>
     $isDarkTheme ? Color.Primary : Color.Secondary};
-  transition: all 0.3s;
+  transition: background-color 0.3s;
 
   //с return отформатировать не получилось
   &:hover {
@@ -28,11 +28,11 @@ export const Circle = styled.div<isDarkTheme>`
   width: 16px;
   background-color: ${Color.White};
   border-radius: 50%;
-  transition: all 0.5s;
+  transition: left 0.5s;
 
   //с return отформатировать не получилось
   &:disabled {
-    background: ${({ $isDarkTheme }) =>
+    background-color: ${({ $isDarkTheme }) =>
       $isDarkTheme ? Color.PrimaryLight : Color.Light};
   }
 `;

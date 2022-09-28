@@ -1,5 +1,5 @@
 import { ReturnIcon } from "assets";
-import { ROUTE } from "routes";
+import { ROUTE } from "routes/routes";
 import { StyledNote, Text } from "./styles";
 
 export const ReturnHomePageLink = () => {

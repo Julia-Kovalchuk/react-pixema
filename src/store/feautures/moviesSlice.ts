@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
+import { transformMoviesAPI } from "services/mappers/transformMoviesAPI";
 import { movieAPI } from "../../services/movieAPI";
-import { IMovieAPI } from "../../types/types";
+import { IMovie, IMoviesAPIResponse } from "../../types/types";
 
 interface IMoviesState {
-  movies: IMovieAPI[];
+  movies: IMovie[];
   isLoading: boolean;
   error: null | string;
 }
@@ -16,7 +17,7 @@ const initialState: IMoviesState = {
 };
 
 const fetchMovies = createAsyncThunk<
-  IMovieAPI[],
+  IMoviesAPIResponse,
   undefined,
   { rejectValue: string }
 >("movies/fetchMovies", async (_, { rejectWithValue }) => {
@@ -39,7 +40,7 @@ const moviesSlice = createSlice({
     });
     builder.addCase(fetchMovies.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      state.movies = payload;
+      state.movies = transformMoviesAPI(payload.Search);
     });
     builder.addCase(fetchMovies.rejected, (state, { payload }) => {
       if (payload) {

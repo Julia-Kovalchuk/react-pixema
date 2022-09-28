@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import { Color, H1, H2, H4, H6, Media } from "ui";
 
+type isFavorit = { $isFavorit: boolean };
+
+const StyledPage = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -14,6 +21,7 @@ const Wrapper = styled.div`
   }
 
   ${Media.SM} {
+    position: relative;
     display: flex;
     flex-direction: column;
   }
@@ -22,6 +30,11 @@ const Wrapper = styled.div`
 const PosterContainer = styled.div`
   display: grid;
   grid-gap: 30px;
+  width: 100%;
+
+  ${Media.SM} {
+    margin-top: 175px;
+  }
 `;
 
 const Poster = styled.img`
@@ -68,7 +81,8 @@ const Button = styled.button`
   }
 `;
 
-const FavoritesButton = styled(Button)`
+const FavoritesButton = styled(Button)<isFavorit>`
+  fill: ${({ $isFavorit }) => ($isFavorit ? Color.Primary : Color.Light)};
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 `;
@@ -81,6 +95,15 @@ const ShareButton = styled(Button)`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const MainInfo = styled.div`
+  ${Media.SM} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
 `;
 
 const Genre = styled.p`
@@ -135,6 +158,7 @@ const Recommendations = styled.p`
 `;
 
 export {
+  StyledPage,
   Wrapper,
   PosterContainer,
   ButtonContainer,
@@ -150,4 +174,5 @@ export {
   Description,
   InfoContainer,
   Recommendations,
+  MainInfo,
 };

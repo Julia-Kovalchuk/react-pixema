@@ -10,6 +10,7 @@ const Wrapper = styled.header`
   align-items: center;
   padding-top: 40px;
   padding-bottom: 56px;
+  z-index: 1;
   background: ${Color.ThemeBlack};
   transition: all 0.7s;
 
@@ -17,6 +18,16 @@ const Wrapper = styled.header`
     display: flex;
     max-width: 100%;
     padding-bottom: 48px;
+  }
+
+  ${Media.SM} {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    padding-bottom: 28px;
+    margin: 0px 10px;
   }
 `;
 

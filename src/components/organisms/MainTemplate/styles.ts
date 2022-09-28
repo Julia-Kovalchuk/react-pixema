@@ -19,10 +19,13 @@ const Wrapper = styled.div`
 const Container = styled.div`
   max-height: 100%;
   margin-left: 300px;
-  padding-bottom: 40px;
 
   ${Media.MD} {
     margin-left: 0;
+  }
+
+  ${Media.SM} {
+    margin-top: 200px;
   }
 `;
 

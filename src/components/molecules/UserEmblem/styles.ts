@@ -1,12 +1,33 @@
 import styled from "styled-components";
-import { Color, Media, H6 } from "../../../ui";
-import { arrowDown } from "../../../assets";
+import { motion } from "framer-motion";
+import { Color, Media, H6, H4 } from "../../../ui";
+import { arrowDown, arrowRight } from "../../../assets";
+import { Link } from "react-router-dom";
 
-const StyledUserEmblem = styled.button`
+type isOpen = { $isOpen: boolean };
+
+const Container = styled.div`
+  position: relative;
+`;
+
+const StyledUserEmblem = styled.button<isOpen>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: none;
+  width: 100%;
+  padding-right: 10px;
+  border-radius: 10px;
+  background: ${({ $isOpen }) => ($isOpen ? Color.Dark : "none")};
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    background-color: ${Color.Dark};
+  }
+
+  &:active {
+    box-shadow: 0px 0px 10px 0px rgba(237, 243, 247, 0.24);
+  }
 
   ${Media.SM} {
     position: absolute;
@@ -15,7 +36,7 @@ const StyledUserEmblem = styled.button`
   }
 `;
 
-const UserName = styled.p`
+const Text = styled.p`
   margin-left: 20px;
   ${H6}
   color: ${Color.White};
@@ -30,15 +51,81 @@ const UserInfo = styled.div`
   align-items: center;
 `;
 
-const Arrow = styled.div`
+const Arrow = styled.div<isOpen>`
   height: 20px;
   width: 20px;
-  background: no-repeat url(${arrowDown});
   background-position: center;
+  background: no-repeat
+    ${({ $isOpen }) => ($isOpen ? `url(${arrowDown})` : `url(${arrowRight})`)};
 
   ${Media.MD} {
     display: none;
   }
 `;
 
-export { StyledUserEmblem, UserName, UserInfo, Arrow };
+const DropDown = styled(motion.div)`
+  position: absolute;
+  top: 70px;
+  grid-gap: 3px;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const StyledLink = styled(Link)`
+  padding: 17px 0px 15px 20px;
+  border-radius: 10px;
+  background: ${Color.Graphite};
+  color: ${Color.White};
+  transition: color 0.1s, scale 0.3s;
+  ${H4};
+  cursor: pointer;
+
+  &:hover {
+    color: ${Color.PrimaryLight};
+    scale: 1.02;
+  }
+
+  &:active {
+    color: ${Color.Primary};
+  }
+
+  &:disabled {
+    color: ${Color.Light};
+  }
+`;
+
+const ButtonOut = styled.button`
+  padding: 17px 0px 15px 20px;
+  border-radius: 10px;
+  background: ${Color.Graphite};
+  text-align: left;
+  ${H4};
+  font-size: 16px; //TODO: delete
+  color: ${Color.White};
+  cursor: pointer;
+  transition: color 0.1s, scale 0.3s;
+
+  &:hover {
+    color: ${Color.PrimaryLight};
+    scale: 1.02;
+  }
+
+  &:active {
+    color: ${Color.Primary};
+  }
+
+  &:disabled {
+    color: ${Color.Light};
+  }
+`;
+
+export {
+  Container,
+  StyledUserEmblem,
+  Text,
+  UserInfo,
+  Arrow,
+  DropDown,
+  StyledLink,
+  ButtonOut,
+};

@@ -1,5 +1,10 @@
 import { FavoritesButtonIcon, ShareIcon } from "assets";
-import { DescriptionElement, ErrorMessage, LoadingMovies } from "components";
+import {
+  DescriptionElement,
+  ErrorMessage,
+  LoadingMovies,
+  NotFoundBox,
+} from "components";
 import { MouseEvent, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { addToFavotires } from "store/feautures/favoritesSlice";
@@ -7,9 +12,9 @@ import { fetchMovieByDetails } from "store/feautures/movieDetailsSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getMovieDetails } from "store/selectors/movieDetailsSelectors";
 import { getUserInfo } from "store/selectors/userSelectors";
-import { IMovieDetails, IMovieDetailsAPI } from "types/types";
-import { transformMovieDetails } from "utils/transformMovieDetails";
+import { getFavorites } from "store/selectors/favoritesSelectors";
 import {
+  StyledPage,
   BadgeContainer,
   ButtonContainer,
   Container,
@@ -17,6 +22,7 @@ import {
   FavoritesButton,
   Genre,
   InfoContainer,
+  MainInfo,
   MovieTitle,
   Poster,
   PosterContainer,
@@ -26,16 +32,15 @@ import {
   ShareButton,
   Wrapper,
 } from "./styles";
+import { Slider } from "components/molecules/Slider/Slider";
 
 export const DetailsMoviePage = () => {
   const { imdbID = "" } = useParams();
   const dispatch = useAppDispatch();
-  const { isLoading, error, details } = useAppSelector(getMovieDetails);
+  const { isLoading, error, details, recommendations } =
+    useAppSelector(getMovieDetails);
   const { isAuth } = useAppSelector(getUserInfo);
-
-  const transformedMovieDetails = transformMovieDetails(
-    details as IMovieDetailsAPI,
-  );
+  const { favorites } = useAppSelector(getFavorites);
 
   useEffect(() => {
     dispatch(fetchMovieByDetails(imdbID));
@@ -55,22 +60,17 @@ export const DetailsMoviePage = () => {
     // type,
     writer,
     year,
+    id,
     imdbRating,
     totalSeasons,
-  } = transformedMovieDetails || ({} as IMovieDetails);
+  } = details;
 
-  const handleFavorites = (event: MouseEvent<HTMLButtonElement>): void => {
+  const isFavorit = !!favorites.find((movie) => movie.id === id);
+
+  const handleAddFavorites = (event: MouseEvent<HTMLButtonElement>): void => {
     event.preventDefault();
-    dispatch(addToFavotires(transformedMovieDetails));
+    dispatch(addToFavotires(details));
   };
-
-  const handlerRejection = () => {
-    alert("To add to favorites you need to log in");
-
-    //TODO: заменить намодалку или просто на ошибку
-  };
-
-  const handleButton = isAuth ? handleFavorites : handlerRejection;
 
   if (isLoading) {
     return <LoadingMovies />;
@@ -83,51 +83,78 @@ export const DetailsMoviePage = () => {
   // ОШИБКУ перестилизовать, хочу другую
 
   return (
-    <Wrapper>
-      <PosterContainer>
-        <Poster src={poster} />
-        <ButtonContainer>
-          <FavoritesButton type="button" onClick={handleButton}>
-            <FavoritesButtonIcon />
-          </FavoritesButton>
-          <ShareButton type="button">
-            <ShareIcon />
-          </ShareButton>
-        </ButtonContainer>
-      </PosterContainer>
+    <StyledPage>
+      <Wrapper>
+        <PosterContainer>
+          {poster === "N/A" ? <NotFoundBox /> : <Poster src={poster} />}
+          <ButtonContainer>
+            {isAuth && (
+              <FavoritesButton
+                type="button"
+                onClick={handleAddFavorites}
+                $isFavorit={isFavorit}
+              >
+                <FavoritesButtonIcon />
+              </FavoritesButton>
+            )}
+            <ShareButton type="button">
+              <ShareIcon />
+            </ShareButton>
+          </ButtonContainer>
+        </PosterContainer>
 
-      <Container>
-        {genre && <Genre>{genre.split(", ").join(" • ")}</Genre>}
-        <MovieTitle>{title}</MovieTitle>
+        <Container>
+          <MainInfo>
+            {genre && <Genre>{genre.split(", ").join(" • ")}</Genre>}
+            <MovieTitle>{title}</MovieTitle>
+            <BadgeContainer>
+              <Rating>{imdbRating}</Rating>
+              <Runtime>{runtime}</Runtime>
+            </BadgeContainer>
+          </MainInfo>
 
-        <BadgeContainer>
-          <Rating>{imdbRating}</Rating>
-          <Runtime>{runtime}</Runtime>
-        </BadgeContainer>
+          <Description>{plot}</Description>
 
-        <Description>{plot}</Description>
-
-        <InfoContainer>
-          {totalSeasons && (
-            <DescriptionElement
-              infoTitle="Seasons"
-              description={totalSeasons}
-            />
-          )}
-          <DescriptionElement infoTitle="Year" description={year} />
-          <DescriptionElement infoTitle="Released" description={released} />
-          {boxOffice && (
-            <DescriptionElement infoTitle="BoxOffice" description={boxOffice} />
-          )}
-          <DescriptionElement infoTitle="Country" description={country} />
-          <DescriptionElement infoTitle="Actors" description={actors} />
-          <DescriptionElement infoTitle="Director" description={director} />
-          <DescriptionElement infoTitle="Writers" description={writer} />
-        </InfoContainer>
-
-        <Recommendations>Recommendations</Recommendations>
-        <div>and there is beautifus slider</div>
-      </Container>
-    </Wrapper>
+          <InfoContainer>
+            {totalSeasons && totalSeasons !== "N/A" && (
+              <DescriptionElement
+                infoTitle="Seasons"
+                description={totalSeasons}
+              />
+            )}
+            {year !== "N/A" && (
+              <DescriptionElement infoTitle="Year" description={year} />
+            )}
+            {released && (
+              <DescriptionElement infoTitle="Released" description={released} />
+            )}
+            {boxOffice && boxOffice !== "N/A" && (
+              <DescriptionElement
+                infoTitle="BoxOffice"
+                description={boxOffice}
+              />
+            )}
+            {country !== "N/A" && (
+              <DescriptionElement infoTitle="Country" description={country} />
+            )}
+            {actors !== "N/A" && (
+              <DescriptionElement infoTitle="Actors" description={actors} />
+            )}
+            {director !== "N/A" && (
+              <DescriptionElement infoTitle="Director" description={director} />
+            )}
+            {writer !== "N/A" && (
+              <DescriptionElement infoTitle="Writers" description={writer} />
+            )}
+          </InfoContainer>
+          <Recommendations>Recommendations</Recommendations>
+        </Container>
+      </Wrapper>
+      <Slider
+        recommendations={recommendations}
+        isLoading={isLoading}
+        error={error}
+      />
+    </StyledPage>
   );
 };

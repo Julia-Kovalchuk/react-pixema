@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { Media } from "ui";
 
-const StyledMovieList = styled.div`
+type CardСount = { $CardСount: number };
+
+const StyledMovieList = styled.div<CardСount>`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(${({ $CardСount }) => $CardСount}, 1fr);
   grid-gap: 40px;
   padding-top: 10px;
 

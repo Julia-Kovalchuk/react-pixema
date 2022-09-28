@@ -1,5 +1,6 @@
+import { FormSetting } from "components";
 import React from "react";
 
 export const SettingsPage = () => {
-  return <div>SettingsPage</div>;
+  return <FormSetting />;
 };

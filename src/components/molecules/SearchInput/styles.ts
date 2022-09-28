@@ -38,13 +38,13 @@ const StyledSearchInput = styled.input`
 
   ${Media.MD} {
     width: 60%;
-    margin-right: 32px;
+    margin-right: 22px;
+    margin-left: 22px;
   }
 
   ${Media.SM} {
     width: 100%;
-    margin-top: 80px;
-    margin-right: 0px;
+    margin: 80px 0px 0px;
   }
 `;
 
