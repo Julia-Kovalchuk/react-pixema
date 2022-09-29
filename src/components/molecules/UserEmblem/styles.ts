@@ -8,6 +8,7 @@ type isOpen = { $isOpen: boolean };
 
 const Container = styled.div`
   position: relative;
+  margin-left: 40px;
 `;
 
 const StyledUserEmblem = styled.button<isOpen>`

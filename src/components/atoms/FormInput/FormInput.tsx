@@ -20,7 +20,7 @@ export const FormInput = ({
     <StyledFormInput
       placeholder={placeholder}
       type={type}
-      value={value ? value : defaultValue}
+      value={value}
       onChange={onChange}
       defaultValue={defaultValue}
     />

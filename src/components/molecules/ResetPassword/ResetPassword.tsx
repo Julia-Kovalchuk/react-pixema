@@ -1,4 +1,4 @@
-import { ErrorMessage, FormFieldName, FormInput, Loading } from "components";
+import { Button, ErrorMessage, FormInput, Loading } from "components";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "routes/routes";
@@ -7,9 +7,10 @@ import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors/userSelectors";
 import {
   FormName,
-  StyledButton,
+  FormFieldName,
   StyledErrorMessage,
   StyledForm,
+  Container,
 } from "./styles";
 
 export type SignInValues = {
@@ -53,33 +54,33 @@ export const Resetpassword = () => {
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <FormName>Reset Password</FormName>
-
-      <FormFieldName text="Email" />
-      <Controller
-        control={control}
-        name="email"
-        rules={validationRules.email}
-        render={({ field: { value, onChange } }) => (
-          <FormInput
-            onChange={onChange}
-            value={value}
-            placeholder="Your email"
-            type="text"
+      <Container>
+        <FormFieldName>
+          Email
+          <Controller
+            control={control}
+            name="email"
+            rules={validationRules.email}
+            render={({ field: { value, onChange } }) => (
+              <FormInput
+                onChange={onChange}
+                value={value}
+                placeholder="Your email"
+                type="text"
+              />
+            )}
           />
-        )}
-      />
-      {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
+        </FormFieldName>
+
+        {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
+      </Container>
 
       {error && (
         <StyledErrorMessage>
           <ErrorMessage>{error}</ErrorMessage>
         </StyledErrorMessage> //TODO Modal?
       )}
-      {isPendingAuth ? (
-        <Loading />
-      ) : (
-        <StyledButton type="submit" text="Enter" />
-      )}
+      {isPendingAuth ? <Loading /> : <Button type="submit" text="Enter" />}
     </StyledForm>
   );
 };

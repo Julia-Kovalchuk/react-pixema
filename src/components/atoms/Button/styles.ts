@@ -5,7 +5,6 @@ const StyledButton = styled.button`
   width: 100%;
   padding-top: 17px;
   padding-bottom: 15px;
-  margin-top: 16px;
   background-color: ${Color.Primary};
   border-radius: 10px;
   ${H6};

@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { Color, Media } from "../../../ui";
 
+//TODO перестилизовать форму
+
 const StyledFormInput = styled.input`
   width: 100%;
-  margin-bottom: 24px;
+  margin-top: 8px;
   max-height: 56px;
   border: none;
   border-radius: 10px;

@@ -2,14 +2,15 @@ import { useRef } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import {
   FormName,
+  FormFieldName,
   LinkNote,
   Note,
-  StyledButton,
   StyledErrorMessage,
   StyledForm,
   Text,
+  Container,
 } from "./styles";
-import { ErrorMessage, FormFieldName, Loading, FormInput } from "../..";
+import { ErrorMessage, Loading, FormInput, Button } from "../..";
 import { ROUTE } from "../../../routes/routes";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors/userSelectors";
@@ -93,99 +94,100 @@ export const FormSignUp = () => {
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <FormName>Sign Up</FormName>
-
-      <FormFieldName text="Name" />
-
-      <Controller
-        control={control}
-        name="userName"
-        rules={validationRules.name}
-        render={({ field: { value, onChange } }) => (
-          <FormInput
-            onChange={onChange}
-            value={value}
-            placeholder="Your name"
-            type="text"
+      <Container>
+        <FormFieldName>
+          Name
+          <Controller
+            control={control}
+            name="userName"
+            rules={validationRules.name}
+            render={({ field: { value, onChange } }) => (
+              <FormInput
+                onChange={onChange}
+                value={value}
+                placeholder="Your name"
+                type="text"
+              />
+            )}
           />
+        </FormFieldName>
+
+        {errors.userName && (
+          <ErrorMessage>{errors.userName.message}</ErrorMessage>
         )}
-      />
 
-      {errors.userName && (
-        <ErrorMessage>{errors.userName.message}</ErrorMessage>
-      )}
-
-      <FormFieldName text="Email" />
-
-      <Controller
-        control={control}
-        name="email"
-        rules={validationRules.email}
-        render={({ field: { value, onChange } }) => (
-          <FormInput
-            onChange={onChange}
-            value={value}
-            placeholder="Your email"
-            type="text"
+        <FormFieldName>
+          Email
+          <Controller
+            control={control}
+            name="email"
+            rules={validationRules.email}
+            render={({ field: { value, onChange } }) => (
+              <FormInput
+                onChange={onChange}
+                value={value}
+                placeholder="Your email"
+                type="text"
+              />
+            )}
           />
+        </FormFieldName>
+
+        {!errors.userName && errors.email && (
+          <ErrorMessage>{errors.email.message}</ErrorMessage>
         )}
-      />
 
-      {!errors.userName && errors.email && (
-        <ErrorMessage>{errors.email.message}</ErrorMessage>
-      )}
-
-      <FormFieldName text="Password" />
-
-      <Controller
-        control={control}
-        name="password"
-        rules={validationRules.password}
-        render={({ field: { value, onChange } }) => (
-          <FormInput
-            onChange={onChange}
-            value={value}
-            placeholder="Your password"
-            type="password"
+        <FormFieldName>
+          Password
+          <Controller
+            control={control}
+            name="password"
+            rules={validationRules.password}
+            render={({ field: { value, onChange } }) => (
+              <FormInput
+                onChange={onChange}
+                value={value}
+                placeholder="Your password"
+                type="password"
+              />
+            )}
           />
+        </FormFieldName>
+
+        {!errors.userName && !errors.email && errors.password && (
+          <ErrorMessage>{errors.password.message}</ErrorMessage>
         )}
-      />
 
-      {!errors.userName && !errors.email && errors.password && (
-        <ErrorMessage>{errors.password.message}</ErrorMessage>
-      )}
-
-      <FormFieldName text="Confirm password" />
-
-      <Controller
-        control={control}
-        name="confirmPassword"
-        rules={validationRules.confirnPassword}
-        render={({ field: { value, onChange } }) => (
-          <FormInput
-            onChange={onChange}
-            value={value}
-            placeholder="Confirm password"
-            type="password"
+        <FormFieldName>
+          Confirm password
+          <Controller
+            control={control}
+            name="confirmPassword"
+            rules={validationRules.confirnPassword}
+            render={({ field: { value, onChange } }) => (
+              <FormInput
+                onChange={onChange}
+                value={value}
+                placeholder="Confirm password"
+                type="password"
+              />
+            )}
           />
-        )}
-      />
-      {!errors.userName &&
-        !errors.email &&
-        !errors.password &&
-        errors.confirmPassword && (
-          <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>
-        )}
+        </FormFieldName>
+        {!errors.userName &&
+          !errors.email &&
+          !errors.password &&
+          errors.confirmPassword && (
+            <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>
+          )}
+      </Container>
 
       {error && (
         <StyledErrorMessage>
           <ErrorMessage>{error}</ErrorMessage>
         </StyledErrorMessage>
       )}
-      {isPendingAuth ? (
-        <Loading />
-      ) : (
-        <StyledButton type="submit" text="Sign up" />
-      )}
+      {isPendingAuth ? <Loading /> : <Button type="submit" text="Sign up" />}
 
       <Note>
         <Text>Already have an account? </Text>{" "}

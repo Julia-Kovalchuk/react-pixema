@@ -3,7 +3,6 @@ import { Color, Media } from "ui";
 
 const StyledSearchInput = styled.input`
   max-height: 56px;
-  margin-right: 40px;
   border: none;
   border-radius: 10px;
   padding: 16px 20px;

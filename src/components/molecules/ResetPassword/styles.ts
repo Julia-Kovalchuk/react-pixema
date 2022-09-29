@@ -1,46 +1,43 @@
-import { Button } from "components";
 import styled from "styled-components";
-import { Color, H2, Media } from "../../../ui";
+import { Color, H2, H6, Media } from "../../../ui";
 
 const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  grid-gap: 40px;
   width: 100%;
-  max-width: 574px;
+  width: 574px;
   padding: 40px;
   border-radius: 40px;
   background-color: ${Color.Dark};
 
   ${Media.SM} {
     min-width: 272px;
-    padding: 20px;
+    grid-gap: 32px;
   }
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  grid-gap: 24px;
+
+  ${Media.SM} {
+    grid-gap: 20px;
+  }
+`;
+
+const FormFieldName = styled.label`
+  ${H6};
+  color: ${Color.White};
 `;
 
 const FormName = styled.h2`
-  margin-bottom: 40px;
   ${H2}
-
-  ${Media.SM} {
-    margin-bottom: 32px;
-  }
-`;
-
-const StyledButton = styled(Button)`
-  margin-top: 16px;
-  margin-bottom: 32px;
-
-  ${Media.SM} {
-    margin-top: 10px;
-    margin-bottom: 15px;
-  }
 `;
 
 const StyledErrorMessage = styled.div`
-  margin-top: 22px;
   text-align: center;
-
-  ${Media.SM} {
-    margin-top: 15px;
-  }
 `;
 
-export { FormName, StyledForm, StyledButton, StyledErrorMessage };
+export { FormName, Container, FormFieldName, StyledForm, StyledErrorMessage };

@@ -152,7 +152,7 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     updateUserName: (state, { payload }: PayloadAction<string>) => {
-      state.name = payload;
+      if (payload) state.name = payload;
     },
   },
   extraReducers(builder) {

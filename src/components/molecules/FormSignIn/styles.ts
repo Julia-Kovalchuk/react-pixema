@@ -1,46 +1,48 @@
 import styled from "styled-components";
 import { Color, H2, H6, Media } from "../../../ui";
-import { Button } from "../../../components";
 import { Link } from "react-router-dom";
 
 const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  grid-gap: 40px;
   width: 100%;
-  min-width: 574px;
+  width: 574px;
   padding: 40px;
   border-radius: 40px;
   background-color: ${Color.Dark};
 
   ${Media.SM} {
     min-width: 272px;
-    padding: 20px;
+    grid-gap: 32px;
   }
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  grid-gap: 24px;
+
+  ${Media.SM} {
+    grid-gap: 20px;
+  }
+`;
+
+const FormFieldName = styled.label`
+  ${H6};
+  color: ${Color.White};
 `;
 
 const FormName = styled.h2`
-  margin-bottom: 40px;
   ${H2}
-
-  ${Media.SM} {
-    margin-bottom: 32px;
-  }
-`;
-
-const StyledButton = styled(Button)`
-  margin-top: 16px;
-  margin-bottom: 32px;
-
-  ${Media.SM} {
-    margin-top: 10px;
-    margin-bottom: 15px;
-  }
 `;
 
 const StyledErrorMessage = styled.div`
-  margin-top: 22px;
+  /* margin-bottom: 50px; */
   text-align: center;
 
   ${Media.SM} {
-    margin-top: 15px;
+    /* margin-top: 15px; */
   }
 `;
 
@@ -48,7 +50,6 @@ const Note = styled.p`
   display: flex;
   justify-content: center;
   text-align: center;
-  margin-top: 32px;
   ${H6};
   font-weight: 500;
 
@@ -56,7 +57,6 @@ const Note = styled.p`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 15px;
   }
 `;
 
@@ -82,7 +82,6 @@ const LinkNote = styled(Link)`
 
 const ResetPasswordLink = styled(Link)`
   font-size: 14px;
-  margin-bottom: 10px;
   color: ${Color.Secondary};
 
   &:hover {
@@ -96,9 +95,10 @@ const ResetPasswordLink = styled(Link)`
 
 export {
   FormName,
+  Container,
+  FormFieldName,
   Note,
   StyledForm,
-  StyledButton,
   LinkNote,
   StyledErrorMessage,
   Text,

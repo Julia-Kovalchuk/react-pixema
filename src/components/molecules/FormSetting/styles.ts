@@ -1,28 +1,68 @@
 import styled from "styled-components";
 import { Color, H2, H6, Media } from "../../../ui";
 import { Button } from "../../../components";
-import { Link } from "react-router-dom";
 
-const StyledForm = styled.form`
-  width: 100%;
-  min-width: 574px;
-  padding: 40px;
-  border-radius: 40px;
-  background-color: ${Color.Dark};
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 1fr;
 
-  ${Media.SM} {
-    min-width: 272px;
-    padding: 20px;
+  ${Media.MD} {
+    grid-template-columns: 1fr;
   }
 `;
 
-const FormName = styled.h2`
-  margin-bottom: 40px;
-  ${H2}
+const StyledForm = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 40px;
 
   ${Media.SM} {
-    margin-bottom: 32px;
+    grid-gap: 32px;
   }
+`;
+
+const SectionName = styled.h2`
+  ${H2}
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  grid-gap: 16px;
+
+  ${Media.SM} {
+    grid-gap: 18px;
+  }
+`;
+
+const FildsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
+  padding: 40px;
+  border-radius: 10px;
+  background: ${Color.Dark};
+
+  ${Media.SM} {
+    padding: 24px;
+  }
+`;
+
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  grid-gap: 24px;
+
+  ${Media.SM} {
+    grid-gap: 20px;
+  }
+`;
+
+// TODO c label перестилизовать формы
+const FormFieldName = styled.label`
+  ${H6};
+  color: ${Color.White};
 `;
 
 const StyledButton = styled(Button)`
@@ -44,48 +84,14 @@ const StyledErrorMessage = styled.div`
   }
 `;
 
-const Note = styled.p`
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin-top: 32px;
-  ${H6};
-  font-weight: 500;
-
-  ${Media.SM} {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15px;
-  }
-`;
-
-const Text = styled.p`
-  color: ${Color.Secondary};
-`;
-
-const LinkNote = styled(Link)`
-  color: ${Color.Primary};
-
-  &:hover {
-    color: ${Color.PrimaryLight};
-  }
-
-  &:active {
-    color: ${Color.Primary};
-  }
-
-  &:disabled {
-    color: ${Color.Light};
-  }
-`;
-
 export {
-  FormName,
-  Note,
+  Wrapper,
+  SectionName,
+  Container,
+  FildsContainer,
+  Box,
+  FormFieldName,
   StyledForm,
   StyledButton,
-  LinkNote,
   StyledErrorMessage,
-  Text,
 };
