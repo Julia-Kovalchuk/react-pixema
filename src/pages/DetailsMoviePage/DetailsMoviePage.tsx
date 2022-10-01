@@ -1,4 +1,4 @@
-import { FavoritesButtonIcon, ShareIcon } from "assets";
+import { FavoritesButtonIcon } from "assets";
 import {
   DescriptionElement,
   ErrorMessage,
@@ -16,7 +16,6 @@ import { getFavorites } from "store/selectors/favoritesSelectors";
 import {
   StyledPage,
   BadgeContainer,
-  ButtonContainer,
   Container,
   Description,
   FavoritesButton,
@@ -29,7 +28,6 @@ import {
   Rating,
   Recommendations,
   Runtime,
-  ShareButton,
   Wrapper,
 } from "./styles";
 import { Slider } from "components/molecules/Slider/Slider";
@@ -87,20 +85,15 @@ export const DetailsMoviePage = () => {
       <Wrapper>
         <PosterContainer>
           {poster === "N/A" ? <NotFoundBox /> : <Poster src={poster} />}
-          <ButtonContainer>
-            {isAuth && (
-              <FavoritesButton
-                type="button"
-                onClick={handleAddFavorites}
-                $isFavorit={isFavorit}
-              >
-                <FavoritesButtonIcon />
-              </FavoritesButton>
-            )}
-            <ShareButton type="button">
-              <ShareIcon />
-            </ShareButton>
-          </ButtonContainer>
+          {isAuth && (
+            <FavoritesButton
+              type="button"
+              onClick={handleAddFavorites}
+              $isFavorit={isFavorit}
+            >
+              <FavoritesButtonIcon />
+            </FavoritesButton>
+          )}
         </PosterContainer>
 
         <Container>

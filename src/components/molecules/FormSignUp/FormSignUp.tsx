@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import {
   FormName,
@@ -14,7 +14,7 @@ import { ErrorMessage, Loading, FormInput, Button } from "../..";
 import { ROUTE } from "../../../routes/routes";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors/userSelectors";
-import { fetchSignUpUser } from "store/feautures/userSlice";
+import { fetchSignUpUser, resetError } from "store/feautures/userSlice";
 import { useNavigate } from "react-router-dom";
 
 export type SignUpValues = {
@@ -52,6 +52,10 @@ export const FormSignUp = () => {
         reset();
       });
   };
+
+  useEffect(() => {
+    if (error) dispatch(resetError());
+  }, [dispatch]);
 
   const validationRules = {
     name: {

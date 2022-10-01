@@ -34,16 +34,12 @@ const FormFieldName = styled.label`
 `;
 
 const FormName = styled.h2`
+  color: ${Color.ThemeWhite};
   ${H2}
 `;
 
 const StyledErrorMessage = styled.div`
-  /* margin-bottom: 50px; */
   text-align: center;
-
-  ${Media.SM} {
-    /* margin-top: 15px; */
-  }
 `;
 
 const Note = styled.p`

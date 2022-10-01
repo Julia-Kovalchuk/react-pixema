@@ -1,9 +1,9 @@
 import { Button, ErrorMessage, FormInput, Loading } from "components";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "routes/routes";
-import { fetchSignInUser } from "store/feautures/userSlice";
+import { fetchSignInUser, resetError } from "store/feautures/userSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors/userSelectors";
 import {
@@ -63,6 +63,10 @@ export const FormSignIn = () => {
         reset();
       });
   };
+
+  useEffect(() => {
+    if (error) dispatch(resetError());
+  }, [dispatch]);
 
   const validationRules = {
     email: {

@@ -1,8 +1,13 @@
 import styled from "styled-components";
 import { Color, Media } from "ui";
 
+const Container = styled.div`
+  position: relative;
+`;
+
 const StyledSearchInput = styled.input`
   max-height: 56px;
+  width: 100%;
   border: none;
   border-radius: 10px;
   padding: 16px 20px;
@@ -47,4 +52,25 @@ const StyledSearchInput = styled.input`
   }
 `;
 
-export { StyledSearchInput };
+const Button = styled.button`
+  position: absolute;
+  top: 0;
+  right: 10px;
+  height: 100%;
+  background: none;
+  cursor: pointer;
+  fill: ${Color.Secondary};
+  stroke: ${Color.Secondary};
+  transition: scale 0.3s;
+
+  &:hover {
+    fill: ${Color.PrimaryLight};
+    stroke: ${Color.PrimaryLight};
+  }
+
+  &:active {
+    scale: 0.95;
+  }
+`;
+
+export { StyledSearchInput, Button, Container };

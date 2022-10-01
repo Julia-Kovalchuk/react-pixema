@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   grid-template-columns: 1fr 3fr;
   align-items: start;
   grid-gap: 40px;
-  color: ${Color.White};
+  color: ${Color.ThemeWhite};
 
   ${Media.MD} {
     grid-template-columns: 1fr 2fr;
@@ -47,23 +47,13 @@ const Poster = styled.img`
   }
 `;
 
-const ButtonContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 5px;
-
-  ${Media.MD} {
-    grid-gap: 3px;
-  }
-`;
-
-const Button = styled.button`
+const FavoritesButton = styled.button<isFavorit>`
   background: ${Color.Graphite};
   text-align: center;
+  width: 100%;
+  border-radius: 15px;
   padding: 16px;
-  fill: ${Color.Light};
-  stroke: ${Color.Light};
-  overflow: hidden;
+  fill: ${({ $isFavorit }) => ($isFavorit ? Color.Primary : Color.Light)};
   cursor: pointer;
 
   &:hover {
@@ -73,6 +63,7 @@ const Button = styled.button`
   }
 
   &:active {
+    fill: ${Color.Primary};
     scale: 0.95;
   }
 
@@ -81,16 +72,11 @@ const Button = styled.button`
   }
 `;
 
-const FavoritesButton = styled(Button)<isFavorit>`
-  fill: ${({ $isFavorit }) => ($isFavorit ? Color.Primary : Color.Light)};
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-`;
-
-const ShareButton = styled(Button)`
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-`;
+// const FavoritesButton = styled(Button)<isFavorit>`
+//   fill: ${({ $isFavorit }) => ($isFavorit ? Color.Primary : Color.Light)};
+//   border-top-left-radius: 15px;
+//   border-bottom-left-radius: 15px;
+// `;
 
 const Container = styled.div`
   display: flex;
@@ -161,10 +147,8 @@ export {
   StyledPage,
   Wrapper,
   PosterContainer,
-  ButtonContainer,
   Poster,
   FavoritesButton,
-  ShareButton,
   Container,
   Genre,
   MovieTitle,

@@ -1,8 +1,9 @@
 import { Button, ErrorMessage, FormInput, Loading } from "components";
+import { useEffect } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "routes/routes";
-import { fetchResetPassword } from "store/feautures/userSlice";
+import { fetchResetPassword, resetError } from "store/feautures/userSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors/userSelectors";
 import {
@@ -13,7 +14,7 @@ import {
   Container,
 } from "./styles";
 
-export type SignInValues = {
+export type ResetValues = {
   email: string;
 };
 
@@ -27,9 +28,9 @@ export const Resetpassword = () => {
     reset,
     control,
     formState: { errors },
-  } = useForm<SignInValues>();
+  } = useForm<ResetValues>();
 
-  const onSubmit: SubmitHandler<SignInValues> = (userData) => {
+  const onSubmit: SubmitHandler<ResetValues> = (userData) => {
     dispatch(fetchResetPassword(userData))
       .unwrap()
       .then(() => {
@@ -40,6 +41,10 @@ export const Resetpassword = () => {
         reset();
       });
   };
+
+  useEffect(() => {
+    if (error) dispatch(resetError());
+  }, [dispatch]);
 
   const validationRules = {
     email: {

@@ -13,10 +13,11 @@ import { ReactComponent as ArrowRightIcon } from "../assets/icons/arrow-right.sv
 import { ReactComponent as Error404 } from "../assets/icons/error404.svg";
 import { ReactComponent as EmptyIcon } from "../assets/icons/empty-icon.svg";
 import { ReactComponent as UserIcon } from "../assets/icons/user.svg";
+import { ReactComponent as EmptySearch } from "../assets/icons/empty-search.svg";
+import { ReactComponent as SearchIcon } from "../assets/icons/search-icon.svg";
 
 import arrowDown from "../assets/icons/arrow-down.svg";
 import arrowRight from "../assets/icons/arrow-right-user.svg";
-import searchIcon from "../assets/icons/search-icon.svg";
 import formBackground from "../assets/backgrounds/form-background.png";
 
 export {
@@ -35,5 +36,7 @@ export {
   Error404,
   EmptyIcon,
   UserIcon,
+  EmptySearch,
+  SearchIcon,
 };
-export { arrowDown, searchIcon, formBackground, arrowRight };
+export { arrowDown, formBackground, arrowRight };

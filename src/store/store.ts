@@ -4,6 +4,7 @@ import moviesReducer from "./feautures/moviesSlice";
 import movieDetailsReduser from "./feautures/movieDetailsSlice";
 import newMoviesReducer from "./feautures/newMoviesSlice";
 import favoritesReducer from "./feautures/favoritesSlice";
+import moviesSearchReducer from "./feautures/moviesSearchSlice";
 
 import {
   persistStore,
@@ -25,6 +26,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   movies: moviesReducer,
+  moviesSearch: moviesSearchReducer,
   newMovies: newMoviesReducer,
   movieDetails: movieDetailsReduser,
   user: userReducer,

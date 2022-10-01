@@ -1,7 +1,6 @@
-import { EmptyIcon } from "assets";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Color, H3, Media } from "ui";
+import { Color, H3, H6, Media } from "ui";
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,18 +12,18 @@ const Wrapper = styled.div`
   height: 75vh;
 `;
 
-const StyledEmptyIcon = styled(EmptyIcon)`
-  margin-left: -202px;
+const Container = styled.div`
+  width: 500px;
+  height: 500px;
+  margin-left: -250px;
 
   ${Media.MD} {
-    width: 336px;
-    height: 293px;
     margin-left: 0px;
   }
 
   ${Media.SM} {
-    width: 202px;
-    height: 177px;
+    width: 200px;
+    height: 200px;
   }
 `;
 
@@ -55,4 +54,4 @@ const CustomLink = styled(Link)`
   }
 `;
 
-export { Wrapper, StyledEmptyIcon, Text, CustomLink };
+export { Container, Wrapper, Text, CustomLink };

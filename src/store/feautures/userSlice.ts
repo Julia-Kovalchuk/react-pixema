@@ -8,6 +8,7 @@ import {
   updateEmail,
   updatePassword,
 } from "firebase/auth";
+import { Theme } from "ui/theme";
 import {
   FirebaseError,
   FirebaseErrorCode,
@@ -22,7 +23,8 @@ interface IUserState {
   isAuth: boolean;
   creationTime: string | null;
   isResetPassword: boolean;
-  // themeMode: Theme;
+  themeMode: Theme;
+  // добавить ressetpasswordEmail для модалки
 }
 
 const initialState: IUserState = {
@@ -33,7 +35,7 @@ const initialState: IUserState = {
   isAuth: false,
   creationTime: null,
   isResetPassword: false,
-  // themeMode: "dark",
+  themeMode: "dark",
 };
 
 export const fetchSignUpUser = createAsyncThunk<
@@ -153,6 +155,12 @@ const userSlice = createSlice({
   reducers: {
     updateUserName: (state, { payload }: PayloadAction<string>) => {
       if (payload) state.name = payload;
+    },
+    resetError: (state) => {
+      state.error = null;
+    },
+    toggleTheme(state, { payload }: PayloadAction<Theme>) {
+      state.themeMode = payload;
     },
   },
   extraReducers(builder) {
@@ -278,4 +286,4 @@ const userSlice = createSlice({
 
 export default userSlice.reducer;
 
-export const { updateUserName } = userSlice.actions;
+export const { updateUserName, resetError, toggleTheme } = userSlice.actions;

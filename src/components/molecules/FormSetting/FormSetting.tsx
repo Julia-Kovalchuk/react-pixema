@@ -1,16 +1,22 @@
+import { MouseEventHandler } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import {
   Box,
   Container,
   FildsContainer,
   SectionName,
-  StyledButton,
   StyledErrorMessage,
   StyledForm,
   Wrapper,
   FormFieldName,
+  ButtonBox,
+  StyledButtonSave,
+  StyledButtonCancel,
+  Title,
+  Description,
+  ThemeBox,
 } from "./styles";
-import { ErrorMessage, Loading, FormInput } from "../..";
+import { ErrorMessage, Loading, FormInput, Switch } from "../..";
 import { ROUTE } from "../../../routes/routes";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors/userSelectors";
@@ -30,11 +36,13 @@ export type SignUpValues = {
 };
 
 export const FormSetting = () => {
-  const { name, email, isPendingAuth, error, creationTime } =
+  const { name, email, isPendingAuth, error, creationTime, themeMode } =
     useAppSelector(getUserInfo);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
   //TODO creationTime
+
   const {
     handleSubmit,
     resetField,
@@ -47,16 +55,29 @@ export const FormSetting = () => {
     dispatch(updateUserName(userData.userName));
     dispatch(fetchUpdateEmail(userData))
       .unwrap()
-      .then(() => dispatch(fetchUpdatePassword(userData)).unwrap())
       .then(() => {
-        navigate(ROUTE.HOME); //TODO: перенос не тольк на home
-        //TODO: modal window
+        alert("Почта обновлена"); // TODO modal
+        setTimeout(() => {
+          navigate(ROUTE.HOME); //TODO: перенос не тольк на home
+        }, 3000);
+      })
+      .then(() => dispatch(fetchUpdatePassword(userData)).unwrap())
+      // .unwrap()
+      .then(() => {
+        alert("Пароль обновлен"); // TODO modal
+        setTimeout(() => {
+          navigate(ROUTE.HOME); //TODO: перенос не тольк на home
+        }, 3000);
       })
       .finally(() => {
         resetField("password");
         resetField("newPassword");
         resetField("confirmPassword");
       });
+  };
+
+  const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
+    navigate(ROUTE.HOME);
   };
 
   const newPassword = watch("newPassword", "");
@@ -232,11 +253,29 @@ export const FormSetting = () => {
             <ErrorMessage>{error}</ErrorMessage>
           </StyledErrorMessage>
         )}
-        {isPendingAuth ? (
-          <Loading />
-        ) : (
-          <StyledButton type="submit" text="Save" />
-        )}
+
+        <Container>
+          <SectionName>Color mode</SectionName>
+
+          <FildsContainer>
+            <ThemeBox>
+              <Title>{themeMode.toUpperCase()}</Title>
+              <Description>Use {themeMode} theme</Description>
+            </ThemeBox>
+            <Switch />
+          </FildsContainer>
+        </Container>
+
+        <ButtonBox>
+          <StyledButtonCancel type="button" onClick={handleClick}>
+            Cancel
+          </StyledButtonCancel>
+          {isPendingAuth ? (
+            <Loading />
+          ) : (
+            <StyledButtonSave type="submit">Save</StyledButtonSave>
+          )}
+        </ButtonBox>
       </StyledForm>
     </Wrapper>
   );

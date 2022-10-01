@@ -33,6 +33,7 @@ const FormFieldName = styled.label`
 `;
 
 const FormName = styled.h2`
+  color: ${Color.ThemeWhite};
   ${H2}
 `;
 

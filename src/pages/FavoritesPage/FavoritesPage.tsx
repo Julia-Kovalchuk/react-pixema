@@ -22,15 +22,6 @@ export const FavoritesPage = () => {
   }
 };
 
-// return  {favorites? (
-//     <MoviesListFavorites movies={favorites} />
-//   ) : (
-//     <Container>
-//       <EmptyIcon />
-//   </Container>
-//   )
-// }
-
 // button
 
 //добавить модалок для взаимодействия, добавить кнопки для удаления из fav

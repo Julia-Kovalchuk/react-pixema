@@ -76,3 +76,9 @@ export interface IMovieDetails {
   imdbRating: string;
   totalSeasons?: string;
 }
+export interface ISearchParams {
+  title: string;
+  type: ContentType | string;
+  year: string;
+  page: number;
+}

@@ -18,12 +18,12 @@ const StyledUserEmblem = styled.button<isOpen>`
   width: 100%;
   padding-right: 10px;
   border-radius: 10px;
-  background: ${({ $isOpen }) => ($isOpen ? Color.Dark : "none")};
+  background: ${({ $isOpen }) => ($isOpen ? Color.PrimaryLight : "none")};
   cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s;
 
   &:hover {
-    background-color: ${Color.Dark};
+    background-color: ${Color.PrimaryLight};
   }
 
   &:active {
@@ -40,7 +40,7 @@ const StyledUserEmblem = styled.button<isOpen>`
 const Text = styled.p`
   margin-left: 20px;
   ${H6}
-  color: ${Color.White};
+  color: ${Color.ThemeWhite};
 
   ${Media.MD} {
     display: none;

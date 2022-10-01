@@ -7,6 +7,7 @@ import {
   NewPage,
   NotFoundPage,
   ResetPasswordPage,
+  SearchPage,
   SettingsPage,
   SignInPage,
   SignUpPage,
@@ -22,6 +23,7 @@ export const App = () => {
         <Route path={ROUTE.NEW} element={<NewPage />} />
         <Route path={ROUTE.DETAILS} element={<DetailsMoviePage />} />
         <Route path={ROUTE.NOT_FOUND} element={<NotFoundPage />} />
+        <Route path={ROUTE.SEARCH} element={<SearchPage />} />
       </Route>
 
       <Route path={ROUTE.HOME} element={<AuthTemplate />}>

@@ -1,24 +1,30 @@
-import { useTheme } from "../../../hooks";
+import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
+import { useToggle } from "../../../hooks";
 import { Button, Circle } from "./styles";
+import { getUserInfo } from "store/selectors/userSelectors";
+import { toggleTheme } from "store/feautures/userSlice";
+import { useLayoutEffect } from "react";
 
 export const Switch = () => {
-  const { theme, setTheme } = useTheme();
-  let isDarkTheme;
+  const { themeMode } = useAppSelector(getUserInfo);
+  const dispatch = useAppDispatch();
+  const [isDarkTheme, toggleDarkTheme] = useToggle(themeMode === "dark");
 
-  document.documentElement.getAttribute("data-theme") === "dark"
-    ? (isDarkTheme = false)
-    : (isDarkTheme = true);
+  useLayoutEffect(() => {
+    document.documentElement.setAttribute("data-theme", themeMode);
+  }, [themeMode]);
 
-  const handleClick = (): void => {
-    if (theme === "dark") {
-      setTheme("light");
+  const handleTheme = () => {
+    if (themeMode === "dark") {
+      dispatch(toggleTheme("light"));
     } else {
-      setTheme("dark");
+      dispatch(toggleTheme("dark"));
     }
+    toggleDarkTheme();
   };
 
   return (
-    <Button type="button" onClick={handleClick} $isDarkTheme={isDarkTheme}>
+    <Button type="button" onClick={handleTheme} $isDarkTheme={isDarkTheme}>
       <Circle $isDarkTheme={isDarkTheme}></Circle>
     </Button>
   );

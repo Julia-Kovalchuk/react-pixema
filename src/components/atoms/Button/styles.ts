@@ -27,7 +27,7 @@ const StyledButton = styled.button`
     box-shadow: ${Color.Light} 0px 5px 29px 0px;
   }
 
-  &${Media.MD} {
+  ${Media.MD} {
     padding: 16px;
   }
 `;
