@@ -1,22 +1,34 @@
 {
   "files": {
-    "main.js": "/react-pixema/static/js/main.ce5d83d1.js",
+    "main.css": "/react-pixema/static/css/main.f644a03d.css",
+    "main.js": "/react-pixema/static/js/main.8efbb47c.js",
     "static/media/form-background.png": "/react-pixema/static/media/form-background.458eb75d1d1173529947.png",
+    "static/media/empty-icon.svg": "/react-pixema/static/media/empty-icon.eed754510a70304dc866d7c836735c14.svg",
+    "static/media/error404.svg": "/react-pixema/static/media/error404.213a040f78019fa2543216b9badbe8e3.svg",
+    "static/media/empty-search.svg": "/react-pixema/static/media/empty-search.3849cba210a932366cd8395325591738.svg",
     "static/media/logo-light.svg": "/react-pixema/static/media/logo-light.22981b9ec8b862428f9a0d7bad09443a.svg",
     "static/media/logo-dark.svg": "/react-pixema/static/media/logo-dark.ef69f378f7796fa43e7162952fc3af4f.svg",
     "static/media/settings-icon.svg": "/react-pixema/static/media/settings-icon.81a91794ca7e4d4f1d0d792b2d4d38aa.svg",
+    "static/media/not-found-icon.svg": "/react-pixema/static/media/not-found-icon.d97f0707f3dd80627ac25e21fbb9d06c.svg",
     "static/media/return-icon.svg": "/react-pixema/static/media/return-icon.c6783549325e68e024eee9ec393d4c16.svg",
     "static/media/trends-icon.svg": "/react-pixema/static/media/trends-icon.dcbc6e281c93b2e56a7adbf4b08149bd.svg",
     "static/media/home-icon.svg": "/react-pixema/static/media/home-icon.f26a9bd3fe398b7bdbdf8f69983a7229.svg",
+    "static/media/close.svg": "/react-pixema/static/media/close.6024aa6a26426b9bcd02b35c5d3ff4a1.svg",
+    "index.html": "/react-pixema/index.html",
     "static/media/favirites-icon.svg": "/react-pixema/static/media/favirites-icon.d40145d7bb12d981caad1d2191d3f0a4.svg",
     "static/media/favorites-icon.svg": "/react-pixema/static/media/favorites-icon.d40145d7bb12d981caad1d2191d3f0a4.svg",
-    "static/media/arrow-down.svg": "/react-pixema/static/media/arrow-down.6ce2d592891d3947525b7939b93f11ee.svg",
-    "index.html": "/react-pixema/index.html",
+    "static/media/arrow-down.svg": "/react-pixema/static/media/arrow-down.0163946886eefc10cb11ee299dbdc625.svg",
+    "static/media/arrow-right-user.svg": "/react-pixema/static/media/arrow-right-user.150255568f97eef4b537b8622d0ec5ca.svg",
+    "static/media/user.svg": "/react-pixema/static/media/user.a3867c46a05515d83bd9fe2a072c9723.svg",
     "static/media/share-icon.svg": "/react-pixema/static/media/share-icon.98149728424f9cf59755c75ea9144980.svg",
-    "static/media/search-icon.svg": "/react-pixema/static/media/search-icon.bf5cb80deddb4125c2cf016a5a46143f.svg",
-    "main.ce5d83d1.js.map": "/react-pixema/static/js/main.ce5d83d1.js.map"
+    "static/media/arrow-right.svg": "/react-pixema/static/media/arrow-right.255004f92ae6cf0e0af472f6c8137dc1.svg",
+    "static/media/arrow-left.svg": "/react-pixema/static/media/arrow-left.6566b8645e26de359a9ebd6995bb4e62.svg",
+    "static/media/search-icon.svg": "/react-pixema/static/media/search-icon.f12ffde87e42672f055d723cee910aaf.svg",
+    "main.f644a03d.css.map": "/react-pixema/static/css/main.f644a03d.css.map",
+    "main.8efbb47c.js.map": "/react-pixema/static/js/main.8efbb47c.js.map"
   },
   "entrypoints": [
-    "static/js/main.ce5d83d1.js"
+    "static/css/main.f644a03d.css",
+    "static/js/main.8efbb47c.js"
   ]
 }
