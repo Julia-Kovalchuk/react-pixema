@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-pixema/static/css/main.f644a03d.css",
-    "main.js": "/react-pixema/static/js/main.8efbb47c.js",
+    "main.js": "/react-pixema/static/js/main.508fb207.js",
     "static/media/form-background.png": "/react-pixema/static/media/form-background.458eb75d1d1173529947.png",
     "static/media/empty-icon.svg": "/react-pixema/static/media/empty-icon.eed754510a70304dc866d7c836735c14.svg",
     "static/media/error404.svg": "/react-pixema/static/media/error404.213a040f78019fa2543216b9badbe8e3.svg",
@@ -25,10 +25,10 @@
     "static/media/arrow-left.svg": "/react-pixema/static/media/arrow-left.6566b8645e26de359a9ebd6995bb4e62.svg",
     "static/media/search-icon.svg": "/react-pixema/static/media/search-icon.f12ffde87e42672f055d723cee910aaf.svg",
     "main.f644a03d.css.map": "/react-pixema/static/css/main.f644a03d.css.map",
-    "main.8efbb47c.js.map": "/react-pixema/static/js/main.8efbb47c.js.map"
+    "main.508fb207.js.map": "/react-pixema/static/js/main.508fb207.js.map"
   },
   "entrypoints": [
     "static/css/main.f644a03d.css",
-    "static/js/main.8efbb47c.js"
+    "static/js/main.508fb207.js"
   ]
 }
