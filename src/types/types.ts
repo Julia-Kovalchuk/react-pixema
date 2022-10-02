@@ -1,4 +1,3 @@
-// Movies
 export interface IMoviesAPIResponse {
   Search: IMovieAPI[];
   totalResults: null | string;
@@ -20,9 +19,7 @@ export interface IMovie {
   imdbID: string;
 }
 
-export type ContentType = "movie" | "series" | " episode";
-
-// MovieDetails
+export type ContentType = "movie" | "series" | "episode";
 
 export interface IMovieDetailsAPI {
   Actors: string;

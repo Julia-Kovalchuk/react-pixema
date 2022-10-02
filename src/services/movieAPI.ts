@@ -1,6 +1,5 @@
 import axios from "axios";
 import {
-  IMovieAPI,
   IMovieDetailsAPI,
   IMoviesAPIResponse,
   ISearchParams,

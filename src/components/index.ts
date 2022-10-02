@@ -27,6 +27,10 @@ import { Slide } from "./atoms/Slide/Slide";
 import { BurgerMenu } from "./atoms/BurgerMenu/BurgerMenu";
 import { Resetpassword } from "./molecules/ResetPassword/ResetPassword";
 import { FormSetting } from "./molecules/FormSetting/FormSetting";
+import { Filters } from "./molecules/Filters/Filters";
+import { EmptySearch } from "./molecules/EmptySearch/EmptySearch";
+import { Portal } from "./molecules/Portal/Portal";
+import { Modal } from "./molecules/Modal/Modal";
 
 export {
   AsideNav,
@@ -58,4 +62,8 @@ export {
   BurgerMenu,
   Resetpassword,
   FormSetting,
+  Filters,
+  EmptySearch,
+  Portal,
+  Modal,
 };

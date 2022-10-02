@@ -44,6 +44,7 @@ export const Resetpassword = () => {
 
   useEffect(() => {
     if (error) dispatch(resetError());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   const validationRules = {

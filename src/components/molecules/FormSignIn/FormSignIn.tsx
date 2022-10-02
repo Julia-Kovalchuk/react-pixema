@@ -23,22 +23,10 @@ export type SignInValues = {
   password: string;
 };
 
-interface NavigateFunction {
-  (
-    to: string,
-    options?: {
-      replace?: boolean;
-      state?: any;
-      relative?: any;
-    },
-  ): void;
-  (delta: number): void;
-}
-
 export const FormSignIn = () => {
   const { isPendingAuth, error, isResetPassword } = useAppSelector(getUserInfo);
   const dispatch = useAppDispatch();
-  const navigate: NavigateFunction = useNavigate();
+  const navigate = useNavigate();
 
   const {
     handleSubmit,
@@ -66,6 +54,7 @@ export const FormSignIn = () => {
 
   useEffect(() => {
     if (error) dispatch(resetError());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   const validationRules = {
@@ -84,8 +73,8 @@ export const FormSignIn = () => {
       },
       pattern: {
         value: /(?=.*\d)(?=.*[a-z]).{6,}/,
-        message: `Password must contain at least one number and one uppercase +
-          and lowercase letter, and at least 6 or more characters`,
+        message: `${"Password must contain at least one number and one uppercase"} +
+          ${"and lowercase letter, and at least 6 or more characters"}`,
       },
     },
   };
@@ -148,8 +137,8 @@ export const FormSignIn = () => {
       {isPendingAuth ? <Loading /> : <Button type="submit" text="Sign up" />}
 
       <Note>
-        <Text>Don’t have an account? </Text>{" "}
-        <LinkNote to={ROUTE.SIGN_UP_OTHER_WAY}> Sign Up</LinkNote>
+        <Text>Don't have an account? </Text>{" "}
+        <LinkNote to={ROUTE.SIGN_UP_OTHER_WAY}> Sign In</LinkNote>
       </Note>
     </StyledForm>
   );

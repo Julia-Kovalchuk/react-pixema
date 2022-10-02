@@ -1,143 +1,176 @@
-import React from "react";
-// import { ContentType } from "types/types";
-// import { StyledFilters } from "./styles";
+import { CloseIcon } from "assets";
+import { Button, ErrorMessage, FormInput } from "components";
+import React, { MouseEventHandler } from "react";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import Select from "react-select";
+import { ROUTE } from "routes/routes";
+import {
+  updateTitleParam,
+  updateTypeParam,
+  updateYearParam,
+} from "store/feautures/moviesSearchSlice";
+import { useAppDispatch } from "store/hooks/hooks";
+import { ContentType } from "types/types";
+import {
+  Box,
+  ButtonContainer,
+  ButtonReset,
+  CloseButton,
+  Container,
+  CustomStyles,
+  FormFieldName,
+  FormName,
+  StyledFilters,
+} from "./styles";
 
-// export type FiltresValues = {
-//         type: ContentType;
-//         title: string;
+export type FiltresValues = {
+  type: ContentType;
+  title: string;
+  year: string;
+};
 
-//       };
+export interface ISelectOption {
+  readonly label: string;
+  readonly value: ContentType | string;
+}
 
-//       interface NavigateFunction {
-//         (
-//           to: string,
-//           options?: {
-//             replace?: boolean;
-//             state?: any;
-//             relative?: any;
-//           },
-//         ): void;
-//         (delta: number): void;
-//       }
+const options: ISelectOption[] = [
+  { value: "", label: "all type" },
+  { value: "movie", label: "movie" },
+  { value: "series", label: "series" },
+  { value: "episode", label: "episode" },
+];
 
-// export const Filters = () => {
+interface IProps {
+  toggleModal: (value: boolean) => void;
+}
 
-//         const { isPendingAuth, error, isResetPassword } = useAppSelector(getUserInfo);
-//         const dispatch = useAppDispatch();
-//         const navigate: NavigateFunction = useNavigate();
+export const Filters = ({ toggleModal }: IProps) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-//         const {
-//           handleSubmit,
-//           reset,
-//           control,
-//           formState: { errors },
-//           watch,
-//         } = useForm<SignInValues>();
+  const {
+    handleSubmit,
+    reset,
+    control,
+    formState: { errors },
+  } = useForm<FiltresValues>();
 
-//         const password = useRef({});
+  const onSubmit: SubmitHandler<FiltresValues> = (filters) => {
+    // или только если они есть?
+    dispatch(updateTitleParam(filters.title));
+    dispatch(updateYearParam(filters.year));
+    dispatch(updateTypeParam(filters.type));
+    reset();
+    toggleModal(false);
+    navigate(ROUTE.SEARCH);
+  };
 
-//         password.current = watch("password", "");
+  const handleReset: MouseEventHandler<HTMLButtonElement> = () => {
+    reset();
+  };
 
-//         const onSubmit: SubmitHandler<SignInValues> = (userData) => {
-//           dispatch(fetchSignInUser(userData))
-//             .unwrap()
-//             .then(() => {
-//               navigate(ROUTE.HOME, { state: {}, replace: true }); //TODO: перенос не тольк на home
-//               //TODO: modal window
-//             })
-//             .finally(() => {
-//               reset();
-//             });
-//         };
+  const onClose: MouseEventHandler<HTMLButtonElement> = () => {
+    toggleModal(false);
+    reset();
+  };
 
-//         useEffect(() => {
-//           if (error) dispatch(resetError());
-//         }, [dispatch]);
+  const validationRules = {
+    title: {
+      required: "Name is requared",
+    },
+    year: {
+      minLength: {
+        value: 4,
+        message: "Incorrect format",
+      },
+      maxLength: {
+        value: 4,
+        message: "Incorrect format",
+      },
+      pattern: {
+        value: /^[0-9]+$/,
+        message: "You can only enter numbers",
+      },
+    },
+  };
 
-//         const validationRules = {
-//           email: {
-//             required: "Email is requared",
-//             pattern: {
-//               value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/,
-//               message: "Please insert a valid email address",
-//             },
-//           },
-//           password: {
-//             required: "Password is requared",
-//             minLength: {
-//               value: 6,
-//               message: "Password must contain at least 6 characters",
-//             },
-//             pattern: {
-//               value: /(?=.*\d)(?=.*[a-z]).{6,}/,
-//               message: `Password must contain at least one number and one uppercase +
-//                 and lowercase letter, and at least 6 or more characters`,
-//             },
-//           },
-//         };
+  return (
+    <StyledFilters onSubmit={handleSubmit(onSubmit)}>
+      <Container>
+        <Box>
+          <FormName>Filters</FormName>
+          <CloseButton type="button" onClick={onClose}>
+            <CloseIcon />
+          </CloseButton>
+        </Box>
+        <FormFieldName>
+          Type
+          <Controller
+            control={control}
+            name="type"
+            render={({ field: { value, onChange } }) => (
+              <Select
+                defaultValue={options[0]}
+                options={options}
+                onChange={(options) => options && onChange(options.value)}
+                styles={CustomStyles}
+                isSearchable={false}
+                isMulti={false}
+              />
+            )}
+          />
+        </FormFieldName>
 
-//         return (
-//           <StyledForm onSubmit={handleSubmit(onSubmit)}>
-//             <FormName>Sign In</FormName>
+        {/* // тут селект */}
 
-//             <Container>
-//               {isResetPassword && <Note>Your password has been changed!</Note>}
+        <FormFieldName>
+          Full or short movie name
+          <Controller
+            control={control}
+            name="title"
+            rules={validationRules.title}
+            render={({ field: { value, onChange } }) => (
+              <FormInput
+                onChange={onChange}
+                value={value}
+                placeholder="Name"
+                type="text"
+              />
+            )}
+          />
+        </FormFieldName>
+        {errors.title && <ErrorMessage>{errors.title.message}</ErrorMessage>}
 
-//               <FormFieldName>
-//                 Email
-//                 <Controller
-//                   control={control}
-//                   name="email"
-//                   rules={validationRules.email}
-//                   render={({ field: { value, onChange } }) => (
-//                     <FormInput
-//                       onChange={onChange}
-//                       value={value}
-//                       placeholder="Your email"
-//                       type="text"
-//                     />
-//                   )}
-//                 />
-//               </FormFieldName>
-//               {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
+        <FormFieldName>
+          Year
+          <Controller
+            control={control}
+            name="year"
+            rules={validationRules.year}
+            render={({ field: { value, onChange } }) => (
+              <FormInput
+                onChange={onChange}
+                value={value}
+                placeholder="year"
+                type="text"
+              />
+            )}
+          />
+        </FormFieldName>
 
-//               <FormFieldName>
-//                 Password
-//                 <Controller
-//                   control={control}
-//                   name="password"
-//                   rules={validationRules.password}
-//                   render={({ field: { value, onChange } }) => (
-//                     <FormInput
-//                       onChange={onChange}
-//                       value={value}
-//                       placeholder="Your password"
-//                       type="password"
-//                     />
-//                   )}
-//                 />
-//               </FormFieldName>
+        {!errors.title && errors.year && (
+          <ErrorMessage>{errors.year.message}</ErrorMessage>
+        )}
+        <ButtonContainer>
+          <ButtonReset type="button" onClick={handleReset}>
+            Clear filters
+          </ButtonReset>
 
-//               {!errors.email && errors.password && (
-//                 <ErrorMessage>{errors.password.message}</ErrorMessage>
-//               )}
-//               <ResetPasswordLink to={ROUTE.RESSET_PASSWORD}>
-//                 Forgot password?
-//               </ResetPasswordLink>
-//             </Container>
-
-//             {error && (
-//               <StyledErrorMessage>
-//                 <ErrorMessage>{error}</ErrorMessage>
-//               </StyledErrorMessage> //TODO Modal?
-//             )}
-//             {isPendingAuth ? <Loading /> : <Button type="submit" text="Sign up" />}
-
-//             <Note>
-//               <Text>Don’t have an account? </Text>{" "}
-//               <LinkNote to={ROUTE.SIGN_UP_OTHER_WAY}> Sign Up</LinkNote>
-//             </Note>
-//           </StyledForm>
-//         );
-//       };
-// };
+          <Button type="submit" text="Show results" />
+        </ButtonContainer>
+      </Container>
+    </StyledFilters>
+  );
+};

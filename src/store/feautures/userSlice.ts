@@ -24,7 +24,7 @@ interface IUserState {
   creationTime: string | null;
   isResetPassword: boolean;
   themeMode: Theme;
-  // добавить ressetpasswordEmail для модалки
+  // TODO добавить ressetpasswordEmail для модалки
 }
 
 const initialState: IUserState = {
@@ -147,8 +147,6 @@ export const fetchUpdateEmail = createAsyncThunk<
   }
 });
 
-////////////////////////////////////////////////////////////////// SLICE
-
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -185,7 +183,6 @@ const userSlice = createSlice({
       }
     });
 
-    ////////////////////////////////////////////////////////////////////////////////////////////
     builder.addCase(fetchSignInUser.pending, (state) => {
       state.isPendingAuth = true;
       state.isAuth = false;
@@ -208,7 +205,6 @@ const userSlice = createSlice({
         state.isResetPassword = false;
       }
     });
-    ////////////////////////////////////////////////////////////////////////////////////////////
 
     builder.addCase(fetchSignOutUser.pending, (state) => {
       state.isPendingAuth = true;
@@ -227,7 +223,6 @@ const userSlice = createSlice({
         state.isAuth = true;
       }
     });
-    ////////////////////////////////////////////////////////////////////////////////////////////
 
     builder.addCase(fetchResetPassword.pending, (state) => {
       state.isPendingAuth = true;
@@ -249,7 +244,6 @@ const userSlice = createSlice({
         state.isResetPassword = false;
       }
     });
-    ////////////////////////////////////////////////////////////////////////////////////////////
 
     builder.addCase(fetchUpdatePassword.pending, (state) => {
       state.isPendingAuth = true;
@@ -265,7 +259,6 @@ const userSlice = createSlice({
         state.error = payload;
       }
     });
-    ////////////////////////////////////////////////////////////////////////////////////////////
 
     builder.addCase(fetchUpdateEmail.pending, (state) => {
       state.isPendingAuth = true;

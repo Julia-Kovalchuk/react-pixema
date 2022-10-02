@@ -5,7 +5,6 @@ import { transformMoviesAPI } from "services/mappers/transformMoviesAPI";
 import { movieAPI } from "services/movieAPI";
 import {
   IMovie,
-  IMovieAPI,
   IMovieDetails,
   IMovieDetailsAPI,
   IMoviesAPIResponse,

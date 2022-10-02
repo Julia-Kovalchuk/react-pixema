@@ -33,7 +33,7 @@ const Wrapper = styled.header`
 
 const StyledLink = styled(Link)`
   ${Media.MD} {
-    margin-right: auto;
+    margin-right: 5px;
   }
 
   ${Media.SM} {

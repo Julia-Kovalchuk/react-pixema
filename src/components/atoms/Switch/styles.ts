@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import styled from "styled-components";
 import { Color } from "../../../ui";
 
@@ -31,7 +32,8 @@ export const Circle = styled.div<isDarkTheme>`
   transition: left 0.5s;
 
   &:disabled {
-    background-color: ${({ $isDarkTheme }) =>
-      $isDarkTheme ? Color.PrimaryLight : Color.Light};
+    background-color: ${({ $isDarkTheme }) => {
+      return $isDarkTheme ? Color.PrimaryLight : Color.Light;
+    }};
   }
 `;

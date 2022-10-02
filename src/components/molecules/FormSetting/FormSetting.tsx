@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { MouseEventHandler } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import {
@@ -36,7 +37,7 @@ export type SignUpValues = {
 };
 
 export const FormSetting = () => {
-  const { name, email, isPendingAuth, error, creationTime, themeMode } =
+  const { name, email, isPendingAuth, error, themeMode } =
     useAppSelector(getUserInfo);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

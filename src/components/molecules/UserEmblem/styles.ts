@@ -30,6 +30,12 @@ const StyledUserEmblem = styled.button<isOpen>`
     box-shadow: 0px 0px 10px 0px rgba(237, 243, 247, 0.24);
   }
 
+  ${Media.MD} {
+    position: absolute;
+    right: 0px;
+    top: 32px;
+  }
+
   ${Media.SM} {
     position: absolute;
     right: 0px;

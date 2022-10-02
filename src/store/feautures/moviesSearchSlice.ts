@@ -2,7 +2,12 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import { transformMoviesAPI } from "services/mappers/transformMoviesAPI";
 import { movieAPI } from "../../services/movieAPI";
-import { IMovie, IMoviesAPIResponse, ISearchParams } from "../../types/types";
+import {
+  ContentType,
+  IMovie,
+  IMoviesAPIResponse,
+  ISearchParams,
+} from "../../types/types";
 
 interface IMoviesSearchState {
   movies: IMovie[];
@@ -52,7 +57,17 @@ const moviesSearchSlice = createSlice({
     updateYearParam(state, { payload }: PayloadAction<string>) {
       state.searchParams.year = payload;
     },
-    // тут будутлежать для добавления в параметры
+    updateTypeParam(state, { payload }: PayloadAction<ContentType>) {
+      state.searchParams.type = payload;
+    },
+    deleteAllParams(state) {
+      state.searchParams = {
+        title: "",
+        type: "",
+        year: "",
+        page: 1,
+      };
+    },
   },
 
   extraReducers(builder) {
@@ -76,5 +91,10 @@ const moviesSearchSlice = createSlice({
 export default moviesSearchSlice.reducer;
 export { fetchMoviesSearch };
 
-export const { resetMoviesSearch, updateTitleParam, updateYearParam } =
-  moviesSearchSlice.actions;
+export const {
+  resetMoviesSearch,
+  updateTitleParam,
+  updateYearParam,
+  updateTypeParam,
+  deleteAllParams,
+} = moviesSearchSlice.actions;

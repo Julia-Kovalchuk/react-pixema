@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { useEffect, useRef } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import {
@@ -55,6 +56,7 @@ export const FormSignUp = () => {
 
   useEffect(() => {
     if (error) dispatch(resetError());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   const validationRules = {
@@ -84,8 +86,8 @@ export const FormSignUp = () => {
       },
       pattern: {
         value: /(?=.*\d)(?=.*[a-z]).{6,}/,
-        message: `Password must contain at least one number and one uppercase +
-          and lowercase letter, and at least 6 or more characters`,
+        message: `${"Password must contain at least one number and one uppercase"} +
+        ${"and lowercase letter, and at least 6 or more characters"}`,
       },
     },
     confirnPassword: {

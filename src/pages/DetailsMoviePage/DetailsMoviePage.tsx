@@ -55,7 +55,6 @@ export const DetailsMoviePage = () => {
     released,
     runtime,
     title,
-    // type,
     writer,
     year,
     id,

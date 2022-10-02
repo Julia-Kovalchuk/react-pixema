@@ -72,12 +72,6 @@ const FavoritesButton = styled.button<isFavorit>`
   }
 `;
 
-// const FavoritesButton = styled(Button)<isFavorit>`
-//   fill: ${({ $isFavorit }) => ($isFavorit ? Color.Primary : Color.Light)};
-//   border-top-left-radius: 15px;
-//   border-bottom-left-radius: 15px;
-// `;
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;

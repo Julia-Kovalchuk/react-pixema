@@ -1,14 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IMovie, IMovieDetails } from "types/types";
+import { IMovieDetails } from "types/types";
 
 interface IFavoritesState {
   favorites: IMovieDetails[];
-  sortedFavorites: null | IMovieDetails[];
+  searchWord: string;
+  sortedFavorites: IMovieDetails[];
 }
 
 const initialState: IFavoritesState = {
   favorites: [],
-  sortedFavorites: null,
+  searchWord: "",
+  sortedFavorites: [],
 };
 
 const favoritesSlice = createSlice({
@@ -26,14 +28,28 @@ const favoritesSlice = createSlice({
         return movie.id !== payload;
       });
     },
-    // getSortedFavorites(state, { payload }: PayloadAction<string>) {
-    //   state.sortedFavorites = state.favorites.filter((movie) => {
-    //     return movie.title.includes(payload);
-    //   });
-    // },
+    sortFavorites(state, { payload }: PayloadAction<string>) {
+      state.sortedFavorites = state.favorites.filter((movie) => {
+        return movie.title
+          .toLocaleLowerCase()
+          .includes(payload.toLocaleLowerCase());
+      });
+    },
+    resetSortedFavorites(state) {
+      state.sortedFavorites = [];
+    },
+    updateSearchword(state, { payload }: PayloadAction<string>) {
+      state.searchWord = payload;
+    },
   },
 });
 
 export default favoritesSlice.reducer;
 
-export const { addToFavotires, removeFavorites } = favoritesSlice.actions;
+export const {
+  addToFavotires,
+  removeFavorites,
+  sortFavorites,
+  resetSortedFavorites,
+  updateSearchword,
+} = favoritesSlice.actions;

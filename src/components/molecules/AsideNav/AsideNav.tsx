@@ -9,7 +9,6 @@ import {
 } from "../../../assets";
 
 export const AsideNav = () => {
-  // TODO: разобратьс с li
   return (
     <StyledAsideNav>
       <NavList>
