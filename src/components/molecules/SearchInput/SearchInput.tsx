@@ -7,13 +7,11 @@ import {
   resetSortedFavorites,
   sortFavorites,
   updateSearchword,
-} from "store/feautures/favoritesSlice";
-import {
   deleteAllParams,
   resetMoviesSearch,
   updateTitleParam,
   updateYearParam,
-} from "store/feautures/moviesSearchSlice";
+} from "store/feautures";
 import { useAppDispatch } from "store/hooks/hooks";
 import { Button, Container, StyledSearchInput } from "./styles";
 

@@ -21,7 +21,7 @@ import userReducer from "./feautures/userSlice";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["favorites", "user"],
+  whitelist: ["favorites"],
 };
 
 const rootReducer = combineReducers({

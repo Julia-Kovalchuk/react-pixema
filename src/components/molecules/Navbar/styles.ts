@@ -10,7 +10,7 @@ const Wrapper = styled.header`
   align-items: center;
   padding-top: 40px;
   padding-bottom: 56px;
-  z-index: 1;
+  z-index: 10;
   background: ${Color.ThemeBlack};
   transition: all 0.7s;
 
@@ -32,6 +32,8 @@ const Wrapper = styled.header`
 `;
 
 const StyledLink = styled(Link)`
+  z-index: 20;
+
   ${Media.MD} {
     margin-right: 5px;
   }
@@ -43,4 +45,21 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export { Wrapper, StyledLink };
+const BurgerButton = styled.button`
+  position: absolute;
+  top: 40px;
+  right: 0;
+  min-width: 56px;
+  min-height: 56px;
+  background: ${Color.Primary};
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: ${Color.Light} 0px 5px 20px 0px;
+  }
+`;
+
+export { Wrapper, StyledLink, BurgerButton };

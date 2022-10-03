@@ -1,8 +1,9 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Color, H4, H6, Media } from "ui";
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   position: relative;
 `;
 
@@ -29,7 +30,7 @@ const Poster = styled.img`
   }
 
   ${Media.SM} {
-    max-height: 100%;
+    height: 100%;
   }
 `;
 

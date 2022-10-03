@@ -2,8 +2,8 @@ import { useToggle } from "hooks";
 import React, { useLayoutEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useAppSelector } from "store/hooks/hooks";
-import { getUserInfo } from "store/selectors/userSelectors";
-import { AsideNav, Modal, Navbar } from "../..";
+import { getUserInfo } from "store/selectors";
+import { AsideNav, Modal, Navbar } from "components";
 import { Container, Wrapper } from "./styles";
 
 export const MainTemplate = () => {
@@ -17,12 +17,11 @@ export const MainTemplate = () => {
   return (
     <Wrapper>
       <Navbar toggleModal={toggleModal} />
-
       <Container>
         <AsideNav />
         <Outlet />
       </Container>
-      {isOpen && <Modal toggleModal={toggleModal} />}
+      <Modal toggleModal={toggleModal} isOpen={isOpen} />
     </Wrapper>
   );
 };

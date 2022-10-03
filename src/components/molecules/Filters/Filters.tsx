@@ -9,7 +9,7 @@ import {
   updateTitleParam,
   updateTypeParam,
   updateYearParam,
-} from "store/feautures/moviesSearchSlice";
+} from "store/feautures";
 import { useAppDispatch } from "store/hooks/hooks";
 import { ContentType } from "types/types";
 import {

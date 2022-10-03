@@ -11,11 +11,11 @@ import {
   Text,
   Container,
 } from "./styles";
-import { ErrorMessage, Loading, FormInput, Button } from "../..";
-import { ROUTE } from "../../../routes/routes";
+import { ErrorMessage, Loading, FormInput, Button } from "components";
+import { ROUTE } from "routes/routes";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
-import { getUserInfo } from "store/selectors/userSelectors";
-import { fetchSignUpUser, resetError } from "store/feautures/userSlice";
+import { getUserInfo } from "store/selectors";
+import { fetchSignUpUser, resetError } from "store/feautures";
 import { useNavigate } from "react-router-dom";
 
 export type SignUpValues = {

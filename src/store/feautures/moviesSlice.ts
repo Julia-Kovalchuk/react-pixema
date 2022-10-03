@@ -1,28 +1,30 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import { transformMoviesAPI } from "services/mappers/transformMoviesAPI";
-import { movieAPI } from "../../services/movieAPI";
-import { IMovie, IMoviesAPIResponse } from "../../types/types";
+import { movieAPI } from "services/movieAPI";
+import { IMovie, IMoviesAPIResponse } from "types/types";
 
 interface IMoviesState {
   movies: IMovie[];
   isLoading: boolean;
   error: null | string;
+  page: number;
 }
 
 const initialState: IMoviesState = {
   movies: [],
   isLoading: false,
   error: null,
+  page: 1,
 };
 
 const fetchMovies = createAsyncThunk<
   IMoviesAPIResponse,
-  undefined,
+  { page: number },
   { rejectValue: string }
->("movies/fetchMovies", async (_, { rejectWithValue }) => {
+>("movies/fetchMovies", async ({ page }, { rejectWithValue }) => {
   try {
-    return await movieAPI.getAll();
+    return await movieAPI.getAll(page);
   } catch (error) {
     const axiosError = error as AxiosError;
     return rejectWithValue(axiosError.message);
@@ -32,7 +34,11 @@ const fetchMovies = createAsyncThunk<
 const moviesSlice = createSlice({
   name: "movies",
   initialState,
-  reducers: {},
+  reducers: {
+    createNextPage(state, { payload }: PayloadAction<boolean>) {
+      payload ? (state.page = state.page + 1) : (state.page = 1);
+    },
+  },
   extraReducers(builder) {
     builder.addCase(fetchMovies.pending, (state) => {
       state.isLoading = true;
@@ -40,7 +46,7 @@ const moviesSlice = createSlice({
     });
     builder.addCase(fetchMovies.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      state.movies = transformMoviesAPI(payload.Search);
+      state.movies = state.movies.concat(transformMoviesAPI(payload.Search));
     });
     builder.addCase(fetchMovies.rejected, (state, { payload }) => {
       if (payload) {
@@ -53,3 +59,5 @@ const moviesSlice = createSlice({
 
 export default moviesSlice.reducer;
 export { fetchMovies };
+
+export const { createNextPage } = moviesSlice.actions;

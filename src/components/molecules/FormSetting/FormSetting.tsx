@@ -16,16 +16,17 @@ import {
   Title,
   Description,
   ThemeBox,
+  ThemeContainer,
 } from "./styles";
-import { ErrorMessage, Loading, FormInput, Switch } from "../..";
-import { ROUTE } from "../../../routes/routes";
+import { ErrorMessage, Loading, FormInput, Switch } from "components";
+import { ROUTE } from "routes/routes";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
-import { getUserInfo } from "store/selectors/userSelectors";
+import { getUserInfo } from "store/selectors";
 import {
   fetchUpdateEmail,
   fetchUpdatePassword,
   updateUserName,
-} from "store/feautures/userSlice";
+} from "store/feautures";
 import { useNavigate } from "react-router-dom";
 
 export type SignUpValues = {
@@ -258,13 +259,13 @@ export const FormSetting = () => {
         <Container>
           <SectionName>Color mode</SectionName>
 
-          <FildsContainer>
+          <ThemeContainer>
             <ThemeBox>
               <Title>{themeMode.toUpperCase()}</Title>
               <Description>Use {themeMode} theme</Description>
             </ThemeBox>
             <Switch />
-          </FildsContainer>
+          </ThemeContainer>
         </Container>
 
         <ButtonBox>

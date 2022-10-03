@@ -2,9 +2,9 @@ import { EmptySearch, MoviesListFavorites } from "components";
 import { useEffect, useState } from "react";
 import { useMatch } from "react-router-dom";
 import { ROUTE } from "routes/routes";
-import { resetSortedFavorites } from "store/feautures/favoritesSlice";
+import { resetSortedFavorites } from "store/feautures";
 import { useAppSelector } from "store/hooks/hooks";
-import { getFavorites } from "store/selectors/favoritesSelectors";
+import { getFavorites } from "store/selectors";
 import { IMovieDetails } from "types/types";
 import { StyledEmptyIcon, Wrapper, Text, CustomLink } from "./styles";
 

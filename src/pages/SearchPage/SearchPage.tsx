@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { fetchMoviesSearch } from "store/feautures/moviesSearchSlice";
+import { fetchMoviesSearch } from "store/feautures";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
-import { getMoviesSearch } from "store/selectors/movieSearchSelectors";
-import { EmptySearch, MoviesList } from "../../components";
+import { getMoviesSearch } from "store/selectors";
+import { EmptySearch, MoviesList } from "components";
 
 export const SearchPage = () => {
   const dispatch = useAppDispatch();

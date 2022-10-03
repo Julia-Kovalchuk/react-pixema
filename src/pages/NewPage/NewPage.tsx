@@ -1,8 +1,8 @@
 import { MoviesList } from "components";
 import { useEffect } from "react";
-import { fetchNewMovies } from "store/feautures/newMoviesSlice";
+import { fetchNewMovies } from "store/feautures";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
-import { getNewMovies } from "store/selectors/newMovieSelectors";
+import { getNewMovies } from "store/selectors";
 
 export const NewPage = () => {
   const dispatch = useAppDispatch();

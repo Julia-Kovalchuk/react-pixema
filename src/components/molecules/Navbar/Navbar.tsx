@@ -1,11 +1,11 @@
-import { LogoIconLight, LogoIconDark } from "../../../assets";
-import { ROUTE } from "../../../routes/routes";
-import { StyledLink, Wrapper } from "./styles";
-import { useWindowSize } from "../../../hooks";
+import { LogoIconLight, LogoIconDark, BurgerIcon } from "assets";
+import { ROUTE } from "routes/routes";
+import { BurgerButton, StyledLink, Wrapper } from "./styles";
+import { useToggle, useWindowSize } from "hooks";
 import { BurgerMenu, SearchInput, UserEmblem } from "components";
 import { Breackpoint } from "ui";
 import { useAppSelector } from "store/hooks/hooks";
-import { getUserInfo } from "store/selectors/userSelectors";
+import { getUserInfo } from "store/selectors";
 
 interface IProps {
   toggleModal: (value: boolean) => void;
@@ -14,6 +14,7 @@ interface IProps {
 export const Navbar = ({ toggleModal }: IProps) => {
   const { themeMode } = useAppSelector(getUserInfo);
   const { screenWidth } = useWindowSize();
+  const [isOpen, toggleisOpen] = useToggle(false);
 
   return (
     <Wrapper>
@@ -25,8 +26,13 @@ export const Navbar = ({ toggleModal }: IProps) => {
       {screenWidth && screenWidth > Breackpoint.MD ? (
         <UserEmblem />
       ) : (
-        <BurgerMenu />
+        !isOpen && (
+          <BurgerButton type="button" onClick={() => toggleisOpen()}>
+            <BurgerIcon />
+          </BurgerButton>
+        )
       )}
+      {isOpen && <BurgerMenu toggleisOpen={toggleisOpen} isOpen={isOpen} />}
     </Wrapper>
   );
 };

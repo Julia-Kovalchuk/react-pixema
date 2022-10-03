@@ -15,7 +15,7 @@ const StyledAsideNav = styled.div`
   }
 `;
 
-const NavList = styled.ul`
+const NavList = styled.div`
   display: grid;
   grid-gap: 40px;
 `;

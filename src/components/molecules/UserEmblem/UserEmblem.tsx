@@ -2,9 +2,9 @@ import { AnimatePresence } from "framer-motion";
 import { useToggle } from "hooks";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "routes/routes";
-import { fetchSignOutUser } from "store/feautures/userSlice";
+import { fetchSignOutUser } from "store/feautures";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
-import { getUserInfo } from "store/selectors/userSelectors";
+import { getUserInfo } from "store/selectors";
 import { Avatar } from "../..";
 import {
   Arrow,

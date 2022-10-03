@@ -1,9 +1,9 @@
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
-import { useToggle } from "../../../hooks";
+import { useToggle } from "hooks";
 import { Button, Circle } from "./styles";
-import { getUserInfo } from "store/selectors/userSelectors";
-import { toggleTheme } from "store/feautures/userSlice";
 import { useLayoutEffect } from "react";
+import { getUserInfo } from "store/selectors";
+import { toggleTheme } from "store/feautures";
 
 export const Switch = () => {
   const { themeMode } = useAppSelector(getUserInfo);

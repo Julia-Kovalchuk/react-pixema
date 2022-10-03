@@ -3,9 +3,9 @@ import { useEffect, useRef } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "routes/routes";
-import { fetchSignInUser, resetError } from "store/feautures/userSlice";
+import { fetchSignInUser, resetError } from "store/feautures";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
-import { getUserInfo } from "store/selectors/userSelectors";
+import { getUserInfo } from "store/selectors";
 import {
   FormName,
   Container,

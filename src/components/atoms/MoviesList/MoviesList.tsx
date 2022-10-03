@@ -1,4 +1,4 @@
-import { ErrorMessage, LoadingMovies, MovieListItem } from "../..";
+import { ErrorMessage, LoadingMovies, MovieListItem } from "components";
 import { StyledMovieList } from "./styles";
 import { IMovie } from "types/types";
 import { useWindowSize } from "hooks";
@@ -31,16 +31,11 @@ export const MoviesList = ({ isLoading, error, movies, isNew }: IProps) => {
     return 1;
   };
 
-  if (isLoading) {
-    return <LoadingMovies />;
-  }
-
-  if (error) {
-    return <ErrorMessage>{error}</ErrorMessage>;
-  }
-  // Ошибку стилизовать
-
-  return (
+  return isLoading ? (
+    <LoadingMovies />
+  ) : error ? (
+    <ErrorMessage>{error}</ErrorMessage>
+  ) : (
     <StyledMovieList $CardСount={getCardСount()}>
       {movies.map((movie) => {
         return <MovieListItem movie={movie} key={movie.imdbID} isNew={isNew} />;

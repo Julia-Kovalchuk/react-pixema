@@ -38,15 +38,19 @@ export const Slider = ({ recommendations, error, isLoading }: IProps) => {
     return 1;
   };
 
-  if (isLoading) {
-    return <LoadingMovies />;
-  }
+  // if (isLoading) {
+  //   return <LoadingMovies />;
+  // }
 
-  if (error) {
-    return <ErrorMessage>{error}</ErrorMessage>;
-  }
+  // if (error) {
+  //   return <ErrorMessage>{error}</ErrorMessage>;
+  // }
 
-  return (
+  return isLoading ? (
+    <LoadingMovies />
+  ) : error ? (
+    <ErrorMessage>{error}</ErrorMessage>
+  ) : (
     <Wrapper>
       <ArrowContainer>
         <NavPrev className="custom_prev_btn">

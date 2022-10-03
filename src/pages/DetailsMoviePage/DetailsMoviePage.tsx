@@ -7,12 +7,10 @@ import {
 } from "components";
 import { MouseEvent, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { addToFavotires } from "store/feautures/favoritesSlice";
-import { fetchMovieByDetails } from "store/feautures/movieDetailsSlice";
+import { addToFavotires, fetchMovieByDetails } from "store/feautures";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
-import { getMovieDetails } from "store/selectors/movieDetailsSelectors";
-import { getUserInfo } from "store/selectors/userSelectors";
-import { getFavorites } from "store/selectors/favoritesSelectors";
+import { getMovieDetails, getFavorites, getUserInfo } from "store/selectors";
+
 import {
   StyledPage,
   BadgeContainer,
@@ -69,21 +67,24 @@ export const DetailsMoviePage = () => {
     dispatch(addToFavotires(details));
   };
 
-  if (isLoading) {
-    return <LoadingMovies />;
-  }
-
-  if (error) {
-    return <ErrorMessage>{error}</ErrorMessage>;
-  }
-
   // ОШИБКУ перестилизовать, хочу другую
 
-  return (
+  return isLoading ? (
+    <LoadingMovies />
+  ) : error ? (
+    <ErrorMessage>{error}</ErrorMessage>
+  ) : (
     <StyledPage>
       <Wrapper>
         <PosterContainer>
-          {poster === "N/A" ? <NotFoundBox /> : <Poster src={poster} />}
+          {poster === "N/A" ? (
+            <NotFoundBox />
+          ) : (
+            <Poster
+              src={poster}
+              alt={`poster movie ${title} is still in development`}
+            />
+          )}
           {isAuth && (
             <FavoritesButton
               type="button"

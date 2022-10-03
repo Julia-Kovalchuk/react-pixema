@@ -1,6 +1,9 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Color, H4, Media } from "ui";
+
+const Card = styled(motion.div)``;
 
 const StyledMovieListItem = styled(Link)`
   position: relative;
@@ -49,4 +52,4 @@ const Title = styled.h2`
   color: inherit;
 `;
 
-export { StyledMovieListItem, Poster, Title, Badge };
+export { StyledMovieListItem, Poster, Title, Badge, Card };

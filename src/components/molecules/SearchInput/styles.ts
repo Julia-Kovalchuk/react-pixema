@@ -4,6 +4,14 @@ import { Color, Media } from "ui";
 const Container = styled.div`
   position: relative;
   width: 100%;
+
+  ${Media.MD} {
+    margin-right: 100px;
+  }
+
+  ${Media.SM} {
+    margin-right: 0px;
+  }
 `;
 
 const StyledSearchInput = styled.input`
@@ -42,13 +50,11 @@ const StyledSearchInput = styled.input`
   }
 
   ${Media.MD} {
-    width: 90%;
     margin-right: 22px;
     margin-left: 22px;
   }
 
   ${Media.SM} {
-    width: 100%;
     margin: 80px 0px 0px;
   }
 `;
@@ -71,10 +77,6 @@ const Button = styled.button`
 
   &:active {
     scale: 0.95;
-  }
-
-  ${Media.MD} {
-    right: 45px;
   }
 
   ${Media.SM} {

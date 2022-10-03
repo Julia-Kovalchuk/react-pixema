@@ -58,6 +58,7 @@ const Box = styled.div`
 
   ${Media.SM} {
     grid-gap: 20px;
+    width: 100%;
   }
 `;
 
@@ -144,6 +145,10 @@ const ThemeBox = styled.div`
   color: ${Color.White};
 `;
 
+const ThemeContainer = styled(FildsContainer)`
+  flex-direction: row;
+`;
+
 const Title = styled.h3`
   ${H6}
 `;
@@ -168,4 +173,5 @@ export {
   Title,
   Description,
   ThemeBox,
+  ThemeContainer,
 };

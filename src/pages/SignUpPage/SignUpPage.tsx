@@ -1,4 +1,4 @@
-import { FormSignUp, ReturnHomePageLink } from "../../components";
+import { FormSignUp, ReturnHomePageLink } from "components";
 import { StyledSignUpPage } from "./styles";
 
 export const SignUpPage = () => {

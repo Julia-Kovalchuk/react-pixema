@@ -30,9 +30,10 @@ class MovieAPI {
     return this.wordForMovie[getRandomNumber(0, this.wordForMovie.length - 1)];
   };
 
-  public async getAll() {
+  public async getAll(page: number) {
     const params = {
       s: this.getRandomWord(this.wordForMovie),
+      page: page,
     };
 
     const { data } = await this.API.get<IMoviesAPIResponse>("", { params });

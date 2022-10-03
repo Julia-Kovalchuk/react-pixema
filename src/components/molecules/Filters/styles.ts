@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { StylesConfig } from "react-select";
 import styled from "styled-components";
 import { Color, H2, H6, Media } from "ui";
@@ -90,7 +91,7 @@ const Button = styled.button`
 `;
 
 const CustomStyles: StylesConfig<ISelectOption, boolean> = {
-  control: (styles, { isDisabled, isFocused }) => ({
+  control: (styles, { isDisabled, isFocused, hasValue }) => ({
     ...styles,
     position: "relative",
     minWidth: "100%",
@@ -98,7 +99,11 @@ const CustomStyles: StylesConfig<ISelectOption, boolean> = {
     borderRadius: "10px",
     background: isDisabled ? Color.Secondary : Color.Graphite,
     border: "1px solid",
-    borderColor: isFocused ? Color.Primary : Color.Graphite,
+    borderColor: isFocused
+      ? Color.Primary
+      : hasValue
+      ? Color.Primary
+      : Color.Graphite,
   }),
   option: (styles, { isFocused }) => ({
     ...styles,
@@ -127,6 +132,11 @@ const CustomStyles: StylesConfig<ISelectOption, boolean> = {
     color: Color.White,
   }),
   menuList: (styles) => ({
+    ...styles,
+    background: Color.Graphite,
+    borderRadius: "10px",
+  }),
+  menu: (styles) => ({
     ...styles,
     background: Color.Graphite,
     borderRadius: "10px",

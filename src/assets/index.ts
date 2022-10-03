@@ -16,6 +16,7 @@ import { ReactComponent as UserIcon } from "../assets/icons/user.svg";
 import { ReactComponent as EmptySearchIcon } from "../assets/icons/empty-search.svg";
 import { ReactComponent as SearchIcon } from "../assets/icons/search-icon.svg";
 import { ReactComponent as CloseIcon } from "../assets/icons/close.svg";
+import { ReactComponent as BurgerIcon } from "../assets/icons/burger-icon.svg";
 
 import arrowDown from "../assets/icons/arrow-down.svg";
 import arrowRight from "../assets/icons/arrow-right-user.svg";
@@ -40,5 +41,6 @@ export {
   EmptySearchIcon,
   SearchIcon,
   CloseIcon,
+  BurgerIcon,
 };
 export { arrowDown, formBackground, arrowRight };

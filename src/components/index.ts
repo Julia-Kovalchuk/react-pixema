@@ -24,13 +24,14 @@ import { MovieListItemFavorites } from "./atoms/MovieListItemFavorites/MovieList
 import { MoviesListFavorites } from "./atoms/MoviesListFavorites/MoviesListFavorites";
 import { NotFoundBox } from "./atoms/NotFoundBox/NotFoundBox";
 import { Slide } from "./atoms/Slide/Slide";
-import { BurgerMenu } from "./atoms/BurgerMenu/BurgerMenu";
+import { BurgerMenu } from "./molecules/BurgerMenu/BurgerMenu";
 import { Resetpassword } from "./molecules/ResetPassword/ResetPassword";
 import { FormSetting } from "./molecules/FormSetting/FormSetting";
 import { Filters } from "./molecules/Filters/Filters";
 import { EmptySearch } from "./molecules/EmptySearch/EmptySearch";
 import { Portal } from "./molecules/Portal/Portal";
 import { Modal } from "./molecules/Modal/Modal";
+import { Spiner } from "./atoms/Spiner/Spiner";
 
 export {
   AsideNav,
@@ -66,4 +67,5 @@ export {
   EmptySearch,
   Portal,
   Modal,
+  Spiner,
 };

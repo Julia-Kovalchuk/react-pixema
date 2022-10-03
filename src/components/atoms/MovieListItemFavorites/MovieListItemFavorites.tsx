@@ -12,7 +12,7 @@ import {
   StyledMovieListItem,
   Title,
 } from "./styles";
-import { removeFavorites } from "store/feautures/favoritesSlice";
+import { removeFavorites } from "store/feautures";
 
 interface IProps {
   movie: IMovieDetails;
@@ -28,12 +28,15 @@ export const MovieListItemFavorites = ({ movie }: IProps) => {
   };
 
   return (
-    <Container>
+    <Container whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}>
       <StyledMovieListItem to={`${ROUTE.MOVIE}${id}`}>
         {poster === "N/A" ? (
           <NotFoundBox />
         ) : (
-          <Poster src={poster} alt="poster is still in development" />
+          <Poster
+            src={poster}
+            alt={`poster movie ${title} is still in development`}
+          />
         )}
         <Title>{title}</Title>
       </StyledMovieListItem>
