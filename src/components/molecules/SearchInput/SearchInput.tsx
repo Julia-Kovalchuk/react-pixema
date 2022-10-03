@@ -7,7 +7,6 @@ import {
   resetSortedFavorites,
   sortFavorites,
   updateSearchword,
-  deleteAllParams,
   resetMoviesSearch,
   updateTitleParam,
   updateYearParam,
@@ -48,7 +47,6 @@ export const SearchInput = ({ toggleModal }: IProps) => {
 
   useEffect(() => {
     !isSearchPage && setInputValue("");
-    dispatch(deleteAllParams());
     dispatch(resetMoviesSearch());
     dispatch(updateSearchword(""));
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -13,6 +13,7 @@ import {
   updateYearParam,
   updateTypeParam,
   deleteAllParams,
+  createNextSearchPage,
 } from "./moviesSearchSlice";
 import { fetchMovies, createNextPage } from "./moviesSlice";
 import { fetchNewMovies, createNextPageNewMovies } from "./newMoviesSlice";
@@ -54,4 +55,5 @@ export {
   fetchUpdatePassword,
   fetchUpdateEmail,
   createNextPageNewMovies,
+  createNextSearchPage,
 };

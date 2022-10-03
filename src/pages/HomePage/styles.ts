@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Color, H6 } from "ui";
 
 const Container = styled.div`
   display: flex;

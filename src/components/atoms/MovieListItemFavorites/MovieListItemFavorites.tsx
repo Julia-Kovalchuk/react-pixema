@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { MouseEvent, useEffect } from "react";
 import { FavoritesButtonIcon } from "assets";
 import { NotFoundBox } from "components";

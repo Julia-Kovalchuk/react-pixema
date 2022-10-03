@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { TrendsIcon } from "assets";
 import { NotFoundBox } from "components";
 import { useAnimationControls } from "framer-motion";
