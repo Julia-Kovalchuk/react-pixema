@@ -12,7 +12,7 @@ const StyledForm = styled.form`
   background-color: ${Color.Dark};
 
   ${Media.SM} {
-    min-width: 272px;
+    width: 100%;
     grid-gap: 32px;
   }
 `;

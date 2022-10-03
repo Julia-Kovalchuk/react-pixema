@@ -51,12 +51,13 @@ class MovieAPI {
     return data;
   }
 
-  public async getNewMovies() {
+  public async getNewMovies(page: number) {
     const currentYear = new Date().getFullYear();
 
     const params = {
       s: this.getRandomWord(this.wordForMovie),
       y: currentYear,
+      page: page,
     };
 
     const { data } = await this.API.get<IMoviesAPIResponse>("", { params });

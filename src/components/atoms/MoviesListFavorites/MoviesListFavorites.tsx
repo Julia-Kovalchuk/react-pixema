@@ -28,9 +28,16 @@ export const MoviesListFavorites = ({ movies }: IProps) => {
     return 1;
   };
   return (
-    <StyledMovieList $CardСount={getCardСount()}>
-      {movies.map((movie) => {
-        return <MovieListItemFavorites movie={movie} key={movie.id} />;
+    <StyledMovieList
+      $CardСount={getCardСount()}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+    >
+      {movies.map((movie, index) => {
+        return (
+          <MovieListItemFavorites movie={movie} key={movie.id} index={index} />
+        );
       })}
     </StyledMovieList>
   );

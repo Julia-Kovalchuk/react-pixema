@@ -15,7 +15,7 @@ import {
   deleteAllParams,
 } from "./moviesSearchSlice";
 import { fetchMovies, createNextPage } from "./moviesSlice";
-import { fetchNewMovies } from "./newMoviesSlice";
+import { fetchNewMovies, createNextPageNewMovies } from "./newMoviesSlice";
 import {
   updateUserName,
   resetError,
@@ -53,4 +53,5 @@ export {
   fetchResetPassword,
   fetchUpdatePassword,
   fetchUpdateEmail,
+  createNextPageNewMovies,
 };

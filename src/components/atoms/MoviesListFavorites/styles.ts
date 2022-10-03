@@ -1,9 +1,10 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Media } from "ui";
 
 type CardСount = { $CardСount: number };
 
-const StyledMovieList = styled.div<CardСount>`
+const StyledMovieList = styled(motion.div)<CardСount>`
   display: grid;
   grid-template-columns: repeat(${({ $CardСount }) => $CardСount}, 1fr);
   grid-gap: 40px;

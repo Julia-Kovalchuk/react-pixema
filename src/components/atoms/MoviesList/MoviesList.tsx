@@ -36,9 +36,21 @@ export const MoviesList = ({ isLoading, error, movies, isNew }: IProps) => {
   ) : error ? (
     <ErrorMessage>{error}</ErrorMessage>
   ) : (
-    <StyledMovieList $CardСount={getCardСount()}>
-      {movies.map((movie) => {
-        return <MovieListItem movie={movie} key={movie.imdbID} isNew={isNew} />;
+    <StyledMovieList
+      $CardСount={getCardСount()}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+    >
+      {movies.map((movie, index) => {
+        return (
+          <MovieListItem
+            movie={movie}
+            key={movie.imdbID}
+            isNew={isNew}
+            index={index}
+          />
+        );
       })}
     </StyledMovieList>
   );

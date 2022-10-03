@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import { transformMoviesAPI } from "services/mappers/transformMoviesAPI";
 import { movieAPI } from "../../services/movieAPI";
@@ -8,21 +8,23 @@ interface IMoviesState {
   newMovies: IMovie[];
   isLoading: boolean;
   error: null | string;
+  page: number;
 }
 
 const initialState: IMoviesState = {
   newMovies: [],
   isLoading: false,
   error: null,
+  page: 1,
 };
 
 const fetchNewMovies = createAsyncThunk<
   IMoviesAPIResponse,
-  undefined,
+  { page: number },
   { rejectValue: string }
->("newMovies/fetchNewMovies", async (_, { rejectWithValue }) => {
+>("newMovies/fetchNewMovies", async ({ page }, { rejectWithValue }) => {
   try {
-    return await movieAPI.getNewMovies();
+    return await movieAPI.getNewMovies(page);
   } catch (error) {
     const axiosError = error as AxiosError;
     return rejectWithValue(axiosError.message);
@@ -32,7 +34,11 @@ const fetchNewMovies = createAsyncThunk<
 const newMoviesSlice = createSlice({
   name: "newMovies",
   initialState,
-  reducers: {},
+  reducers: {
+    createNextPageNewMovies(state, { payload }: PayloadAction<boolean>) {
+      payload ? (state.page = state.page + 1) : (state.page = 1);
+    },
+  },
   extraReducers(builder) {
     builder.addCase(fetchNewMovies.pending, (state) => {
       state.isLoading = true;
@@ -53,3 +59,4 @@ const newMoviesSlice = createSlice({
 
 export default newMoviesSlice.reducer;
 export { fetchNewMovies };
+export const { createNextPageNewMovies } = newMoviesSlice.actions;

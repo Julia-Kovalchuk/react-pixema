@@ -32,6 +32,7 @@ import { EmptySearch } from "./molecules/EmptySearch/EmptySearch";
 import { Portal } from "./molecules/Portal/Portal";
 import { Modal } from "./molecules/Modal/Modal";
 import { Spiner } from "./atoms/Spiner/Spiner";
+import { ShowMoreButton } from "./atoms/ShowMoreButton/ShowMoreButton";
 
 export {
   AsideNav,
@@ -68,4 +69,5 @@ export {
   Portal,
   Modal,
   Spiner,
+  ShowMoreButton,
 };
