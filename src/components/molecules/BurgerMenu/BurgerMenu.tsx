@@ -26,11 +26,16 @@ export const BurgerMenu = ({ toggleisOpen, isOpen }: IProps) => {
   const navigate = useNavigate();
 
   const handleOut = () => {
+    toggleisOpen();
     dispatch(fetchSignOutUser())
       .unwrap()
       .then(() => {
         navigate(ROUTE.HOME);
       });
+  };
+
+  const handleClick = () => {
+    toggleisOpen();
   };
 
   const variants = {
@@ -62,25 +67,25 @@ export const BurgerMenu = ({ toggleisOpen, isOpen }: IProps) => {
         >
           <Container>
             <NavList>
-              <Customlink to={ROUTE.HOME}>
+              <Customlink to={ROUTE.HOME} onClick={handleClick}>
                 <StyledIcon>
                   <HomeIcon />
                 </StyledIcon>{" "}
                 Home
               </Customlink>
-              <Customlink to={ROUTE.NEW}>
+              <Customlink to={ROUTE.NEW} onClick={handleClick}>
                 <StyledIcon>
                   <TrendsIcon />
                 </StyledIcon>{" "}
                 New
               </Customlink>
-              <Customlink to={ROUTE.FAVORITES}>
+              <Customlink to={ROUTE.FAVORITES} onClick={handleClick}>
                 <StyledIcon>
                   <FavoritesIcon />
                 </StyledIcon>{" "}
                 Favorites
               </Customlink>
-              <Customlink to={ROUTE.SETTINGS}>
+              <Customlink to={ROUTE.SETTINGS} onClick={handleClick}>
                 <StyledIcon>
                   <SettingsIcon />{" "}
                 </StyledIcon>
@@ -95,13 +100,17 @@ export const BurgerMenu = ({ toggleisOpen, isOpen }: IProps) => {
                 </>
               ) : (
                 <>
-                  <Customlink to={ROUTE.SIGN_IN}>Sign in</Customlink>
-                  <Customlink to={ROUTE.SIGN_UP}>Sign up</Customlink>
+                  <Customlink to={ROUTE.SIGN_IN} onClick={handleClick}>
+                    Sign in
+                  </Customlink>
+                  <Customlink to={ROUTE.SIGN_UP} onClick={handleClick}>
+                    Sign up
+                  </Customlink>
                 </>
               )}
             </NavList>
 
-            <ButtonClose type="button" onClick={() => toggleisOpen()}>
+            <ButtonClose type="button" onClick={handleClick}>
               <CloseIcon />
             </ButtonClose>
           </Container>

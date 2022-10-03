@@ -6,13 +6,14 @@ import { StyledCustomLink } from "./styles";
 interface IProps {
   to: ROUTE;
   children: ReactNode;
+  onClick?: () => void;
 }
 
-export const Customlink = ({ to, children }: IProps) => {
+export const Customlink = ({ to, children, onClick }: IProps) => {
   const isActive = useMatch(to);
 
   return (
-    <StyledCustomLink $isActive={isActive} to={to}>
+    <StyledCustomLink $isActive={isActive} to={to} onClick={onClick}>
       {children}
     </StyledCustomLink>
   );
