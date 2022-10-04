@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Button } from "antd";
-import { Color } from "../../../ui";
+import { Color } from "ui";
 
 const StyledLoading = styled(Button)`
   width: 100%;

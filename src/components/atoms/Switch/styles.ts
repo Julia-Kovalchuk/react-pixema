@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 import styled from "styled-components";
-import { Color } from "../../../ui";
+import { Color } from "ui";
 
 type isDarkTheme = { $isDarkTheme: boolean };
 

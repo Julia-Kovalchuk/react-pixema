@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   grid-template-columns: 1fr 3fr;
   align-items: start;
   grid-gap: 40px;
+  margin-top: 152px;
   color: ${Color.ThemeWhite};
 
   ${Media.MD} {
@@ -24,6 +25,7 @@ const Wrapper = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
+    margin-top: 0px;
   }
 `;
 

@@ -14,9 +14,14 @@ import {
   updateTypeParam,
   deleteAllParams,
   createNextSearchPage,
+  clearSearchMovies,
 } from "./moviesSearchSlice";
-import { fetchMovies, createNextPage } from "./moviesSlice";
-import { fetchNewMovies, createNextPageNewMovies } from "./newMoviesSlice";
+import { fetchMovies, createNextPage, clearMovies } from "./moviesSlice";
+import {
+  fetchNewMovies,
+  createNextPageNewMovies,
+  clearNewMovies,
+} from "./newMoviesSlice";
 import {
   updateUserName,
   resetError,
@@ -56,4 +61,7 @@ export {
   fetchUpdateEmail,
   createNextPageNewMovies,
   createNextSearchPage,
+  clearMovies,
+  clearNewMovies,
+  clearSearchMovies,
 };

@@ -1,6 +1,6 @@
 import { LogoIconLight, LogoIconDark, BurgerIcon } from "assets";
 import { ROUTE } from "routes/routes";
-import { BurgerButton, StyledLink, Wrapper } from "./styles";
+import { BurgerButton, Container, StyledLink, Wrapper } from "./styles";
 import { useToggle, useWindowSize } from "hooks";
 import { BurgerMenu, SearchInput, UserEmblem } from "components";
 import { Breackpoint } from "ui";
@@ -17,22 +17,24 @@ export const Navbar = ({ toggleModal }: IProps) => {
   const [isOpen, toggleisOpen] = useToggle(false);
 
   return (
-    <Wrapper>
-      <StyledLink to={ROUTE.HOME}>
-        {themeMode === "dark" ? <LogoIconDark /> : <LogoIconLight />}
-      </StyledLink>
+    <Container>
+      <Wrapper>
+        <StyledLink to={ROUTE.HOME}>
+          {themeMode === "dark" ? <LogoIconDark /> : <LogoIconLight />}
+        </StyledLink>
 
-      <SearchInput toggleModal={toggleModal} />
-      {screenWidth && screenWidth > Breackpoint.MD ? (
-        <UserEmblem />
-      ) : (
-        !isOpen && (
-          <BurgerButton type="button" onClick={() => toggleisOpen()}>
-            <BurgerIcon />
-          </BurgerButton>
-        )
-      )}
-      {isOpen && <BurgerMenu toggleisOpen={toggleisOpen} isOpen={isOpen} />}
-    </Wrapper>
+        <SearchInput toggleModal={toggleModal} />
+        {screenWidth && screenWidth > Breackpoint.MD ? (
+          <UserEmblem />
+        ) : (
+          !isOpen && (
+            <BurgerButton type="button" onClick={() => toggleisOpen()}>
+              <BurgerIcon />
+            </BurgerButton>
+          )
+        )}
+        {isOpen && <BurgerMenu toggleisOpen={toggleisOpen} isOpen={isOpen} />}
+      </Wrapper>
+    </Container>
   );
 };

@@ -12,6 +12,7 @@ import {
 interface IMoviesSearchState {
   movies: IMovie[];
   isLoading: boolean;
+  isMoreLoading: boolean;
   error: null | string;
   searchParams: ISearchParams;
 }
@@ -19,6 +20,7 @@ interface IMoviesSearchState {
 const initialState: IMoviesSearchState = {
   movies: [],
   isLoading: false,
+  isMoreLoading: false,
   error: null,
   searchParams: {
     title: "",
@@ -73,21 +75,34 @@ const moviesSearchSlice = createSlice({
         ? (state.searchParams.page = state.searchParams.page + 1)
         : (state.searchParams.page = 1);
     },
+    clearSearchMovies(state) {
+      state.movies = [];
+    },
   },
 
   extraReducers(builder) {
     builder.addCase(fetchMoviesSearch.pending, (state) => {
-      state.isLoading = true;
-      state.error = null;
+      if (state.movies.length === 0) {
+        state.isLoading = true;
+        state.error = null;
+      } else {
+        state.isMoreLoading = true;
+      }
     });
     builder.addCase(fetchMoviesSearch.fulfilled, (state, { payload }) => {
-      state.isLoading = false;
-      state.movies = transformMoviesAPI(payload.Search);
+      if (state.movies.length === 0) {
+        state.isLoading = false;
+        state.movies = state.movies.concat(transformMoviesAPI(payload.Search));
+      } else {
+        state.movies = state.movies.concat(transformMoviesAPI(payload.Search));
+        state.isMoreLoading = false;
+      }
     });
     builder.addCase(fetchMoviesSearch.rejected, (state, { payload }) => {
       if (payload) {
         state.isLoading = false;
         state.error = payload;
+        state.isMoreLoading = false;
       }
     });
   },
@@ -103,4 +118,5 @@ export const {
   updateTypeParam,
   deleteAllParams,
   createNextSearchPage,
+  clearSearchMovies,
 } = moviesSearchSlice.actions;

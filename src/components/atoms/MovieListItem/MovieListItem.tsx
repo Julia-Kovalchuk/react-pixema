@@ -20,16 +20,17 @@ export const MovieListItem = ({ movie, isNew, index }: IProps) => {
   useEffect(() => {
     controls.start((item) => ({
       opacity: 1,
-      x: 1,
       transition: { delay: item * 0.1 },
     }));
   }, []);
 
+  const amountLoadings = Math.ceil(index / 10);
+
   return (
     <Card
       whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
-      initial={{ x: -10 }}
-      custom={index}
+      initial={{ opacity: 0 }}
+      custom={amountLoadings > 1 ? index - 10 * (amountLoadings - 1) : index}
       animate={controls}
     >
       <StyledMovieListItem to={`${ROUTE.MOVIE}${imdbID}`}>

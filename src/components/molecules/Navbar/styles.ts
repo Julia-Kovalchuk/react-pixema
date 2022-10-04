@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Color, Media } from "../../../ui";
+import { Color, Media } from "ui";
+
+const Container = styled.div`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  padding-right: 122px;
+  background: ${Color.ThemeBlack};
+
+  ${Media.MD} {
+    padding-right: 80px;
+  }
+`;
 
 const Wrapper = styled.header`
   position: sticky;
@@ -10,7 +23,6 @@ const Wrapper = styled.header`
   align-items: center;
   padding-top: 40px;
   padding-bottom: 56px;
-  z-index: 10;
   background: ${Color.ThemeBlack};
   transition: all 0.7s;
 
@@ -62,4 +74,4 @@ const BurgerButton = styled.button`
   }
 `;
 
-export { Wrapper, StyledLink, BurgerButton };
+export { Wrapper, StyledLink, BurgerButton, Container };

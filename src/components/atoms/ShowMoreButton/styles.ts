@@ -2,12 +2,10 @@ import styled from "styled-components";
 import { Color, H6 } from "ui";
 
 const StyledShowMoreButton = styled.button`
-  display: grid;
-  grid-template-columns: 80% 20%;
+  display: flex;
   align-items: center;
   align-self: center;
   grid-gap: 10px;
-  max-width: 200px;
   padding: 8px 24px;
   border-radius: 10px;
   background: ${Color.Graphite};

@@ -39,11 +39,13 @@ export const MovieListItemFavorites = ({ movie, index }: IProps) => {
     dispatch(removeFavorites(id));
   };
 
+  const amountLoadings = Math.ceil(index / 10);
+
   return (
     <Container
       whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
       initial={{ x: -10 }}
-      custom={index}
+      custom={amountLoadings > 1 ? index - 10 * (amountLoadings - 1) : index}
       animate={controls}
     >
       <StyledMovieListItem to={`${ROUTE.MOVIE}${id}`}>

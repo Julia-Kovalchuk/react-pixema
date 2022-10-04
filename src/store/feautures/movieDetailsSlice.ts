@@ -8,7 +8,7 @@ import {
   IMovieDetails,
   IMovieDetailsAPI,
   IMoviesAPIResponse,
-} from "../../types/types";
+} from "types/types";
 
 interface IDetailsState {
   details: IMovieDetails;

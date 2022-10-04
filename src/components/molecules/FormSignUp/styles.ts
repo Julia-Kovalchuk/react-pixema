@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color, H2, H6, Media } from "../../../ui";
+import { Color, H2, H6, Media } from "ui";
 import { Link } from "react-router-dom";
 
 const StyledForm = styled.form`

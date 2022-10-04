@@ -4,7 +4,7 @@ import {
   IMoviesAPIResponse,
   ISearchParams,
 } from "types/types";
-import { getRandomNumber } from "../utils/getRandomNumber";
+import { getRandomNumber } from "utils/getRandomNumber";
 
 class MovieAPI {
   private readonly BASE_URL = process.env.REACT_APP_MOVIES_BASE_URL as string;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color, H6 } from "../../../ui";
+import { Color, H6 } from "ui";
 
 const StyledErrorMessage = styled.p`
   margin-top: -22px;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color, Media, H6 } from "../../../ui";
+import { Color, Media, H6 } from "ui";
 
 const StyledButton = styled.button`
   width: 100%;

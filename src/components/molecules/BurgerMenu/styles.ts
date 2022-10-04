@@ -39,6 +39,10 @@ const ButtonClose = styled.button`
   &:hover {
     box-shadow: ${Color.Light} 0px 5px 20px 0px;
   }
+
+  ${Media.SM} {
+    right: 10px;
+  }
 `;
 
 const NavList = styled.div`

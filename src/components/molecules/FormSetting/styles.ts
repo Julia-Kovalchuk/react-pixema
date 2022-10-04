@@ -1,12 +1,17 @@
 import styled from "styled-components";
-import { Color, H2, H6, Media } from "../../../ui";
+import { Color, H2, H6, Media } from "ui";
 
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 3fr 1fr;
+  margin-top: 152px;
 
   ${Media.MD} {
     grid-template-columns: 1fr;
+  }
+
+  ${Media.SM} {
+    margin-top: 20px;
   }
 `;
 

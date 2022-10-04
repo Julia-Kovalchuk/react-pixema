@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { Color, Media, H6, H4 } from "../../../ui";
-import { arrowDown, arrowRight } from "../../../assets";
+import { Color, Media, H6, H4 } from "ui";
+import { arrowDown, arrowRight } from "assets";
 import { Link } from "react-router-dom";
 
 type isOpen = { $isOpen: boolean };

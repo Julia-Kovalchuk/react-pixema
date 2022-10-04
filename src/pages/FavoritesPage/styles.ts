@@ -9,8 +9,13 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin-top: 152px;
   width: 100%;
   height: 75vh;
+
+  ${Media.SM} {
+    margin-top: 0px;
+  }
 `;
 
 const StyledEmptyIcon = styled(EmptyIcon)`

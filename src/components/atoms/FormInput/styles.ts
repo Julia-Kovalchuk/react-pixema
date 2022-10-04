@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import { Color, Media } from "../../../ui";
-
-//TODO перестилизовать форму
+import { Color, Media } from "ui";
 
 const StyledFormInput = styled.input`
   width: 100%;

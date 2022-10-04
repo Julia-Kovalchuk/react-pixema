@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { createNextPage, fetchMovies } from "store/feautures";
+import { clearMovies, createNextPage, fetchMovies } from "store/feautures";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getMovies } from "store/selectors";
 import { MoviesList, ShowMoreButton } from "components";
@@ -9,16 +9,18 @@ import { Container } from "./styles";
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
-  const { isLoading, error, movies, page } = useAppSelector(getMovies);
+  const { isLoading, error, movies, page, isMoreLoading } =
+    useAppSelector(getMovies);
   const isHomePage = useMatch(ROUTE.HOME);
+
+  useEffect(() => {
+    if (isHomePage) dispatch(clearMovies());
+    if (isHomePage) dispatch(createNextPage(false));
+  }, [dispatch, isHomePage]);
 
   useEffect(() => {
     dispatch(fetchMovies({ page }));
   }, [dispatch, page]);
-
-  useEffect(() => {
-    isHomePage && dispatch(createNextPage(false));
-  }, [dispatch, isHomePage]);
 
   const handleClick = () => {
     dispatch(createNextPage(true));
@@ -27,7 +29,10 @@ export const HomePage = () => {
   return (
     <Container>
       <MoviesList movies={movies} error={error} isLoading={isLoading} />
-      {!isLoading && !error && <ShowMoreButton onClick={handleClick} />}
+
+      {!isLoading && !error && (
+        <ShowMoreButton onClick={handleClick} isMoreLoading={isMoreLoading} />
+      )}
     </Container>
   );
 };

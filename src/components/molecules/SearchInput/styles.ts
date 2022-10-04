@@ -15,7 +15,7 @@ const Container = styled.div`
 `;
 
 const StyledSearchInput = styled.input`
-  max-height: 56px;
+  min-height: 56px;
   width: 100%;
   border: none;
   border-radius: 10px;

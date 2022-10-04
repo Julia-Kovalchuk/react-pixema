@@ -5,7 +5,7 @@ import { ROUTE } from "routes/routes";
 import { fetchSignOutUser } from "store/feautures";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors";
-import { Avatar } from "../..";
+import { Avatar } from "components";
 import {
   Arrow,
   StyledUserEmblem,

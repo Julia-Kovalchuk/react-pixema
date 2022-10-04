@@ -12,6 +12,7 @@ const StyledMovieListItem = styled(Link)`
   flex-direction: column;
   cursor: pointer;
   color: inherit;
+  margin-top: 152px;
 
   &:hover {
     color: ${Color.Primary};
@@ -41,7 +42,7 @@ const Title = styled.h2`
 
 const FavoritesButton = styled.button`
   position: absolute;
-  top: 20px;
+  top: 172px;
   right: 20px;
   width: 40px;
   height: 28px;
@@ -70,7 +71,7 @@ const FavoritesButton = styled.button`
 
 const Rating = styled.div`
   position: absolute;
-  top: 20px;
+  top: 172px;
   left: 20px;
   width: 40px;
   height: 28px;

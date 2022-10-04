@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import {
+  clearSearchMovies,
   createNextSearchPage,
   deleteAllParams,
   fetchMoviesSearch,
@@ -14,7 +15,7 @@ import { Container } from "./styles";
 
 export const SearchPage = () => {
   const dispatch = useAppDispatch();
-  const { isLoading, error, movies, searchParams } =
+  const { isLoading, error, movies, searchParams, isMoreLoading } =
     useAppSelector(getMoviesSearch);
   const isSearchPage = useMatch(ROUTE.SEARCH);
 
@@ -24,7 +25,8 @@ export const SearchPage = () => {
   }, [searchParams]);
 
   useEffect(() => {
-    !isSearchPage && dispatch(deleteAllParams());
+    if (isSearchPage) dispatch(clearSearchMovies());
+    if (!isSearchPage) dispatch(deleteAllParams());
   }, [dispatch, isSearchPage]);
 
   const handleClick = () => {
@@ -38,7 +40,9 @@ export const SearchPage = () => {
       ) : (
         <EmptySearch />
       )}
-      {!isLoading && !error && <ShowMoreButton onClick={handleClick} />}
+      {!isLoading && !error && (
+        <ShowMoreButton onClick={handleClick} isMoreLoading={isMoreLoading} />
+      )}
     </Container>
   );
 };

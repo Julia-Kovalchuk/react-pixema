@@ -10,6 +10,7 @@ const StyledMovieList = styled(motion.div)<CardСount>`
   grid-template-columns: repeat(${({ $CardСount }) => $CardСount}, 1fr);
   justify-content: space-between;
   grid-gap: 40px;
+  margin-top: 152px;
   padding: 10px 0px 64px;
 
   ${Media.MD} {
@@ -20,6 +21,7 @@ const StyledMovieList = styled(motion.div)<CardСount>`
 
   ${Media.SM} {
     grid-template-columns: 1fr;
+    margin-top: 20px;
     padding: 0px 0px 50px;
   }
 `;
