@@ -6,6 +6,7 @@ type isFavorit = { $isFavorit: boolean };
 const StyledPage = styled.div`
   display: flex;
   flex-direction: column;
+  padding-bottom: 64px;
 `;
 
 const Wrapper = styled.div`
@@ -33,6 +34,7 @@ const PosterContainer = styled.div`
   display: grid;
   grid-gap: 30px;
   width: 100%;
+  margin-bottom: 20px;
 
   ${Media.SM} {
     margin-top: 175px;
@@ -55,7 +57,7 @@ const FavoritesButton = styled.button<isFavorit>`
   width: 100%;
   border-radius: 15px;
   padding: 16px;
-  fill: ${({ $isFavorit }) => ($isFavorit ? Color.Primary : Color.Light)};
+  fill: ${({ $isFavorit }) => ($isFavorit ? Color.Primary : Color.Secondary)};
   cursor: pointer;
 
   &:hover {

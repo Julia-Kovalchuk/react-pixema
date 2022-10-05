@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   text-align: center;
   width: 100%;
   height: 75vh;
+  margin-top: 152px;
 `;
 
 const Container = styled.div`

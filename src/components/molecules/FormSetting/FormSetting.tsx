@@ -18,7 +18,13 @@ import {
   ThemeBox,
   ThemeContainer,
 } from "./styles";
-import { ErrorMessage, Loading, FormInput, Switch } from "components";
+import {
+  ErrorMessage,
+  Loading,
+  FormInput,
+  Switch,
+  ModalChangeSettings,
+} from "components";
 import { ROUTE } from "routes/routes";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors";
@@ -28,6 +34,7 @@ import {
   updateUserName,
 } from "store/feautures";
 import { useNavigate } from "react-router-dom";
+import { useToggle } from "hooks";
 
 export type SignUpValues = {
   userName: string;
@@ -42,6 +49,7 @@ export const FormSetting = () => {
     useAppSelector(getUserInfo);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [isOpen, toggleModal] = useToggle(false);
 
   //TODO creationTime
 
@@ -57,24 +65,18 @@ export const FormSetting = () => {
     dispatch(updateUserName(userData.userName));
     dispatch(fetchUpdateEmail(userData))
       .unwrap()
-      .then(() => {
-        alert("Почта обновлена"); // TODO modal
-        setTimeout(() => {
-          navigate(ROUTE.HOME); //TODO: перенос не тольк на home
-        }, 3000);
-      })
       .then(() => dispatch(fetchUpdatePassword(userData)).unwrap())
-      // .unwrap()
-      .then(() => {
-        alert("Пароль обновлен"); // TODO modal
-        setTimeout(() => {
-          navigate(ROUTE.HOME); //TODO: перенос не тольк на home
-        }, 3000);
-      })
       .finally(() => {
         resetField("password");
         resetField("newPassword");
         resetField("confirmPassword");
+        toggleModal();
+        setTimeout(() => {
+          toggleModal();
+        }, 2000);
+        setTimeout(() => {
+          navigate(ROUTE.HOME);
+        }, 3300);
       });
   };
 
@@ -113,172 +115,177 @@ export const FormSetting = () => {
       },
     },
     confirnPassword: {
-      validate: (value: {}) =>
-        value === newPassword || "The passwords don't match",
+      // validate: (value: {}) =>
+      //   value === newPassword || "The passwords don't match",
     },
   };
 
   return (
-    <Wrapper>
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <Container>
-          <SectionName>Profile</SectionName>
+    <>
+      <Wrapper>
+        <StyledForm onSubmit={handleSubmit(onSubmit)}>
+          <Container>
+            <SectionName>Profile</SectionName>
 
-          <FildsContainer>
-            <Box>
-              <FormFieldName>
-                Name
-                <Controller
-                  control={control}
-                  name="userName"
-                  rules={validationRules.name}
-                  render={({ field: { value, onChange } }) => (
-                    <FormInput
-                      onChange={onChange}
-                      value={value}
-                      defaultValue={name ? name : "User"}
-                      placeholder="Your name"
-                      type="text"
-                    />
-                  )}
-                />
-              </FormFieldName>
+            <FildsContainer>
+              <Box>
+                <FormFieldName>
+                  Name
+                  <Controller
+                    control={control}
+                    name="userName"
+                    rules={validationRules.name}
+                    render={({ field: { value, onChange } }) => (
+                      <FormInput
+                        onChange={onChange}
+                        value={value}
+                        defaultValue={name ? name : "User"}
+                        placeholder="Your name"
+                        type="text"
+                      />
+                    )}
+                  />
+                </FormFieldName>
 
-              {errors.userName && (
-                <ErrorMessage>{errors.userName.message}</ErrorMessage>
-              )}
-            </Box>
-
-            <Box>
-              <FormFieldName>
-                Email
-                <Controller
-                  control={control}
-                  name="email"
-                  rules={validationRules.email}
-                  render={({ field: { value, onChange } }) => (
-                    <FormInput
-                      onChange={onChange}
-                      value={value}
-                      defaultValue={email ? email : ""}
-                      placeholder="Your email"
-                      type="text"
-                    />
-                  )}
-                />
-              </FormFieldName>
-
-              {!errors.userName && errors.email && (
-                <ErrorMessage>{errors.email.message}</ErrorMessage>
-              )}
-            </Box>
-          </FildsContainer>
-        </Container>
-
-        <Container>
-          <SectionName>Password</SectionName>
-          <FildsContainer>
-            <Box>
-              <FormFieldName>
-                Password
-                <Controller
-                  control={control}
-                  name="password"
-                  rules={validationRules.password}
-                  render={({ field: { value, onChange } }) => (
-                    <FormInput
-                      onChange={onChange}
-                      value={value}
-                      placeholder="Your password"
-                      type="password"
-                    />
-                  )}
-                />
-              </FormFieldName>
-
-              {!errors.userName && !errors.email && errors.password && (
-                <ErrorMessage>{errors.password.message}</ErrorMessage>
-              )}
-            </Box>
-            <Box>
-              <FormFieldName>
-                New password
-                <Controller
-                  control={control}
-                  name="newPassword"
-                  rules={validationRules.password}
-                  render={({ field: { value, onChange } }) => (
-                    <FormInput
-                      onChange={onChange}
-                      value={value}
-                      placeholder="New password"
-                      type="password"
-                    />
-                  )}
-                />
-              </FormFieldName>
-
-              {!errors.userName && !errors.email && errors.newPassword && (
-                <ErrorMessage>{errors.newPassword.message}</ErrorMessage>
-              )}
-
-              <FormFieldName>
-                Confirm new password
-                <Controller
-                  control={control}
-                  name="confirmPassword"
-                  rules={validationRules.confirnPassword}
-                  render={({ field: { value, onChange } }) => (
-                    <FormInput
-                      onChange={onChange}
-                      value={value}
-                      placeholder="Confirm new password"
-                      type="password"
-                    />
-                  )}
-                />
-              </FormFieldName>
-
-              {!errors.userName &&
-                !errors.email &&
-                !errors.password &&
-                !errors.newPassword &&
-                errors.confirmPassword && (
-                  <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>
+                {errors.userName && (
+                  <ErrorMessage>{errors.userName.message}</ErrorMessage>
                 )}
-            </Box>
-          </FildsContainer>
-        </Container>
+              </Box>
 
-        {error && (
-          <StyledErrorMessage>
-            <ErrorMessage>{error}</ErrorMessage>
-          </StyledErrorMessage>
-        )}
+              <Box>
+                <FormFieldName>
+                  Email
+                  <Controller
+                    control={control}
+                    name="email"
+                    rules={validationRules.email}
+                    render={({ field: { value, onChange } }) => (
+                      <FormInput
+                        onChange={onChange}
+                        value={value}
+                        defaultValue={email ? email : ""}
+                        placeholder="Your email"
+                        type="text"
+                      />
+                    )}
+                  />
+                </FormFieldName>
 
-        <Container>
-          <SectionName>Color mode</SectionName>
+                {!errors.userName && errors.email && (
+                  <ErrorMessage>{errors.email.message}</ErrorMessage>
+                )}
+              </Box>
+            </FildsContainer>
+          </Container>
 
-          <ThemeContainer>
-            <ThemeBox>
-              <Title>{themeMode.toUpperCase()}</Title>
-              <Description>Use {themeMode} theme</Description>
-            </ThemeBox>
-            <Switch />
-          </ThemeContainer>
-        </Container>
+          <Container>
+            <SectionName>Password</SectionName>
+            <FildsContainer>
+              <Box>
+                <FormFieldName>
+                  Password
+                  <Controller
+                    control={control}
+                    name="password"
+                    rules={validationRules.password}
+                    render={({ field: { value, onChange } }) => (
+                      <FormInput
+                        onChange={onChange}
+                        value={value}
+                        placeholder="Your password"
+                        type="password"
+                      />
+                    )}
+                  />
+                </FormFieldName>
 
-        <ButtonBox>
-          <StyledButtonCancel type="button" onClick={handleClick}>
-            Cancel
-          </StyledButtonCancel>
-          {isPendingAuth ? (
-            <Loading />
-          ) : (
-            <StyledButtonSave type="submit">Save</StyledButtonSave>
+                {!errors.userName && !errors.email && errors.password && (
+                  <ErrorMessage>{errors.password.message}</ErrorMessage>
+                )}
+              </Box>
+              <Box>
+                <FormFieldName>
+                  New password
+                  <Controller
+                    control={control}
+                    name="newPassword"
+                    rules={validationRules.password}
+                    render={({ field: { value, onChange } }) => (
+                      <FormInput
+                        onChange={onChange}
+                        value={value}
+                        placeholder="New password"
+                        type="password"
+                      />
+                    )}
+                  />
+                </FormFieldName>
+
+                {!errors.userName && !errors.email && errors.newPassword && (
+                  <ErrorMessage>{errors.newPassword.message}</ErrorMessage>
+                )}
+
+                <FormFieldName>
+                  Confirm new password
+                  <Controller
+                    control={control}
+                    name="confirmPassword"
+                    rules={validationRules.confirnPassword}
+                    render={({ field: { value, onChange } }) => (
+                      <FormInput
+                        onChange={onChange}
+                        value={value}
+                        placeholder="Confirm new password"
+                        type="password"
+                      />
+                    )}
+                  />
+                </FormFieldName>
+
+                {!errors.userName &&
+                  !errors.email &&
+                  !errors.password &&
+                  !errors.newPassword &&
+                  errors.confirmPassword && (
+                    <ErrorMessage>
+                      {errors.confirmPassword.message}
+                    </ErrorMessage>
+                  )}
+              </Box>
+            </FildsContainer>
+          </Container>
+
+          {error && (
+            <StyledErrorMessage>
+              <ErrorMessage>{error}</ErrorMessage>
+            </StyledErrorMessage>
           )}
-        </ButtonBox>
-      </StyledForm>
-    </Wrapper>
+
+          <Container>
+            <SectionName>Color mode</SectionName>
+
+            <ThemeContainer>
+              <ThemeBox>
+                <Title>{themeMode.toUpperCase()}</Title>
+                <Description>Use {themeMode} theme</Description>
+              </ThemeBox>
+              <Switch />
+            </ThemeContainer>
+          </Container>
+
+          <ButtonBox>
+            <StyledButtonCancel type="button" onClick={handleClick}>
+              Cancel
+            </StyledButtonCancel>
+            {isPendingAuth ? (
+              <Loading />
+            ) : (
+              <StyledButtonSave type="submit">Save</StyledButtonSave>
+            )}
+          </ButtonBox>
+        </StyledForm>
+      </Wrapper>
+      <ModalChangeSettings toggleModal={toggleModal} isOpen={isOpen} />
+    </>
   );
 };

@@ -13,4 +13,5 @@ export enum ROUTE {
   RESSET_PASSWORD = "/reset-password",
   SEARCH = "search",
   NOT_FOUND = "*",
+  PIXEMA = "react-pixema",
 }

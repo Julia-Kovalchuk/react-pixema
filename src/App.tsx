@@ -14,6 +14,7 @@ import {
 } from "./pages";
 import { ROUTE } from "./routes/routes";
 import "./firebase";
+import { ReactPixemaPage } from "pages/ReactPixemaPage/ReactPixemaPage";
 
 export const App = () => {
   return (
@@ -30,6 +31,7 @@ export const App = () => {
         <Route path={ROUTE.SIGN_IN} element={<SignInPage />} />
         <Route path={ROUTE.SIGN_UP} element={<SignUpPage />} />
         <Route path={ROUTE.RESSET_PASSWORD} element={<ResetPasswordPage />} />
+        <Route path={ROUTE.PIXEMA} element={<ReactPixemaPage />} />
       </Route>
 
       <Route element={<RequareAuth />}>

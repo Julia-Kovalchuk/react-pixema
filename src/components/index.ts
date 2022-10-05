@@ -30,9 +30,10 @@ import { FormSetting } from "./molecules/FormSetting/FormSetting";
 import { Filters } from "./molecules/Filters/Filters";
 import { EmptySearch } from "./molecules/EmptySearch/EmptySearch";
 import { Portal } from "./molecules/Portal/Portal";
-import { Modal } from "./molecules/Modal/Modal";
+import { ModalFilters } from "./molecules/ModalFilters/ModalFilters";
 import { Spiner } from "./atoms/Spiner/Spiner";
 import { ShowMoreButton } from "./atoms/ShowMoreButton/ShowMoreButton";
+import { ModalChangeSettings } from "./molecules/ModalChangeSettings/ModalChangeSettings";
 
 export {
   AsideNav,
@@ -67,7 +68,8 @@ export {
   Filters,
   EmptySearch,
   Portal,
-  Modal,
+  ModalFilters,
   Spiner,
   ShowMoreButton,
+  ModalChangeSettings,
 };

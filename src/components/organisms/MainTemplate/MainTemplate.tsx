@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors";
-import { AsideNav, Modal, Navbar } from "components";
+import { AsideNav, ModalFilters, Navbar } from "components";
 import { Container, Wrapper } from "./styles";
 
 export const MainTemplate = () => {
@@ -21,7 +21,7 @@ export const MainTemplate = () => {
         <AsideNav />
         <Outlet />
       </Container>
-      <Modal toggleModal={toggleModal} isOpen={isOpen} />
+      <ModalFilters toggleModal={toggleModal} isOpen={isOpen} />
     </Wrapper>
   );
 };

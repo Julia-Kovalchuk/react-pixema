@@ -14,7 +14,6 @@ const StyledFilters = styled.form`
   top: 0;
   right: 0;
   width: 30%;
-  /* height: 100%; */
   padding: 48px 40px;
   border-radius: 20px;
   background: ${Color.Dark};
@@ -51,7 +50,7 @@ const CloseButton = styled.button`
 `;
 
 const FormName = styled.h2`
-  color: ${Color.ThemeWhite};
+  color: ${Color.White};
   ${H2};
 `;
 

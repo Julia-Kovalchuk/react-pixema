@@ -1,7 +1,7 @@
-import { Filters, Portal } from "components";
+import { Portal } from "components";
 import { AnimatePresence } from "framer-motion";
 import { PortalTarget } from "../Portal/Portal";
-import { Container } from "./styles";
+import { Container, Text, Wrapper } from "./styles";
 
 interface IProps {
   toggleModal: (value: boolean) => void;
@@ -11,20 +11,20 @@ interface IProps {
 const variants = {
   open: {
     opacity: 1,
-    x: 0,
+    y: 200,
     transition: {
       duration: 1,
     },
   },
   closed: {
     opacity: 0,
-    x: "100%",
+    y: 0,
     transition: {
       duration: 1,
     },
     transitionEnd: {
       opacity: 0,
-      x: "100%",
+      y: 0,
       transition: {
         duration: 1,
       },
@@ -32,19 +32,21 @@ const variants = {
   },
 };
 
-export const Modal = ({ toggleModal, isOpen }: IProps) => {
+export const ModalChangeSettings = ({ isOpen }: IProps) => {
   return (
     <Portal target={PortalTarget.MODAL}>
       <AnimatePresence>
         {isOpen && (
-          <Container
-            initial="closed"
-            exit="closed"
-            animate={isOpen ? "open" : "closed"}
-            variants={variants}
-          >
-            <Filters toggleModal={toggleModal} />
-          </Container>
+          <Wrapper>
+            <Container
+              initial="closed"
+              exit="closed"
+              animate={isOpen ? "open" : "closed"}
+              variants={variants}
+            >
+              <Text>Your credentials have been successfully updated!</Text>
+            </Container>
+          </Wrapper>
         )}
       </AnimatePresence>
     </Portal>
