@@ -44,8 +44,7 @@ export const FormSignIn = () => {
     dispatch(fetchSignInUser(userData))
       .unwrap()
       .then(() => {
-        navigate(ROUTE.HOME, { state: {}, replace: true }); //TODO: перенос не тольк на home
-        //TODO: modal window
+        navigate(ROUTE.HOME, { state: {}, replace: true });
       })
       .finally(() => {
         reset();
@@ -132,7 +131,7 @@ export const FormSignIn = () => {
       {error && (
         <StyledErrorMessage>
           <ErrorMessage>{error}</ErrorMessage>
-        </StyledErrorMessage> //TODO Modal?
+        </StyledErrorMessage>
       )}
       {isPendingAuth ? <Loading /> : <Button type="submit" text="Sign up" />}
 

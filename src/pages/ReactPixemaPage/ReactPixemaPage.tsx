@@ -1,64 +1,79 @@
-import { LogoIconDark, LogoIconLight } from "assets";
-import { useWindowSize } from "hooks";
-import React from "react";
+import {
+  BannerHomeIcon,
+  BannerNewIcon,
+  BannerSignInIcon,
+  MainLogoIcon,
+} from "assets";
+import React, { useLayoutEffect } from "react";
+import { ROUTE } from "routes/routes";
 import { useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors";
-import { Breackpoint } from "ui";
-import { Container, Wrapper } from "./styles";
+import { Autoplay } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  Context,
+  Logo,
+  Slide,
+  Title,
+  Wrapper,
+  WrapperSlide,
+  Text,
+  PictureContainer,
+} from "./styles";
 
 export const ReactPixemaPage = () => {
   const { themeMode } = useAppSelector(getUserInfo);
-  const { screenWidth } = useWindowSize();
 
-  const getslideСount = () => {
-    if (screenWidth) {
-      if (screenWidth > 2000) {
-        return 6;
-      } else if (screenWidth > 1500) {
-        return 5;
-      } else if (screenWidth > 1300) {
-        return 4;
-      } else if (screenWidth > 700) {
-        return 3;
-      } else if (screenWidth > Breackpoint.SM) {
-        return 2;
-      }
-    }
-    return 1;
-  };
+  useLayoutEffect(() => {
+    document.documentElement.setAttribute("data-theme", themeMode);
+  }, [themeMode]);
 
   return (
     <Wrapper>
-      <Container>
-        <p> Окунись в мир кино вместе с </p>
-        <LogoIconDark />
-      </Container>
+      <Title> Dive into the world of cinema with </Title>
+      <Logo to={ROUTE.HOME}>
+        <MainLogoIcon />
+      </Logo>
 
-      {/*   
-    <WrapperSlide>
-         <Swiper
-        slidesPerView={getslideСount()}
-        spaceBetween={40}
-        freeMode={true}
-        centeredSlides={false}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        navigation={{
-          nextEl: ".custom_next_btn",
-          prevEl: ".custom_prev_btn",
-        }}
-        modules={[FreeMode, Navigation, Autoplay]}
-      >
-        <Container>
-          {recommendations.map((movie) => {
-            return (
-              <SwiperSlide>
-                <p>Слфйд</p>
-              </SwiperSlide>
-            );
-          })}
-        </Container>
-      </Swiper>
-    </WrapperSlide> */}
+      <WrapperSlide>
+        <Swiper
+          slidesPerView={1}
+          centeredSlides={false}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          modules={[Autoplay]}
+        >
+          <SwiperSlide>
+            <Context to={ROUTE.HOME}>
+              <Slide>
+                <Text>Large selection of movies</Text>{" "}
+                <PictureContainer>
+                  <BannerHomeIcon />
+                </PictureContainer>
+              </Slide>
+            </Context>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Context to={ROUTE.NEW_OTHER_WAY}>
+              <Slide>
+                <Text>The loudest premieres</Text>{" "}
+                <PictureContainer>
+                  <BannerNewIcon />
+                </PictureContainer>
+              </Slide>
+            </Context>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Context to={ROUTE.SIGN_IN_OTHER_WAY}>
+              <Slide>
+                <Text>Register and use on any device</Text>{" "}
+                <PictureContainer>
+                  <BannerSignInIcon />
+                </PictureContainer>
+              </Slide>
+            </Context>
+          </SwiperSlide>
+        </Swiper>
+      </WrapperSlide>
     </Wrapper>
   );
 };

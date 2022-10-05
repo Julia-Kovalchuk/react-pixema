@@ -46,8 +46,7 @@ export const FormSignUp = () => {
     dispatch(fetchSignUpUser(userData))
       .unwrap()
       .then(() => {
-        navigate(ROUTE.HOME); //TODO: перенос не тольк на home
-        //TODO: modal window
+        navigate(ROUTE.HOME);
       })
       .finally(() => {
         reset();

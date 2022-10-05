@@ -38,14 +38,6 @@ export const Slider = ({ recommendations, error, isLoading }: IProps) => {
     return 1;
   };
 
-  // if (isLoading) {
-  //   return <LoadingMovies />;
-  // }
-
-  // if (error) {
-  //   return <ErrorMessage>{error}</ErrorMessage>;
-  // }
-
   return isLoading ? (
     <LoadingMovies />
   ) : error ? (

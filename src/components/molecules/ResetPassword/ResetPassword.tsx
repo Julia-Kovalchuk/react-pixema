@@ -84,7 +84,7 @@ export const Resetpassword = () => {
       {error && (
         <StyledErrorMessage>
           <ErrorMessage>{error}</ErrorMessage>
-        </StyledErrorMessage> //TODO Modal?
+        </StyledErrorMessage>
       )}
       {isPendingAuth ? <Loading /> : <Button type="submit" text="Enter" />}
     </StyledForm>

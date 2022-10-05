@@ -67,8 +67,6 @@ export const DetailsMoviePage = () => {
     dispatch(addToFavotires(details));
   };
 
-  // ОШИБКУ перестилизовать, хочу другую
-
   return isLoading ? (
     <LoadingMovies />
   ) : error ? (

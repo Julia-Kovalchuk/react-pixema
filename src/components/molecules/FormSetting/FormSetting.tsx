@@ -51,14 +51,12 @@ export const FormSetting = () => {
   const navigate = useNavigate();
   const [isOpen, toggleModal] = useToggle(false);
 
-  //TODO creationTime
-
   const {
     handleSubmit,
     resetField,
     control,
     formState: { errors },
-    watch,
+    // watch,
   } = useForm<SignUpValues>();
 
   const onSubmit: SubmitHandler<SignUpValues> = (userData) => {
@@ -84,7 +82,7 @@ export const FormSetting = () => {
     navigate(ROUTE.HOME);
   };
 
-  const newPassword = watch("newPassword", "");
+  // const newPassword = watch("newPassword", "");
 
   const validationRules = {
     name: {

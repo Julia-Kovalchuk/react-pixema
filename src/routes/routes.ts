@@ -1,6 +1,7 @@
 export enum ROUTE {
   HOME = "/",
   NEW = "new",
+  NEW_OTHER_WAY = "/new",
   FAVORITES = "favorites",
   SETTINGS = "settings",
   MOVIE = "/movie/",

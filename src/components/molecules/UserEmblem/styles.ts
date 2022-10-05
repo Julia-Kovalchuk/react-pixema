@@ -108,7 +108,6 @@ const ButtonOut = styled.button`
   background: ${Color.Graphite};
   text-align: left;
   ${H4};
-  font-size: 16px; //TODO: delete
   color: ${Color.White};
   cursor: pointer;
   transition: color 0.1s, scale 0.3s;

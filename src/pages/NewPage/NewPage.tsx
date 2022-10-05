@@ -19,7 +19,7 @@ export const NewPage = () => {
   useEffect(() => {
     if (isNew) dispatch(clearNewMovies());
     if (!isNew) dispatch(createNextPageNewMovies(false));
-  }, [dispatch, isNew]); // здесь убрала ! так как тут другая система про isCurrentPage
+  }, [dispatch, isNew]);
 
   useEffect(() => {
     dispatch(fetchNewMovies({ page }));

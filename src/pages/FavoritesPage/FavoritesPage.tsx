@@ -26,7 +26,6 @@ export const FavoritesPage = () => {
     !isFavoritesPage && resetSortedFavorites();
   }, [isFavoritesPage]);
 
-  // TODO одно условие летит, пересмотреть
   return searchWord ? (
     sortedFavorites.length !== 0 ? (
       <MoviesListFavorites movies={favoritesValues} />
@@ -45,4 +44,3 @@ export const FavoritesPage = () => {
     </Wrapper>
   );
 };
-// button

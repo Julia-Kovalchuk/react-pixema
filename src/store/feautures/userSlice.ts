@@ -24,7 +24,6 @@ interface IUserState {
   creationTime: string | null;
   isResetPassword: boolean;
   themeMode: Theme;
-  // TODO добавить ressetpasswordEmail для модалки
 }
 
 const initialState: IUserState = {
