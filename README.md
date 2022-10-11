@@ -64,7 +64,7 @@ Pixema is a modern movie search service in which you can:
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 - [![React][react.js]][react-url]
-- [![styled-components][styled-components.com]][styled-components-url]
+- [![styled-components][styled-components]][styled-components-url]
 - [![React Router][reactrouter.com]][react-router-url]
 - [![React Hook Form][react-hook-form.com]][react-hook-form-url]
 - [![React Select][react-select.com]][react-select-url]
@@ -166,8 +166,6 @@ Project Link: [https://github.com/Julia-Kovalchuk/react-pixema](https://github.c
 [react-hook-form-url]: https://react-hook-form.com/
 [github.com/rt2zz/redux-persist]: https://img.shields.io/badge/-redux--persist-persist?style=for-the-badge
 [persist-url]: https://github.com/rt2zz/redux-persist#readme
-[styled-components]: https://img.shields.io/badge/-styled--components-35495E?style=for-the-badge&logo=styled-components&logoColor=pink
-[styled-components-url]: https://styled-components.com/
 [framer.com]: https://img.shields.io/badge/-framer--motion-DD0031?style=for-the-badge&logo=framer&logoColor=black
 [framer-url]: https://www.framer.com/
 [react-select.com]: https://img.shields.io/badge/-react--select-FF3E00?style=for-the-badge
