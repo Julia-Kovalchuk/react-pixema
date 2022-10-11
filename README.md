@@ -64,7 +64,7 @@ Pixema is a modern movie search service in which you can:
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 - [![React][react.js]][react-url]
-- [![Styled components][styled-components.com]][styled-components-url]
+- [![styled-components][styled-components.com]][styled-components-url]
 - [![React Router][reactrouter.com]][react-router-url]
 - [![React Hook Form][react-hook-form.com]][react-hook-form-url]
 - [![React Select][react-select.com]][react-select-url]
