@@ -53,6 +53,12 @@ const moviesSearchSlice = createSlice({
     resetMoviesSearch(state) {
       state.movies = [];
     },
+    resetYearParam(state) {
+      state.searchParams.year = "";
+    },
+    resetTypeParam(state) {
+      state.searchParams.type = "";
+    },
     updateTitleParam(state, { payload }: PayloadAction<string>) {
       state.searchParams.title = payload;
     },
@@ -119,4 +125,6 @@ export const {
   deleteAllParams,
   createNextSearchPage,
   clearSearchMovies,
+  resetYearParam,
+  resetTypeParam,
 } = moviesSearchSlice.actions;

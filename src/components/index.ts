@@ -34,6 +34,7 @@ import { ModalFilters } from "./molecules/ModalFilters/ModalFilters";
 import { Spiner } from "./atoms/Spiner/Spiner";
 import { ShowMoreButton } from "./atoms/ShowMoreButton/ShowMoreButton";
 import { ModalChangeSettings } from "./molecules/ModalChangeSettings/ModalChangeSettings";
+import { Badge } from "./atoms/Badge/Badge";
 
 export {
   AsideNav,
@@ -72,4 +73,5 @@ export {
   Spiner,
   ShowMoreButton,
   ModalChangeSettings,
+  Badge,
 };

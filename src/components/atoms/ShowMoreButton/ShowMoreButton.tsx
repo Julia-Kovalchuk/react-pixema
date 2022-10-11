@@ -8,7 +8,8 @@ interface IProps {
 
 export const ShowMoreButton = ({ onClick, isMoreLoading }: IProps) => {
   return (
-    <StyledShowMoreButton onClick={onClick}>
+    // <StyledShowMoreButton onClick={onClick}>
+    <StyledShowMoreButton onClick={onClick} disabled={isMoreLoading}>
       Show more {isMoreLoading && <Spiner />}
     </StyledShowMoreButton>
   );

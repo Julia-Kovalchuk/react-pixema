@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable indent */
 import { MouseEventHandler } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";

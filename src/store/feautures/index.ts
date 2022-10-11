@@ -15,6 +15,8 @@ import {
   deleteAllParams,
   createNextSearchPage,
   clearSearchMovies,
+  resetYearParam,
+  resetTypeParam,
 } from "./moviesSearchSlice";
 import { fetchMovies, createNextPage, clearMovies } from "./moviesSlice";
 import {
@@ -64,4 +66,6 @@ export {
   clearMovies,
   clearNewMovies,
   clearSearchMovies,
+  resetYearParam,
+  resetTypeParam,
 };

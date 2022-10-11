@@ -63,9 +63,11 @@ export const SearchInput = ({ toggleModal }: IProps) => {
         placeholder="Search..."
         value={inputValue}
       />
-      <Button onClick={handleClick} type="button">
-        <SearchIcon />
-      </Button>
+      {!isFavoritesPage && (
+        <Button onClick={handleClick} type="button">
+          <SearchIcon />
+        </Button>
+      )}
     </Container>
   );
 };
