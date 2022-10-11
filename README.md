@@ -90,7 +90,7 @@ Use the `npm install` to install all libraries.
 
 To use the local copy, follow these steps:
 
-1. Get a free API Key at [![omdb-api][http://www.omdbapi.com/]][omdb-api-url]
+1. Get a free API Key at [![omdb-api][omdbapi.com]][omdb-api-url]
 2. Clone the repo
    ```sh
    git clone https://github.com/Julia-Kovalchuk/react-pixema
@@ -175,4 +175,4 @@ Project Link: [https://github.com/Julia-Kovalchuk/react-pixema](https://github.c
 [styled-components]: https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white
 [styled-components-url]: https://styled-components.com/
 [omdb-api]: https://img.shields.io/badge/-OMDb%20API%20-blue
-[omdb-api-url]: https://styled-components.com/
+[omdb-api-url]: http://www.omdbapi.com/
