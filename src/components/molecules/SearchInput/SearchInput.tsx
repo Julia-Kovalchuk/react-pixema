@@ -15,7 +15,6 @@ import {
   deleteAllParams,
   clearSearchMovies,
   resetTypeParam,
-  createNextSearchPage,
   resetYearParam,
 } from "store/feautures";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
@@ -34,7 +33,6 @@ export const SearchInput = ({ toggleModal }: IProps) => {
   const isSearchPage = useMatch(ROUTE.SEARCH);
   const isNewPage = useMatch(ROUTE.NEW);
   const isFavoritesPage = useMatch(ROUTE.FAVORITES);
-
   const { searchParams } = useAppSelector(getMoviesSearch);
 
   const currentYear = new Date().getFullYear().toString();
@@ -73,13 +71,11 @@ export const SearchInput = ({ toggleModal }: IProps) => {
   const handleResetType = () => {
     dispatch(resetTypeParam());
     dispatch(clearSearchMovies());
-    createNextSearchPage(false);
   };
 
   const handleResetYear = () => {
     dispatch(resetYearParam());
     dispatch(clearSearchMovies());
-    createNextSearchPage(false);
   };
 
   return (

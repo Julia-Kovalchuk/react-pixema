@@ -7,7 +7,11 @@ import { getUserInfo } from "store/selectors";
 import { AsideNav, ModalFilters, Navbar } from "components";
 import { Container, Wrapper } from "./styles";
 import { ROUTE } from "routes/routes";
-import { clearSearchMovies, deleteAllParams } from "store/feautures";
+import {
+  clearSearchMovies,
+  createNextSearchPage,
+  deleteAllParams,
+} from "store/feautures";
 
 export const MainTemplate = () => {
   const { themeMode } = useAppSelector(getUserInfo);
@@ -19,6 +23,7 @@ export const MainTemplate = () => {
     if (!isSearchPage) {
       dispatch(clearSearchMovies());
       dispatch(deleteAllParams());
+      createNextSearchPage(false);
     }
   }, [isSearchPage]);
 

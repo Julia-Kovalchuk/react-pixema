@@ -90,7 +90,7 @@ Use the `npm install` to install all libraries.
 
 To use the local copy, follow these steps:
 
-1. Get a free API Key at [https://www.omdbapi.com/](OMDb API)
+1. Get a free API Key at [![omdb-api][http://www.omdbapi.com/]][omdb-api-url]
 2. Clone the repo
    ```sh
    git clone https://github.com/Julia-Kovalchuk/react-pixema
@@ -170,7 +170,9 @@ Project Link: [https://github.com/Julia-Kovalchuk/react-pixema](https://github.c
 [framer-url]: https://www.framer.com/
 [react-select.com]: https://img.shields.io/badge/-react--select-FF3E00?style=for-the-badge
 [react-select-url]: https://react-select.com/home
-[reactrouter.com]: https://img.shields.io/badge/-react--router-563D7C?style=for-the-badge&logo=react-router&logoColor=white
+[reactrouter.com]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
 [react-router-url]: https://reactrouter.com/
-[styled-components]: https://img.shields.io/badge/-styled--components-35495E?style=for-the-badge&logo=styled-components&logoColor=pink
+[styled-components]: https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white
 [styled-components-url]: https://styled-components.com/
+[omdb-api]: https://img.shields.io/badge/-OMDb%20API%20-blue
+[omdb-api-url]: https://styled-components.com/
