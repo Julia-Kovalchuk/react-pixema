@@ -174,5 +174,5 @@ Project Link: [https://github.com/Julia-Kovalchuk/react-pixema](https://github.c
 [react-router-url]: https://reactrouter.com/
 [styled-components]: https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white
 [styled-components-url]: https://styled-components.com/
-[omdb-api]: https://img.shields.io/badge/-OMDb%20API%20-blue
+[omdbapi.com]: https://img.shields.io/badge/-OMDb%20API%20-blue
 [omdb-api-url]: http://www.omdbapi.com/
