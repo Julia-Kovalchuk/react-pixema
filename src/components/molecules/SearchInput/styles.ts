@@ -85,4 +85,24 @@ const Button = styled.button`
   }
 `;
 
-export { StyledSearchInput, Button, Container };
+const BadgeContainer = styled.div`
+  position: absolute;
+  top: 70px;
+  left: 0;
+  display: flex;
+  grid-gap: 16px;
+  justify-content: start;
+  align-items: center;
+
+  ${Media.MD} {
+    top: 65px;
+    left: 20px;
+  }
+
+  ${Media.SM} {
+    top: 145px;
+    left: 0;
+  }
+`;
+
+export { StyledSearchInput, Button, Container, BadgeContainer };

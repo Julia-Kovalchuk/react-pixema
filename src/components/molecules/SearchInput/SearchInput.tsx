@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { SearchIcon } from "assets";
+import { Badge } from "components";
 import { useDebounce, useInput } from "hooks";
 import { MouseEventHandler, useEffect } from "react";
 import { useMatch, useNavigate } from "react-router-dom";
@@ -10,9 +12,15 @@ import {
   resetMoviesSearch,
   updateTitleParam,
   updateYearParam,
+  deleteAllParams,
+  clearSearchMovies,
+  resetTypeParam,
+  createNextSearchPage,
+  resetYearParam,
 } from "store/feautures";
-import { useAppDispatch } from "store/hooks/hooks";
-import { Button, Container, StyledSearchInput } from "./styles";
+import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
+import { getMoviesSearch } from "store/selectors";
+import { Button, Container, StyledSearchInput, BadgeContainer } from "./styles";
 
 interface IProps {
   toggleModal: (value: boolean) => void;
@@ -26,6 +34,8 @@ export const SearchInput = ({ toggleModal }: IProps) => {
   const isSearchPage = useMatch(ROUTE.SEARCH);
   const isNewPage = useMatch(ROUTE.NEW);
   const isFavoritesPage = useMatch(ROUTE.FAVORITES);
+
+  const { searchParams } = useAppSelector(getMoviesSearch);
 
   const currentYear = new Date().getFullYear().toString();
 
@@ -42,22 +52,53 @@ export const SearchInput = ({ toggleModal }: IProps) => {
         dispatch(resetSortedFavorites());
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debounceValue]);
 
   useEffect(() => {
     !isSearchPage && setInputValue("");
     dispatch(resetMoviesSearch());
     dispatch(updateSearchword(""));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSearchPage]);
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
     toggleModal(true);
   };
 
+  const handleResetTitle = () => {
+    dispatch(deleteAllParams());
+    dispatch(clearSearchMovies());
+    navigate(ROUTE.HOME);
+  };
+
+  const handleResetType = () => {
+    dispatch(resetTypeParam());
+    dispatch(clearSearchMovies());
+    createNextSearchPage(false);
+  };
+
+  const handleResetYear = () => {
+    dispatch(resetYearParam());
+    dispatch(clearSearchMovies());
+    createNextSearchPage(false);
+  };
+
   return (
     <Container>
+      <BadgeContainer>
+        {searchParams.title && (
+          <Badge text={searchParams.title} onClick={handleResetTitle} />
+        )}
+        {searchParams.type && (
+          <Badge text={searchParams.type} onClick={handleResetType} />
+        )}
+        {searchParams.year && (
+          <Badge
+            text={searchParams.year === currentYear ? "new" : searchParams.year}
+            onClick={handleResetYear}
+          />
+        )}
+      </BadgeContainer>
+
       <StyledSearchInput
         onChange={onChange}
         placeholder="Search..."

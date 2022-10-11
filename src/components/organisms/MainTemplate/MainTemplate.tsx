@@ -1,14 +1,26 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useToggle } from "hooks";
-import React, { useLayoutEffect } from "react";
-import { Outlet } from "react-router-dom";
-import { useAppSelector } from "store/hooks/hooks";
+import React, { useEffect, useLayoutEffect } from "react";
+import { Outlet, useMatch } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getUserInfo } from "store/selectors";
 import { AsideNav, ModalFilters, Navbar } from "components";
 import { Container, Wrapper } from "./styles";
+import { ROUTE } from "routes/routes";
+import { clearSearchMovies, deleteAllParams } from "store/feautures";
 
 export const MainTemplate = () => {
   const { themeMode } = useAppSelector(getUserInfo);
   const [isOpen, toggleModal] = useToggle(false);
+  const isSearchPage = useMatch(ROUTE.SEARCH);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!isSearchPage) {
+      dispatch(clearSearchMovies());
+      dispatch(deleteAllParams());
+    }
+  }, [isSearchPage]);
 
   useLayoutEffect(() => {
     document.documentElement.setAttribute("data-theme", themeMode);

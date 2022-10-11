@@ -21,7 +21,7 @@ const StyledMovieList = styled(motion.div)<CardСount>`
 
   ${Media.SM} {
     grid-template-columns: 1fr;
-    margin-top: 20px;
+    margin-top: 35px;
     padding: 0px 0px 50px;
   }
 `;

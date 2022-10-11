@@ -58,12 +58,12 @@ export const Filters = ({ toggleModal }: IProps) => {
   } = useForm<FiltresValues>();
 
   const onSubmit: SubmitHandler<FiltresValues> = (filters) => {
+    navigate(ROUTE.SEARCH);
     dispatch(updateTitleParam(filters.title));
     dispatch(updateYearParam(filters.year));
     dispatch(updateTypeParam(filters.type));
     reset();
     toggleModal(false);
-    navigate(ROUTE.SEARCH);
   };
 
   const handleReset: MouseEventHandler<HTMLButtonElement> = () => {

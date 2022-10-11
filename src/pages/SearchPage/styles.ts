@@ -7,14 +7,4 @@ const Container = styled.div`
   padding-bottom: 60px;
 `;
 
-const BadgeContainer = styled.div`
-  position: relative;
-  top: 150px;
-  left: 0;
-  display: flex;
-  grid-gap: 16px;
-  justify-content: start;
-  align-items: center;
-`;
-
-export { Container, BadgeContainer };
+export { Container };
