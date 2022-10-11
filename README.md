@@ -174,3 +174,5 @@ Project Link: [https://github.com/Julia-Kovalchuk/react-pixema](https://github.c
 [react-select-url]: https://react-select.com/home
 [reactrouter.com]: https://img.shields.io/badge/-react--router-563D7C?style=for-the-badge&logo=react-router&logoColor=white
 [react-router-url]: https://reactrouter.com/
+[styled-components]: https://img.shields.io/badge/-styled--components-35495E?style=for-the-badge&logo=styled-components&logoColor=pink
+[styled-components-url]: https://styled-components.com/
