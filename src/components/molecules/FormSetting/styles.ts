@@ -111,9 +111,14 @@ const StyledButtonCancel = styled(Button)`
 
 const StyledButtonSave = styled(Button)`
   background-color: ${Color.Primary};
+  width: 25%;
 
   &:hover {
     background-color: ${Color.PrimaryLight};
+  }
+
+  ${Media.MD} {
+    width: 50%;
   }
 `;
 

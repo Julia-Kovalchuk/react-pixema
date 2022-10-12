@@ -3,7 +3,12 @@ import { useEffect } from "react";
 import { createNextSearchPage, fetchMoviesSearch } from "store/feautures";
 import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import { getMoviesSearch } from "store/selectors";
-import { EmptySearch, Loading, MoviesList, ShowMoreButton } from "components";
+import {
+  EmptySearch,
+  LoadingMovies,
+  MoviesList,
+  ShowMoreButton,
+} from "components";
 import { Container } from "./styles";
 
 export const SearchPage = () => {
@@ -23,7 +28,7 @@ export const SearchPage = () => {
   return (
     <Container>
       {isLoading ? (
-        <Loading />
+        <LoadingMovies />
       ) : movies.length !== 0 ? (
         <>
           <MoviesList movies={movies} error={error} isLoading={isLoading} />

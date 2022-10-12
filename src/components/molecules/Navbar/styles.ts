@@ -38,7 +38,7 @@ const Wrapper = styled.header`
     right: 0;
     left: 0;
     z-index: 2;
-    padding-bottom: 28px;
+    padding-bottom: 50px;
     margin: 0px 10px;
   }
 `;

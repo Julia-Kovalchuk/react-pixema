@@ -35,7 +35,6 @@ export const Resetpassword = () => {
       .unwrap()
       .then(() => {
         navigate(ROUTE.SIGN_IN_OTHER_WAY);
-        //TODO: MODAL после сброса показывем модалку с сообщением на ok перекидываем на sign in
       })
       .finally(() => {
         reset();
