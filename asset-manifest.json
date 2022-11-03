@@ -1,11 +1,15 @@
 {
   "files": {
     "main.css": "/react-pixema/static/css/main.f644a03d.css",
-    "main.js": "/react-pixema/static/js/main.fc7f4bee.js",
+    "main.js": "/react-pixema/static/js/main.5ba2c810.js",
     "static/media/form-background.png": "/react-pixema/static/media/form-background.458eb75d1d1173529947.png",
     "static/media/empty-icon.svg": "/react-pixema/static/media/empty-icon.eed754510a70304dc866d7c836735c14.svg",
+    "static/media/banner-home.svg": "/react-pixema/static/media/banner-home.0e4e5e1e83ed6b8543f417247e6bb74e.svg",
     "static/media/error404.svg": "/react-pixema/static/media/error404.213a040f78019fa2543216b9badbe8e3.svg",
+    "static/media/banner-new.svg": "/react-pixema/static/media/banner-new.9d10618079b65da818cf7770dfc75638.svg",
+    "static/media/banner-signin.svg": "/react-pixema/static/media/banner-signin.43918bf0036fe8a8ce6504eceb22d993.svg",
     "static/media/empty-search.svg": "/react-pixema/static/media/empty-search.3849cba210a932366cd8395325591738.svg",
+    "static/media/main-logo.svg": "/react-pixema/static/media/main-logo.07c5b3b15e104d8ed34a26191f813008.svg",
     "static/media/logo-light.svg": "/react-pixema/static/media/logo-light.22981b9ec8b862428f9a0d7bad09443a.svg",
     "static/media/logo-dark.svg": "/react-pixema/static/media/logo-dark.ef69f378f7796fa43e7162952fc3af4f.svg",
     "static/media/settings-icon.svg": "/react-pixema/static/media/settings-icon.81a91794ca7e4d4f1d0d792b2d4d38aa.svg",
@@ -26,10 +30,10 @@
     "static/media/search-icon.svg": "/react-pixema/static/media/search-icon.f12ffde87e42672f055d723cee910aaf.svg",
     "static/media/burger-icon.svg": "/react-pixema/static/media/burger-icon.31c808eae2a074639a3076cebc3b91f9.svg",
     "main.f644a03d.css.map": "/react-pixema/static/css/main.f644a03d.css.map",
-    "main.fc7f4bee.js.map": "/react-pixema/static/js/main.fc7f4bee.js.map"
+    "main.5ba2c810.js.map": "/react-pixema/static/js/main.5ba2c810.js.map"
   },
   "entrypoints": [
     "static/css/main.f644a03d.css",
-    "static/js/main.fc7f4bee.js"
+    "static/js/main.5ba2c810.js"
   ]
 }
